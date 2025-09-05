@@ -1,5 +1,11 @@
+@tool
 extends Resource
 class_name EntityStat
+
+@export var stat_type:EntityStatType:
+	set(new):
+		stat_type = new
+		resource_name = stat_type.name
 
 @export var min_value:float = 0
 

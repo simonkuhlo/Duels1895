@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="StatType" load_steps=2 format=3 uid="uid://l8i7vjlmr14r"]
+
+[ext_resource type="Script" uid="uid://is670wqg5kwc" path="res://Game/Entities/Stats/Scripts/stat_type.gd" id="1_bm0px"]
+
+[resource]
+script = ExtResource("1_bm0px")
+name = &"Health"
+metadata/_custom_type_script = "uid://is670wqg5kwc"

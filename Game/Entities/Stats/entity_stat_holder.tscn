@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://qnadki4kfuia"]
+
+[ext_resource type="Script" uid="uid://1aex6uq1vfka" path="res://Game/Entities/Stats/Scripts/entity_stat_holder.gd" id="1_jvem8"]
+
+[node name="EntityStatHolder" type="Node"]
+script = ExtResource("1_jvem8")
+metadata/_custom_type_script = "uid://1aex6uq1vfka"
