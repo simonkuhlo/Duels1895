@@ -1,18 +1,27 @@
 [gd_scene load_steps=5 format=3 uid="uid://vr1rchrbhnqw"]
 
 [ext_resource type="Script" uid="uid://bkrxaof5ox4tu" path="res://Game/Entities/entity_body_3d.gd" id="1_qtxv7"]
-[ext_resource type="Script" uid="uid://ci36sqfa0ol7r" path="res://Game/Entities/Stats/Scripts/entity_stat_holder_collection.gd" id="2_4y1t2"]
-[ext_resource type="Resource" uid="uid://ewi24yuwkkeq" path="res://Game/Entities/Stats/eintity_stats.tres" id="3_v6f86"]
+[ext_resource type="Script" uid="uid://cdfgqtker1kqk" path="res://Game/Entities/Stats/Scripts/entity_stat.gd" id="2_4y1t2"]
 [ext_resource type="PackedScene" uid="uid://qnadki4kfuia" path="res://Game/Entities/Stats/entity_stat_holder.tscn" id="4_xufau"]
 
-[node name="EntityBody" type="CharacterBody3D" node_paths=PackedStringArray("stats")]
+[sub_resource type="Resource" id="Resource_v6f86"]
+script = ExtResource("2_4y1t2")
+min_value = 0.0
+max_value = 150.0
+standard_value = 150.0
+regen_per_second = 0.0
+metadata/_custom_type_script = "uid://cdfgqtker1kqk"
+
+[node name="EntityBody" type="CharacterBody3D" node_paths=PackedStringArray("health", "move_speed")]
 script = ExtResource("1_qtxv7")
-stats = NodePath("EntityStatHolderCollection")
+stat_holder_scene = ExtResource("4_xufau")
+health = NodePath("")
+move_speed = NodePath("")
 metadata/_custom_type_script = "uid://bkrxaof5ox4tu"
 
-[node name="EntityStatHolderCollection" type="Node" parent="." node_paths=PackedStringArray("mapped_holders")]
-script = ExtResource("2_4y1t2")
-mapped_collection = ExtResource("3_v6f86")
-mapped_holders = [null]
-default_holder_scene = ExtResource("4_xufau")
-metadata/_custom_type_script = "uid://ci36sqfa0ol7r"
+[node name="Stats" type="Node" parent="."]
+
+[node name="Health" parent="Stats" instance=ExtResource("4_xufau")]
+stat_to_represent = SubResource("Resource_v6f86")
+
+[node name="MoveSpeed" parent="Stats" instance=ExtResource("4_xufau")]

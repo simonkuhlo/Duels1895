@@ -6,11 +6,6 @@ signal current_value_changed(new_value:float)
 @export var stat_to_represent:EntityStat:
 	set(new):
 		stat_to_represent = new
-		if stat_to_represent:
-			name = stat_to_represent.stat_type.name
-		else:
-			queue_free()
-			return
 		reset()
 
 var current_value:float:
