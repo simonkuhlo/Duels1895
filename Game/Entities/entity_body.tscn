@@ -24,11 +24,14 @@ metadata/_custom_type_script = "uid://cdfgqtker1kqk"
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xufau"]
 
-[node name="EntityBody" type="CharacterBody3D" node_paths=PackedStringArray("health", "move_speed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0272, 0)
+[node name="EntityBody" type="CharacterBody3D" node_paths=PackedStringArray("health", "move_speed", "fpv_camera", "tpv_camera", "neck", "skin")]
 script = ExtResource("1_qtxv7")
 health = NodePath("Stats/Health")
 move_speed = NodePath("Stats/MoveSpeed")
+fpv_camera = NodePath("Body/Neck/FPVCamera")
+tpv_camera = NodePath("Body/SpringArm3D/TPVCamera")
+neck = NodePath("Body/Neck")
+skin = NodePath("Body/MeshInstance3D")
 metadata/_custom_type_script = "uid://bkrxaof5ox4tu"
 
 [node name="Stats" type="Node" parent="."]
@@ -40,9 +43,11 @@ stat_to_represent = SubResource("Resource_v6f86")
 stat_to_represent = SubResource("Resource_xufau")
 
 [node name="WorldCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_v6f86")
 
 [node name="Body" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
 mesh = SubResource("CapsuleMesh_xufau")
