@@ -3,7 +3,7 @@ class_name EntityStatHolder
 
 signal current_value_changed(new_value:float)
 
-@export var stat_to_represent:EntityStat:
+@export var stat_to_represent:EntityStat = EntityStat.new():
 	set(new):
 		stat_to_represent = new
 		reset()
