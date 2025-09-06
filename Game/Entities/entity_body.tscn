@@ -25,6 +25,7 @@ metadata/_custom_type_script = "uid://cdfgqtker1kqk"
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xufau"]
 
 [node name="EntityBody" type="CharacterBody3D" node_paths=PackedStringArray("health", "move_speed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0272, 0)
 script = ExtResource("1_qtxv7")
 health = NodePath("Stats/Health")
 move_speed = NodePath("Stats/MoveSpeed")
