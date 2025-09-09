@@ -22,10 +22,20 @@ func _unhandled_input(event: InputEvent) -> void:
 		# Clamp the neck's rotation to prevent flipping
 		controlled_entity.neck.rotation.x = clamp(controlled_entity.neck.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
-func _on_controlled_entity_physics_process(delta:float) -> void:
-	var input_vector:Vector2 = _get_input_vector()
-	controlled_entity.velocity.z = input_vector.x * controlled_entity.move_speed.current_value * delta
-	controlled_entity.velocity.x = input_vector.y * controlled_entity.move_speed.current_value * delta
+func _on_controlled_entity_physics_process(delta: float) -> void:
+	var input_vector: Vector2 = _get_input_vector()
+	var direction = Vector3.ZERO
+	# Get the camera's basis if you want camera-relative movement; otherwise use controlled_entity.global_transform.basis.
+	var forward = -controlled_entity.global_transform.basis.z
+	var right = controlled_entity.global_transform.basis.x
+	direction += forward * input_vector.y
+	direction += right * input_vector.x
+	if direction != Vector3.ZERO:
+		direction = direction.normalized()
+	controlled_entity.velocity.x = direction.x * controlled_entity.move_speed.current_value
+	controlled_entity.velocity.z = direction.z * controlled_entity.move_speed.current_value
+
+	# Gravity and jump remain the same as before.
 	var y_velocity = controlled_entity.velocity.y
 	if !controlled_entity.is_on_floor():
 		y_velocity -= gravity * delta
@@ -34,9 +44,7 @@ func _on_controlled_entity_physics_process(delta:float) -> void:
 		if Input.is_action_just_pressed("jump"):
 			y_velocity = controlled_entity.jump_strength.current_value
 	controlled_entity.velocity.y = y_velocity
-	print(controlled_entity.velocity)
 	controlled_entity.move_and_slide()
-	return
 
 func _get_input_vector() -> Vector2:
 	var return_vector:Vector2 = Vector2.ZERO
