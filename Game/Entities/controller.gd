@@ -75,6 +75,5 @@ func _sprint(delta:float) -> float:
 		speed_modifier *= 0.5
 	controlled_entity.movement_stamina.current_value -= sprint_stamina_consumption_per_second * delta
 	move_speed += move_speed * speed_modifier
-	print("sprinting!", current_stamina)
 	return move_speed
 	

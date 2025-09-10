@@ -1,10 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://tyy8a7n6vs1t"]
+[gd_scene load_steps=17 format=3 uid="uid://tyy8a7n6vs1t"]
 
-[ext_resource type="Texture2D" uid="uid://bki7lv2ibcdsx" path="res://Assets/Debug Textures/PNG/Dark/texture_07.png" id="1_dsnr4"]
-[ext_resource type="PackedScene" uid="uid://715oy5d5svy5" path="res://Game/Entities/player_character_body.tscn" id="1_dxppu"]
-[ext_resource type="Texture2D" uid="uid://mcs0qu228yhp" path="res://Assets/Debug Textures/PNG/Orange/texture_01.png" id="2_lf0gk"]
-[ext_resource type="Texture2D" uid="uid://cpdgq4omukce2" path="res://Assets/Debug Textures/Vector/texture_01.svg" id="3_lf0gk"]
-[ext_resource type="Texture2D" uid="uid://cbblk84fquqkb" path="res://Assets/Debug Textures/PNG/Dark/texture_13.png" id="4_cnaw2"]
+[ext_resource type="PackedScene" uid="uid://ca6610awtca8x" path="res://Ui/controlled_entity_ui.tscn" id="1_fyd15"]
+[ext_resource type="Texture2D" uid="uid://bki7lv2ibcdsx" path="res://Assets/Debug Textures/PNG/Dark/texture_07.png" id="1_tcuxq"]
+[ext_resource type="Script" uid="uid://b2xs1gil3nm6a" path="res://Ui/stat_visualizer.gd" id="2_5iikc"]
+[ext_resource type="Texture2D" uid="uid://mcs0qu228yhp" path="res://Assets/Debug Textures/PNG/Orange/texture_01.png" id="2_fyd15"]
+[ext_resource type="PackedScene" uid="uid://715oy5d5svy5" path="res://Game/Entities/player_character_body.tscn" id="3_5iikc"]
+[ext_resource type="Texture2D" uid="uid://cpdgq4omukce2" path="res://Assets/Debug Textures/Vector/texture_01.svg" id="4_473rr"]
+[ext_resource type="Texture2D" uid="uid://cbblk84fquqkb" path="res://Assets/Debug Textures/PNG/Dark/texture_13.png" id="5_i5nfa"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dxppu"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -20,30 +22,79 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kt6p6"]
-albedo_texture = ExtResource("1_dsnr4")
+albedo_texture = ExtResource("1_tcuxq")
 uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cnaw2"]
-albedo_texture = ExtResource("2_lf0gk")
+albedo_texture = ExtResource("2_fyd15")
 uv1_triplanar = true
 
 [sub_resource type="PrismMesh" id="PrismMesh_dxppu"]
 size = Vector3(7, 3, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uu1iw"]
-albedo_texture = ExtResource("3_lf0gk")
+albedo_texture = ExtResource("4_473rr")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4tg7h"]
-albedo_texture = ExtResource("4_cnaw2")
+albedo_texture = ExtResource("5_i5nfa")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ud3vi"]
 
 [node name="TestWorld" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 
-[node name="ControlledEntityUI" type="CanvasLayer" parent="."]
+[node name="ControlledEntityUI" parent="." node_paths=PackedStringArray("health_bar", "movement_stamina_bar", "ads_stamina_bar", "action_stamina_bar", "controlled_entity") instance=ExtResource("1_fyd15")]
+health_bar = NodePath("VBoxContainer/HealthBar")
+movement_stamina_bar = NodePath("VBoxContainer/MovementStaminaBar")
+ads_stamina_bar = NodePath("VBoxContainer/AdsStamina")
+action_stamina_bar = NodePath("VBoxContainer/ActionStamina")
+controlled_entity = NodePath("../EntityBody")
+
+[node name="VBoxContainer" type="GridContainer" parent="ControlledEntityUI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+columns = 2
+
+[node name="Label" type="Label" parent="ControlledEntityUI/VBoxContainer"]
+layout_mode = 2
+text = "Health"
+
+[node name="HealthBar" type="ProgressBar" parent="ControlledEntityUI/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+script = ExtResource("2_5iikc")
+
+[node name="Label2" type="Label" parent="ControlledEntityUI/VBoxContainer"]
+layout_mode = 2
+text = "Movement"
+
+[node name="MovementStaminaBar" type="ProgressBar" parent="ControlledEntityUI/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+script = ExtResource("2_5iikc")
+
+[node name="Label3" type="Label" parent="ControlledEntityUI/VBoxContainer"]
+layout_mode = 2
+text = "ADS"
+
+[node name="AdsStamina" type="ProgressBar" parent="ControlledEntityUI/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+script = ExtResource("2_5iikc")
+
+[node name="Label4" type="Label" parent="ControlledEntityUI/VBoxContainer"]
+layout_mode = 2
+text = "Action"
+
+[node name="ActionStamina" type="ProgressBar" parent="ControlledEntityUI/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+script = ExtResource("2_5iikc")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1lwx6")
@@ -71,7 +122,7 @@ radius = 3.0
 height = 5.0
 sides = 16
 
-[node name="EntityBody" parent="." instance=ExtResource("1_dxppu")]
+[node name="EntityBody" parent="." instance=ExtResource("3_5iikc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.87669, 1.4435, 6.05751)
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
@@ -83,6 +134,7 @@ material = SubResource("StandardMaterial3D_uu1iw")
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 0)
 material_override = SubResource("StandardMaterial3D_4tg7h")
+use_collision = true
 material = SubResource("StandardMaterial3D_ud3vi")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
