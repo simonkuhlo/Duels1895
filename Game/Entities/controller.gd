@@ -3,6 +3,9 @@ class_name BasePlayerCharacterController
 
 
 @export var gravity:float = 9.81
+@export var sprint_stamina_consumption_per_second:float = 1
+@export var jump_stamina_consumption = 10
+
 @export var controlled_entity:PlayerCharacterBody3D
 @export var look_sensitivity:float = 0.005
 
@@ -42,7 +45,7 @@ func _on_controlled_entity_physics_process(delta: float) -> void:
 	else:
 		y_velocity = 0
 		if Input.is_action_just_pressed("jump"):
-			y_velocity = controlled_entity.jump_strength.current_value
+			jump()
 	controlled_entity.velocity.y = y_velocity
 	controlled_entity.move_and_slide()
 
@@ -50,3 +53,13 @@ func _get_input_vector() -> Vector2:
 	var return_vector:Vector2 = Vector2.ZERO
 	return_vector = Input.get_vector("move_forward", "move_backward", "move_left", "move_right")
 	return return_vector.normalized()
+
+func jump() -> void:
+	var current_stamina:float = controlled_entity.movement_stamina.current_value
+	var jump_strength:float = controlled_entity.jump_strength.current_value
+	if current_stamina < jump_stamina_consumption:
+		jump_strength = jump_stregnth * 0.5
+	else:
+		controlled_entity.movement_stamina.current_value -= jump_stamina_consumption
+	y_velocity = jump_strength
+	
