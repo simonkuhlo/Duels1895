@@ -43,6 +43,8 @@ albedo_texture = ExtResource("4_cnaw2")
 [node name="TestWorld" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 
+[node name="ControlledEntityUI" type="CanvasLayer" parent="."]
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1lwx6")
 

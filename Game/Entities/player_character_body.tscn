@@ -20,8 +20,8 @@ script = ExtResource("5_ofj4c")
 min_value = 0.0
 max_value = 100.0
 standard_value = 100.0
-regen_per_second = 1.0
-regen_delay_seconds = 0.0
+regen_per_second = 10.0
+regen_delay_seconds = 3.0
 metadata/_custom_type_script = "uid://dbblf8tqoy7rc"
 
 [sub_resource type="Resource" id="Resource_u2gnr"]
@@ -63,6 +63,7 @@ controller = NodePath("Controller")
 [node name="Controller" type="Node" parent="." index="0" node_paths=PackedStringArray("controlled_entity")]
 script = ExtResource("3_ofj4c")
 gravity = 32.0
+sprint_stamina_consumption_per_second = 5.0
 sprint_speed_modifier = 0.3
 controlled_entity = NodePath("..")
 
