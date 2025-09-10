@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://tyy8a7n6vs1t"]
+[gd_scene load_steps=21 format=3 uid="uid://tyy8a7n6vs1t"]
 
 [ext_resource type="PackedScene" uid="uid://ca6610awtca8x" path="res://Ui/controlled_entity_ui.tscn" id="1_fyd15"]
 [ext_resource type="Texture2D" uid="uid://bki7lv2ibcdsx" path="res://Assets/Debug Textures/PNG/Dark/texture_07.png" id="1_tcuxq"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://715oy5d5svy5" path="res://Game/Entities/player_character_body.tscn" id="3_5iikc"]
 [ext_resource type="Texture2D" uid="uid://cpdgq4omukce2" path="res://Assets/Debug Textures/Vector/texture_01.svg" id="4_473rr"]
 [ext_resource type="Texture2D" uid="uid://cbblk84fquqkb" path="res://Assets/Debug Textures/PNG/Dark/texture_13.png" id="5_i5nfa"]
+[ext_resource type="Texture2D" uid="uid://yp8dk5alji4n" path="res://Assets/Debug Textures/PNG/Purple/texture_11.png" id="8_i5nfa"]
+[ext_resource type="Texture2D" uid="uid://7ghkovkmvowy" path="res://Assets/Debug Textures/PNG/Purple/texture_02.png" id="9_si7et"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dxppu"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -41,6 +43,13 @@ uv1_world_triplanar = true
 albedo_texture = ExtResource("5_i5nfa")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ud3vi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_phhhp"]
+albedo_texture = ExtResource("8_i5nfa")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sp1l4"]
+albedo_texture = ExtResource("9_si7et")
 
 [node name="TestWorld" type="Node3D"]
 
@@ -138,7 +147,13 @@ use_collision = true
 material = SubResource("StandardMaterial3D_ud3vi")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
-transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -8, 0.5, 6)
+transform = Transform3D(-0.707106, 0, 0.707106, 0, 1, 0, -0.707106, 0, -0.707106, -3, 0.5, 6)
+material_override = SubResource("StandardMaterial3D_phhhp")
 use_collision = true
 polygon = PackedVector2Array(0, 0, 0, 0, 5, 5, 5, 0)
 depth = 3.0
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGPolygon3D"]
+transform = Transform3D(0.999982, 0, 0, 0, 1, 0, 0, 0, 0.999982, 6.99999, 2.5, -1.5)
+material_override = SubResource("StandardMaterial3D_sp1l4")
+size = Vector3(4, 5, 3)
