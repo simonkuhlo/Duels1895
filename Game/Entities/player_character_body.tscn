@@ -1,0 +1,89 @@
+[gd_scene load_steps=11 format=3 uid="uid://715oy5d5svy5"]
+
+[ext_resource type="PackedScene" uid="uid://vr1rchrbhnqw" path="res://Game/Entities/entity_body.tscn" id="1_b5oby"]
+[ext_resource type="Script" uid="uid://osnndvrcyeuo" path="res://Game/Entities/player_character_body_3d.gd" id="2_2ckjl"]
+[ext_resource type="PackedScene" uid="uid://qnadki4kfuia" path="res://Game/Entities/Stats/entity_stat_holder.tscn" id="2_wrub7"]
+[ext_resource type="Script" uid="uid://p27tnsdjikpo" path="res://Game/Entities/controller.gd" id="3_ofj4c"]
+[ext_resource type="Script" uid="uid://dbblf8tqoy7rc" path="res://Game/Entities/Stats/Scripts/entity_stat.gd" id="5_ofj4c"]
+
+[sub_resource type="Resource" id="Resource_emag8"]
+script = ExtResource("5_ofj4c")
+min_value = 0.0
+max_value = 100.0
+standard_value = 100.0
+regen_per_second = 0.0
+regen_delay_seconds = 0.0
+metadata/_custom_type_script = "uid://dbblf8tqoy7rc"
+
+[sub_resource type="Resource" id="Resource_oifuf"]
+script = ExtResource("5_ofj4c")
+min_value = 0.0
+max_value = 100.0
+standard_value = 100.0
+regen_per_second = 10.0
+regen_delay_seconds = 3.0
+metadata/_custom_type_script = "uid://dbblf8tqoy7rc"
+
+[sub_resource type="Resource" id="Resource_u2gnr"]
+script = ExtResource("5_ofj4c")
+min_value = 0.0
+max_value = 100.0
+standard_value = 100.0
+regen_per_second = 0.0
+regen_delay_seconds = 0.0
+metadata/_custom_type_script = "uid://dbblf8tqoy7rc"
+
+[sub_resource type="Resource" id="Resource_b7hs3"]
+script = ExtResource("5_ofj4c")
+min_value = 0.0
+max_value = 100.0
+standard_value = 12.0
+regen_per_second = 0.0
+regen_delay_seconds = 0.0
+metadata/_custom_type_script = "uid://dbblf8tqoy7rc"
+
+[sub_resource type="Resource" id="Resource_ofj4c"]
+script = ExtResource("5_ofj4c")
+min_value = 0.0
+max_value = 1000.0
+standard_value = 9.0
+regen_per_second = 0.0
+regen_delay_seconds = 0.0
+metadata/_custom_type_script = "uid://dbblf8tqoy7rc"
+
+[node name="EntityBody" node_paths=PackedStringArray("action_stamina", "movement_stamina", "ads_stamina", "jump_strength", "controller") instance=ExtResource("1_b5oby")]
+floor_max_angle = 0.872665
+script = ExtResource("2_2ckjl")
+action_stamina = NodePath("Stats/ActionStamina")
+movement_stamina = NodePath("Stats/MovementStamina")
+ads_stamina = NodePath("Stats/AdsStamina")
+jump_strength = NodePath("Stats/JumpStrength")
+controller = NodePath("Controller")
+
+[node name="Controller" type="Node" parent="." index="0" node_paths=PackedStringArray("controlled_entity")]
+script = ExtResource("3_ofj4c")
+gravity = 32.0
+sprint_stamina_consumption_per_second = 5.0
+sprint_speed_modifier = 0.3
+controlled_entity = NodePath("..")
+
+[node name="ActionStamina" parent="Stats" index="0" instance=ExtResource("2_wrub7")]
+stat_to_represent = SubResource("Resource_emag8")
+
+[node name="MovementStamina" parent="Stats" index="1" instance=ExtResource("2_wrub7")]
+stat_to_represent = SubResource("Resource_oifuf")
+
+[node name="AdsStamina" parent="Stats" index="2" instance=ExtResource("2_wrub7")]
+stat_to_represent = SubResource("Resource_u2gnr")
+
+[node name="JumpStrength" parent="Stats" index="3" instance=ExtResource("2_wrub7")]
+stat_to_represent = SubResource("Resource_b7hs3")
+
+[node name="MoveSpeed" parent="Stats" index="5"]
+stat_to_represent = SubResource("Resource_ofj4c")
+
+[node name="Body" parent="." index="3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 0)
+
+[node name="FPVCamera" parent="Body/Neck" index="0"]
+fov = 90.0
