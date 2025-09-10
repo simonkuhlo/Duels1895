@@ -12,6 +12,7 @@ min_value = 0.0
 max_value = 100.0
 standard_value = 100.0
 regen_per_second = 0.0
+regen_delay_seconds = 0.0
 metadata/_custom_type_script = "uid://dbblf8tqoy7rc"
 
 [sub_resource type="Resource" id="Resource_oifuf"]
@@ -19,7 +20,8 @@ script = ExtResource("5_ofj4c")
 min_value = 0.0
 max_value = 100.0
 standard_value = 100.0
-regen_per_second = 0.0
+regen_per_second = 1.0
+regen_delay_seconds = 0.0
 metadata/_custom_type_script = "uid://dbblf8tqoy7rc"
 
 [sub_resource type="Resource" id="Resource_u2gnr"]
@@ -28,25 +30,29 @@ min_value = 0.0
 max_value = 100.0
 standard_value = 100.0
 regen_per_second = 0.0
+regen_delay_seconds = 0.0
 metadata/_custom_type_script = "uid://dbblf8tqoy7rc"
 
 [sub_resource type="Resource" id="Resource_b7hs3"]
 script = ExtResource("5_ofj4c")
 min_value = 0.0
 max_value = 100.0
-standard_value = 8.0
+standard_value = 12.0
 regen_per_second = 0.0
+regen_delay_seconds = 0.0
 metadata/_custom_type_script = "uid://dbblf8tqoy7rc"
 
 [sub_resource type="Resource" id="Resource_ofj4c"]
 script = ExtResource("5_ofj4c")
 min_value = 0.0
 max_value = 1000.0
-standard_value = 15.0
+standard_value = 11.0
 regen_per_second = 0.0
+regen_delay_seconds = 0.0
 metadata/_custom_type_script = "uid://dbblf8tqoy7rc"
 
 [node name="EntityBody" node_paths=PackedStringArray("action_stamina", "movement_stamina", "ads_stamina", "jump_strength", "controller") instance=ExtResource("1_b5oby")]
+floor_max_angle = 0.872665
 script = ExtResource("2_2ckjl")
 action_stamina = NodePath("Stats/ActionStamina")
 movement_stamina = NodePath("Stats/MovementStamina")
@@ -56,7 +62,8 @@ controller = NodePath("Controller")
 
 [node name="Controller" type="Node" parent="." index="0" node_paths=PackedStringArray("controlled_entity")]
 script = ExtResource("3_ofj4c")
-gravity = 15.0
+gravity = 32.0
+sprint_speed_modifier = 0.3
 controlled_entity = NodePath("..")
 
 [node name="ActionStamina" parent="Stats" index="0" instance=ExtResource("2_wrub7")]
@@ -76,3 +83,6 @@ stat_to_represent = SubResource("Resource_ofj4c")
 
 [node name="Body" parent="." index="3"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 0)
+
+[node name="FPVCamera" parent="Body/Neck" index="0"]
+fov = 90.0

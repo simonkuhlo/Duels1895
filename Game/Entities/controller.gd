@@ -5,6 +5,9 @@ class_name BasePlayerCharacterController
 @export var gravity:float = 9.81
 @export var sprint_stamina_consumption_per_second:float = 1
 @export var jump_stamina_consumption = 10
+@export var air_control:float = 5
+@export var sprint_speed_modifier = 0.2
+
 
 @export var controlled_entity:PlayerCharacterBody3D
 @export var look_sensitivity:float = 0.005
@@ -35,18 +38,19 @@ func _on_controlled_entity_physics_process(delta: float) -> void:
 	direction += right * input_vector.x
 	if direction != Vector3.ZERO:
 		direction = direction.normalized()
-	controlled_entity.velocity.x = direction.x * controlled_entity.move_speed.current_value
-	controlled_entity.velocity.z = direction.z * controlled_entity.move_speed.current_value
-
-	# Gravity and jump remain the same as before.
-	var y_velocity = controlled_entity.velocity.y
-	if !controlled_entity.is_on_floor():
-		y_velocity -= gravity * delta
-	else:
-		y_velocity = 0
+	var move_speed:float = controlled_entity.move_speed.current_value
+	if controlled_entity.is_on_floor():
+		controlled_entity.velocity.y = 0
+		if Input.is_action_pressed("sprint"):
+			move_speed = _sprint(delta)
+		controlled_entity.velocity.x = direction.x * move_speed
+		controlled_entity.velocity.z = direction.z * move_speed
 		if Input.is_action_just_pressed("jump"):
-			jump()
-	controlled_entity.velocity.y = y_velocity
+			controlled_entity.velocity.y = _jump()
+	else:
+		controlled_entity.velocity.x = lerp(controlled_entity.velocity.x, direction.x * move_speed, air_control * delta)
+		controlled_entity.velocity.z = lerp(controlled_entity.velocity.z, direction.z * move_speed, air_control * delta)
+		controlled_entity.velocity.y -= gravity * delta
 	controlled_entity.move_and_slide()
 
 func _get_input_vector() -> Vector2:
@@ -54,12 +58,23 @@ func _get_input_vector() -> Vector2:
 	return_vector = Input.get_vector("move_forward", "move_backward", "move_left", "move_right")
 	return return_vector.normalized()
 
-func jump() -> void:
+func _jump() -> float:
 	var current_stamina:float = controlled_entity.movement_stamina.current_value
 	var jump_strength:float = controlled_entity.jump_strength.current_value
 	if current_stamina < jump_stamina_consumption:
-		jump_strength = jump_stregnth * 0.5
+		jump_strength = jump_strength * 0.5
 	else:
 		controlled_entity.movement_stamina.current_value -= jump_stamina_consumption
-	y_velocity = jump_strength
+	return jump_strength
+
+func _sprint(delta:float) -> float:
+	var move_speed:float = controlled_entity.move_speed.current_value
+	var speed_modifier = sprint_speed_modifier
+	var current_stamina:float = controlled_entity.movement_stamina.current_value
+	if current_stamina < sprint_stamina_consumption_per_second * delta:
+		speed_modifier *= 0.5
+	controlled_entity.movement_stamina.current_value -= sprint_stamina_consumption_per_second * delta
+	move_speed += move_speed * speed_modifier
+	print("sprinting!", current_stamina)
+	return move_speed
 	
