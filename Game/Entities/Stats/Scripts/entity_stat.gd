@@ -9,3 +9,5 @@ class_name EntityStat
 @export var standard_value:float = max_value
 
 @export var regen_per_second:float = 0
+
+@export var regen_delay_seconds:float = 0
