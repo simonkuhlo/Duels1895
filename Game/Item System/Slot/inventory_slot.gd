@@ -13,6 +13,8 @@ signal uid_changed()
 
 @export var filter:BaseFilter
 
+@export var item_dropper:ItemDropper3D
+
 var _parent_inventory:Inventory
 
 var held_item:ItemInstance:

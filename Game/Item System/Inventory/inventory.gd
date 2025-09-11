@@ -7,7 +7,11 @@ signal uid_changed()
 @export var default_slot_scene:PackedScene
 @export var default_slot_count:int = 0
 
-@export var item_dropper:ItemDropper3D
+@export var item_dropper:ItemDropper3D:
+	set(new):
+		item_dropper = new
+		for slot in slots:
+			slot.item_dropper = item_dropper
 
 @export var uid_str:StringName:
 	set(new):
@@ -17,8 +21,22 @@ signal uid_changed()
 		uid_changed.emit()
 
 var slots:Array[InventorySlot] = []
+
+func _ready() -> void:
+	var index = 0
+	for child in get_children():
+		if child is InventorySlot:
+			add_slot(child)
+	if !default_slot_count:
+		return
+	while index < default_slot_count:
+		var instance:InventorySlot = default_slot_scene.instantiate()
+		add_slot(instance)
+		index += 1
+
 func add_slot(slot:InventorySlot) -> void:
 	slot._parent_inventory = self
+	slot.item_dropper = item_dropper
 	if slot not in slots:
 		slots.append(slot)
 	if !slot.is_inside_tree():
