@@ -11,3 +11,8 @@ class_name ItemReference
 		if !equipped_scene_fpv:
 			return equipped_scene
 		return equipped_scene_fpv
+
+@export var world_item:PackedScene
+
+func get_default_custom_properties() -> Dictionary[StringName, Variant]:
+	return {}

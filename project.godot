@@ -15,6 +15,10 @@ run/main_scene="uid://tyy8a7n6vs1t"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Items="*res://Game/Item System/items.tscn"
+
 [input]
 
 move_backward={
