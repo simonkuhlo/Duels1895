@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://715oy5d5svy5"]
 
 [ext_resource type="PackedScene" uid="uid://vr1rchrbhnqw" path="res://Game/Entities/entity_body.tscn" id="1_b5oby"]
-[ext_resource type="Script" uid="uid://osnndvrcyeuo" path="res://Game/Entities/player_character_body_3d.gd" id="2_2ckjl"]
+[ext_resource type="Script" uid="uid://b0ey63mpp1nu2" path="res://Game/Entities/player_character_body_3d.gd" id="2_2ckjl"]
 [ext_resource type="PackedScene" uid="uid://qnadki4kfuia" path="res://Game/Entities/Stats/entity_stat_holder.tscn" id="2_wrub7"]
-[ext_resource type="Script" uid="uid://p27tnsdjikpo" path="res://Game/Entities/controller.gd" id="3_ofj4c"]
-[ext_resource type="Script" uid="uid://dbblf8tqoy7rc" path="res://Game/Entities/Stats/Scripts/entity_stat.gd" id="5_ofj4c"]
+[ext_resource type="Script" uid="uid://bjbcul06npxr3" path="res://Game/Entities/controller.gd" id="3_ofj4c"]
+[ext_resource type="Script" uid="uid://cdfgqtker1kqk" path="res://Game/Entities/Stats/Scripts/entity_stat.gd" id="5_ofj4c"]
 
 [sub_resource type="Resource" id="Resource_emag8"]
 script = ExtResource("5_ofj4c")
