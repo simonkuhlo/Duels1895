@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://cww4pw6cpc8b5"]
+
+[ext_resource type="Script" uid="uid://ccjysjbgkfqm0" path="res://Ui/Lobby/lobby_visualizer.gd" id="1_22sjt"]
+[ext_resource type="Resource" uid="uid://qlnjnxld20qa" path="res://Maps/Maps/Testworld/test_world.tres" id="2_bg863"]
+[ext_resource type="Script" uid="uid://27f4sks1h8dy" path="res://Ui/Lobby/player_list.gd" id="2_rdvlu"]
+[ext_resource type="PackedScene" uid="uid://bpbm2uw0cfyf1" path="res://Ui/Lobby/lobby_peer_visualizer.tscn" id="3_cxr7h"]
+
+[node name="LobbyVisualizer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_22sjt")
+test_world = ExtResource("2_bg863")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 300.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="LeaveButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "<- Leave Lobby"
+alignment = 0
+
+[node name="PlayerListSection" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/PlayerListSection"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/PlayerListSection/VBoxContainer"]
+layout_mode = 2
+text = "Player List"
+
+[node name="PlayerList" type="PanelContainer" parent="HBoxContainer/VBoxContainer/PlayerListSection/VBoxContainer" node_paths=PackedStringArray("list_root")]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_rdvlu")
+visualizer_scene = ExtResource("3_cxr7h")
+list_root = NodePath("VBoxContainer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/PlayerListSection/VBoxContainer/PlayerList"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="StartButton" type="Button" parent="MarginContainer"]
+layout_mode = 2
+text = "Start Game"
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/LeaveButton" to="." method="_on_leave_button_pressed"]
+[connection signal="pressed" from="MarginContainer/StartButton" to="." method="_on_start_button_pressed"]

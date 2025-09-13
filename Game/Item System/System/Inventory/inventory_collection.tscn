@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bthqp0o7o2bv5"]
+
+[ext_resource type="Script" uid="uid://c1al0jwkr3f5f" path="res://Game/Item System/System/Inventory/inventory_collection.gd" id="1_30xq4"]
+
+[node name="InventoryCollection" type="Node"]
+script = ExtResource("1_30xq4")
+metadata/_custom_type_script = "uid://c1al0jwkr3f5f"

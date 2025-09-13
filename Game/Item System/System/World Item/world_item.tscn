@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2t44lfcig42m"]
+
+[ext_resource type="Script" uid="uid://3a7aipi4tn0v" path="res://Game/Item System/System/World Item/world_item.gd" id="1_fen2o"]
+
+[node name="WorldItem" type="RigidBody3D"]
+script = ExtResource("1_fen2o")
+metadata/_custom_type_script = "uid://3a7aipi4tn0v"

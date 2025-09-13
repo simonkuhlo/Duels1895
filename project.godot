@@ -11,13 +11,16 @@ config_version=5
 [application]
 
 config/name="Duels1895"
-run/main_scene="uid://tyy8a7n6vs1t"
+run/main_scene="uid://c1hsbaffrvoax"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Items="*res://Game/Item System/Autoload/items.tscn"
+Items="*res://Game/Item System/System/Autoload/items.tscn"
+Lobby="*res://MultiplayerLobby/lobby.tscn"
+Settings="*res://settings.tscn"
+MapLoader="*res://Maps/System/multiplayer_map_loader.tscn"
 
 [input]
 

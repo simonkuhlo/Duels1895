@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://vr1rchrbhnqw"]
+[gd_scene load_steps=9 format=3 uid="uid://vr1rchrbhnqw"]
 
-[ext_resource type="Script" uid="uid://bkrxaof5ox4tu" path="res://Game/Entities/entity_body_3d.gd" id="1_qtxv7"]
-[ext_resource type="Script" uid="uid://cdfgqtker1kqk" path="res://Game/Entities/Stats/Scripts/entity_stat.gd" id="2_4y1t2"]
+[ext_resource type="Script" uid="uid://cywrhsjqx26hs" path="res://Game/Entities/entity_body_3d.gd" id="1_qtxv7"]
+[ext_resource type="Script" uid="uid://dbblf8tqoy7rc" path="res://Game/Entities/Stats/Scripts/entity_stat.gd" id="2_4y1t2"]
 [ext_resource type="PackedScene" uid="uid://qnadki4kfuia" path="res://Game/Entities/Stats/entity_stat_holder.tscn" id="4_xufau"]
 
 [sub_resource type="Resource" id="Resource_v6f86"]
@@ -10,6 +10,7 @@ min_value = 0.0
 max_value = 150.0
 standard_value = 150.0
 regen_per_second = 0.0
+regen_delay_seconds = 0.0
 metadata/_custom_type_script = "uid://cdfgqtker1kqk"
 
 [sub_resource type="Resource" id="Resource_xufau"]
@@ -18,11 +19,17 @@ min_value = 0.0
 max_value = 1000.0
 standard_value = 700.0
 regen_per_second = 0.0
+regen_delay_seconds = 0.0
 metadata/_custom_type_script = "uid://cdfgqtker1kqk"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v6f86"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xufau"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_v6f86"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
 
 [node name="EntityBody" type="CharacterBody3D" node_paths=PackedStringArray("health", "move_speed", "fpv_camera", "tpv_camera", "neck", "skin")]
 script = ExtResource("1_qtxv7")
@@ -32,7 +39,6 @@ fpv_camera = NodePath("Body/Neck/FPVCamera")
 tpv_camera = NodePath("Body/SpringArm3D/TPVCamera")
 neck = NodePath("Body/Neck")
 skin = NodePath("Body/MeshInstance3D")
-metadata/_custom_type_script = "uid://bkrxaof5ox4tu"
 
 [node name="Stats" type="Node" parent="."]
 
@@ -64,3 +70,6 @@ spring_length = 3.0
 
 [node name="TPVCamera" type="Camera3D" parent="Body/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 0.958318, -0.285705, 0, 0.285705, 0.958318, 0, 0, 0)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_v6f86")

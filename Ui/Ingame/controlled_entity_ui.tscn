@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca6610awtca8x"]
+
+[ext_resource type="Script" uid="uid://bc0r5k8ng8x47" path="res://Maps/System/controlled_entity_ui.gd" id="1_530x5"]
+
+[node name="ControlledEntityUI" type="CanvasLayer" node_paths=PackedStringArray("controlled_entity")]
+script = ExtResource("1_530x5")
+controlled_entity = NodePath("")

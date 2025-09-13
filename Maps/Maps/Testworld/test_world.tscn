@@ -1,0 +1,181 @@
+[gd_scene load_steps=23 format=3 uid="uid://tyy8a7n6vs1t"]
+
+[ext_resource type="PackedScene" uid="uid://ca6610awtca8x" path="res://Ui/Ingame/controlled_entity_ui.tscn" id="1_fyd15"]
+[ext_resource type="Texture2D" uid="uid://bki7lv2ibcdsx" path="res://Assets/Debug Textures/PNG/Dark/texture_07.png" id="1_tcuxq"]
+[ext_resource type="Script" uid="uid://c4nsq07xr6be1" path="res://Maps/System/map_instance.gd" id="1_vkd6p"]
+[ext_resource type="PackedScene" uid="uid://715oy5d5svy5" path="res://Game/Entities/PlayerCharacter/player_character_body.tscn" id="2_2ovxu"]
+[ext_resource type="Script" uid="uid://b2xs1gil3nm6a" path="res://Ui/Ingame/stat_visualizer.gd" id="2_5iikc"]
+[ext_resource type="Texture2D" uid="uid://mcs0qu228yhp" path="res://Assets/Debug Textures/PNG/Orange/texture_01.png" id="2_fyd15"]
+[ext_resource type="Texture2D" uid="uid://cpdgq4omukce2" path="res://Assets/Debug Textures/Vector/texture_01.svg" id="4_473rr"]
+[ext_resource type="Texture2D" uid="uid://cbblk84fquqkb" path="res://Assets/Debug Textures/PNG/Dark/texture_13.png" id="5_i5nfa"]
+[ext_resource type="Texture2D" uid="uid://yp8dk5alji4n" path="res://Assets/Debug Textures/PNG/Purple/texture_11.png" id="8_i5nfa"]
+[ext_resource type="Texture2D" uid="uid://7ghkovkmvowy" path="res://Assets/Debug Textures/PNG/Purple/texture_02.png" id="9_si7et"]
+[ext_resource type="Script" uid="uid://c8r3agj8khox1" path="res://Maps/Maps/Testworld/spectator_camera_director.gd" id="10_vkd6p"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dxppu"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_gy3sr"]
+sky_material = SubResource("ProceduralSkyMaterial_dxppu")
+
+[sub_resource type="Environment" id="Environment_1lwx6"]
+background_mode = 2
+sky = SubResource("Sky_gy3sr")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kt6p6"]
+albedo_texture = ExtResource("1_tcuxq")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cnaw2"]
+albedo_texture = ExtResource("2_fyd15")
+uv1_triplanar = true
+
+[sub_resource type="PrismMesh" id="PrismMesh_dxppu"]
+size = Vector3(7, 3, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uu1iw"]
+albedo_texture = ExtResource("4_473rr")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4tg7h"]
+albedo_texture = ExtResource("5_i5nfa")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ud3vi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_phhhp"]
+albedo_texture = ExtResource("8_i5nfa")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sp1l4"]
+albedo_texture = ExtResource("9_si7et")
+
+[node name="TestWorld" type="Node3D" node_paths=PackedStringArray("player_spawns")]
+script = ExtResource("1_vkd6p")
+player_spawns = [NodePath("PlayerSpawn")]
+default_player_character = ExtResource("2_2ovxu")
+metadata/_custom_type_script = "uid://c4nsq07xr6be1"
+
+[node name="ControlledEntityUI" parent="." node_paths=PackedStringArray("health_bar", "movement_stamina_bar", "ads_stamina_bar", "action_stamina_bar", "controlled_entity") instance=ExtResource("1_fyd15")]
+health_bar = NodePath("VBoxContainer/HealthBar")
+movement_stamina_bar = NodePath("VBoxContainer/MovementStaminaBar")
+ads_stamina_bar = NodePath("VBoxContainer/AdsStamina")
+action_stamina_bar = NodePath("VBoxContainer/ActionStamina")
+controlled_entity = NodePath("")
+
+[node name="VBoxContainer" type="GridContainer" parent="ControlledEntityUI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+columns = 2
+
+[node name="Label" type="Label" parent="ControlledEntityUI/VBoxContainer"]
+layout_mode = 2
+text = "Health"
+
+[node name="HealthBar" type="ProgressBar" parent="ControlledEntityUI/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+script = ExtResource("2_5iikc")
+
+[node name="Label2" type="Label" parent="ControlledEntityUI/VBoxContainer"]
+layout_mode = 2
+text = "Movement"
+
+[node name="MovementStaminaBar" type="ProgressBar" parent="ControlledEntityUI/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+script = ExtResource("2_5iikc")
+
+[node name="Label3" type="Label" parent="ControlledEntityUI/VBoxContainer"]
+layout_mode = 2
+text = "ADS"
+
+[node name="AdsStamina" type="ProgressBar" parent="ControlledEntityUI/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+script = ExtResource("2_5iikc")
+
+[node name="Label4" type="Label" parent="ControlledEntityUI/VBoxContainer"]
+layout_mode = 2
+text = "Action"
+
+[node name="ActionStamina" type="ProgressBar" parent="ControlledEntityUI/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+script = ExtResource("2_5iikc")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1lwx6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_kt6p6")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+operation = 2
+polygon = PackedVector2Array(0, 0, -3, 1, 3, 1, 1, 0)
+depth = 5.37
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+material_override = SubResource("StandardMaterial3D_cnaw2")
+use_collision = true
+radius = 3.0
+height = 5.0
+sides = 16
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 14)
+use_collision = true
+mesh = SubResource("PrismMesh_dxppu")
+material = SubResource("StandardMaterial3D_uu1iw")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 0)
+material_override = SubResource("StandardMaterial3D_4tg7h")
+use_collision = true
+material = SubResource("StandardMaterial3D_ud3vi")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+transform = Transform3D(-0.707106, 0, 0.707106, 0, 1, 0, -0.707106, 0, -0.707106, -3, 0.5, 6)
+material_override = SubResource("StandardMaterial3D_phhhp")
+use_collision = true
+polygon = PackedVector2Array(0, 0, 0, 0, 5, 5, 5, 0)
+depth = 3.0
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGPolygon3D"]
+transform = Transform3D(0.999982, 0, 0, 0, 1, 0, 0, 0, 0.999982, 6.99999, 2.5, -1.5)
+material_override = SubResource("StandardMaterial3D_sp1l4")
+size = Vector3(4, 5, 3)
+
+[node name="SpectatorCameraDirector" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
+script = ExtResource("10_vkd6p")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="SpectatorCameraDirector"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0)
+spring_length = 30.0
+
+[node name="Camera3D" type="Camera3D" parent="SpectatorCameraDirector/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 1.19209e-07, 0, -1.19209e-07, 1, 0, 0, 0)
+current = true
+
+[node name="PlayerSpawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0821, 3.42629, 8.01913)
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://715oy5d5svy5")
+spawn_path = NodePath("..")

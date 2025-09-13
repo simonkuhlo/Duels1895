@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemReference" load_steps=2 format=3 uid="uid://d0pfuiioo4pu4"]
+
+[ext_resource type="Script" uid="uid://jl8omh2pwst6" path="res://Game/Item System/System/item_reference.gd" id="1_xqjib"]
+
+[resource]
+script = ExtResource("1_xqjib")
+id = &""
+item_name = ""
+description = ""
+metadata/_custom_type_script = "uid://jl8omh2pwst6"

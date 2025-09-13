@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ConnectionSettings" load_steps=2 format=3 uid="uid://c3oxl1c3eq6qc"]
+
+[ext_resource type="Script" uid="uid://qv217dug5fkv" path="res://MultiplayerLobby/connection_settings.gd" id="1_odub8"]
+
+[resource]
+script = ExtResource("1_odub8")
+game_port = 6969
+max_players = 10
+remote_address = "localhost"
+metadata/_custom_type_script = "uid://qv217dug5fkv"
