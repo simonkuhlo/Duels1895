@@ -11,7 +11,7 @@ signal current_value_changed(new_value:float)
 @export_group("linking")
 @export var regen_block_timer:Timer
 
-var current_value:float:
+@export var current_value:float:
 	set(new):
 		new = clamp(new, stat_to_represent.min_value, stat_to_represent.max_value)
 		if current_value > new or current_value < 0:

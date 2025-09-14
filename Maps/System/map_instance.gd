@@ -1,16 +1,33 @@
 extends Node3D
 class_name MapInstance
 
-@export var player_spawns:Array[Marker3D]
-@export var default_player_character:PackedScene
+signal controlled_entity_changed(new_entity:EntityBody3D)
+signal pause_state_changed(new_state:bool)
+
+@export var player_spawns:Array[PlayerSpawner]
+
+var controlled_entity:EntityBody3D:
+	set(new):
+		controlled_entity = new
+		controlled_entity_changed.emit(controlled_entity)
+
+var paused:bool:
+	set(new):
+		paused = new
+		if paused:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		pause_state_changed.emit(paused)
 
 func start_game() -> void:
 	if !multiplayer.is_server():
 		return
 	for peer in MapLoader.loaded_peers:
-		var character_instance:PlayerCharacterBody3D = default_player_character.instantiate()
-		character_instance.name = str(peer)
-		character_instance.transform.origin = player_spawns[0].global_transform.origin
-		add_child(character_instance)
-		
+		player_spawns[0].spawn_player(peer)
+	paused = false
 	print("Game Started", MapLoader.loaded_peers)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		paused = !paused

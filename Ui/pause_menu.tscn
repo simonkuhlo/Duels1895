@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2a855v6411vx"]
+
+[ext_resource type="Script" uid="uid://6krfq2notm62" path="res://Ui/pause_menu.gd" id="1_dcdkj"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_dcdkj")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="SettingsButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemDB" load_steps=3 format=3 uid="uid://bep2pgkw8ppng"]
+
+[ext_resource type="Script" uid="uid://jl8omh2pwst6" path="res://Game/Item System/System/item_reference.gd" id="1_wk0xn"]
+[ext_resource type="Script" uid="uid://dyrnye40dnsve" path="res://Game/Item System/System/item_reference_db.gd" id="2_uxwt2"]
+
+[resource]
+script = ExtResource("2_uxwt2")
+content = Dictionary[StringName, ExtResource("1_wk0xn")]({})
+metadata/_custom_type_script = "uid://dyrnye40dnsve"

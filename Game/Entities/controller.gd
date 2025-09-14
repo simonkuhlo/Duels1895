@@ -13,12 +13,6 @@ class_name BasePlayerCharacterController
 @export var look_sensitivity:float = 0.005
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
-		if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		else:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		return
 	if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 		return
 	if event is InputEventMouseMotion:

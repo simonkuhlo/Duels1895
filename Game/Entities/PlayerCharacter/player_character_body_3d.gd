@@ -17,11 +17,12 @@ func _enter_tree() -> void:
 	pass
 
 func _ready() -> void:
+	super._ready()
 	_multiplayer_setup.call_deferred()
 
 func _multiplayer_setup() -> void:
 	if int(name) in MapLoader.loaded_peers:
-		set_multiplayer_authority(int(name))
+		custom_set_multiplayer_authority(int(name))
 		for node in exclude_client_authority:
 			node.set_multiplayer_authority(1)
 		if is_multiplayer_authority():

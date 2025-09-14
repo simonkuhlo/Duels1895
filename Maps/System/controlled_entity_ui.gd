@@ -4,8 +4,15 @@ extends CanvasLayer
 @export var movement_stamina_bar:EntityStatVisualizer
 @export var ads_stamina_bar:EntityStatVisualizer
 @export var action_stamina_bar:EntityStatVisualizer
+@export var parent_world:MapInstance:
+	set(new):
+		if parent_world:
+			parent_world.controlled_entity_changed.disconnect(_on_controlled_entity_changed)
+		parent_world = new
+		if parent_world:
+			parent_world.controlled_entity_changed.connect(_on_controlled_entity_changed)
 
-@export var controlled_entity:PlayerCharacterBody3D:
+var controlled_entity:PlayerCharacterBody3D:
 	set(new):
 		controlled_entity = new
 		if controlled_entity:
@@ -13,3 +20,11 @@ extends CanvasLayer
 			movement_stamina_bar.stat_to_represent = controlled_entity.movement_stamina
 			ads_stamina_bar.stat_to_represent = controlled_entity.ads_stamina
 			action_stamina_bar.stat_to_represent = controlled_entity.action_stamina
+		else:
+			health_bar.stat_to_represent = null
+			movement_stamina_bar.stat_to_represent = null
+			ads_stamina_bar.stat_to_represent = null
+			action_stamina_bar.stat_to_represent = null
+
+func _on_controlled_entity_changed(new_entity:EntityBody3D) -> void:
+	controlled_entity = new_entity
