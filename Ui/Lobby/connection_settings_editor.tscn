@@ -89,6 +89,7 @@ vertical_alignment = 1
 
 [node name="GamePortSpinbox" type="SpinBox" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
+max_value = 10000.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

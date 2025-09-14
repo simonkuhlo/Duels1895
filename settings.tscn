@@ -13,6 +13,7 @@ metadata/_custom_type_script = "uid://235p6k3fa0a8"
 script = ExtResource("2_3ykye")
 game_port = 6969
 used_profile = SubResource("Resource_cj1lu")
+peer_mode = 0
 max_players = 10
 remote_address = "localhost"
 metadata/_custom_type_script = "uid://qv217dug5fkv"
