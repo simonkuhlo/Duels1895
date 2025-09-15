@@ -66,3 +66,13 @@ func has_free_slot() -> bool:
 	if get_free_slot():
 		return true
 	return false
+
+##Adds a given item to the first free inventoryslot in the collection. Returns any items it was unable to add.
+##If allow_split is true, it will fill already existing stacks first.
+func add_item(item:ItemInstance, allow_split:bool = true) -> ItemInstance:
+	#TODO add stacking
+	var slot:InventorySlot = get_free_slot()
+	if !slot:
+		return item
+	var returned_item:ItemInstance = slot.set_held_item(item)
+	return returned_item
