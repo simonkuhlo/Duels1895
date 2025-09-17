@@ -1,13 +1,7 @@
-extends Node
+extends InventoryElement
 class_name InventorySlot
 
 signal item_switched(new_item:ItemInstance)
-signal uid_changed()
-
-@export var uid_str:StringName:
-	set(new):
-		uid_str = new
-		uid_changed.emit()
 
 @export var filter:BaseFilter
 
@@ -27,10 +21,6 @@ var held_item:ItemInstance:
 func _on_held_item_properites_changed() -> void:
 	if held_item.amount <= 0:
 		held_item = null
-
-func _ready() -> void:
-	if multiplayer.is_server():
-		uid_str = Items.get_slot_uid(self)
 
 func has_item() -> bool:
 	if held_item:

@@ -1,8 +1,7 @@
-extends Node
+extends InventoryElement
 class_name Inventory
 
 signal slots_changed()
-signal uid_changed()
 
 @export var default_slot_scene:PackedScene
 @export var default_slot_count:int = 0
@@ -12,11 +11,6 @@ signal uid_changed()
 		item_dropper = new
 		for slot in slots:
 			slot.item_dropper = item_dropper
-
-@export var uid_str:StringName:
-	set(new):
-		uid_str = new
-		uid_changed.emit()
 
 var slots:Array[InventorySlot] = []
 
