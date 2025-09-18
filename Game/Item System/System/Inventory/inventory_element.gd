@@ -14,4 +14,4 @@ func _ready() -> void:
 
 ##Returns an ItemInstance containing the content this element did was not able to receive
 func receive_item(item:ItemInstance) -> ItemInstance:
-	return
+	return item

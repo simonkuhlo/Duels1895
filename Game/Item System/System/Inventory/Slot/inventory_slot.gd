@@ -50,5 +50,19 @@ func set_held_item(item:ItemInstance) -> ItemInstance:
 	held_item = item
 	return replaced_item
 
+func receive_item(item:ItemInstance) -> ItemInstance:
+	#TODO handle stacking
+	if held_item:
+		return item
+	held_item = item
+	return 
+
 func transfer_content(target:InventoryElement) -> void:
-	held_item = target.receive_item(held_item)
+	if multiplayer.is_server():
+		held_item = target.receive_item(held_item)
+	else:
+		request_transfer_content.rpc_id(1, target.uid)
+
+@rpc("any_peer", "call_local", "reliable")
+func request_transfer_content(target_id:StringName) -> void:
+	transfer_content(Items.get_element_by_uid(target_id))
