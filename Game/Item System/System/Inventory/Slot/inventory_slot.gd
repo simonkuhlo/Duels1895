@@ -49,3 +49,6 @@ func set_held_item(item:ItemInstance) -> ItemInstance:
 	var replaced_item = held_item
 	held_item = item
 	return replaced_item
+
+func transfer_content(target:InventoryElement) -> void:
+	held_item = target.receive_item(held_item)
