@@ -20,8 +20,7 @@ class_name WorldItem
 @export var collision_shape:CollisionShape3D
 
 func on_player_interaction(player:EntityBody3D):
-	pickup_action.source_slot = _held_slot
-	Items.request_action(pickup_action)
+	_held_slot.transfer_content(player.inventories)
 
 func _on_held_slot_item_changed(new_item:ItemInstance) -> void:
 	if !is_inside_tree():

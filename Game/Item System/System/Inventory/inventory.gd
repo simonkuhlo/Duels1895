@@ -70,3 +70,10 @@ func add_item(item:ItemInstance, allow_split:bool = true) -> ItemInstance:
 		return item
 	var returned_item:ItemInstance = slot.set_held_item(item)
 	return returned_item
+
+func receive_item(item:ItemInstance) -> ItemInstance:
+	#TODO handle stacking
+	var slot:InventorySlot = get_free_slot()
+	if !slot:
+		return item
+	return slot.set_held_item(item)

@@ -1,4 +1,4 @@
-extends Node
+extends InventoryElement
 class_name InventoryCollection
 
 @export var inventories:Array[Inventory] = []
@@ -21,6 +21,15 @@ func add_item(item:ItemInstance, allow_split:bool = true) -> ItemInstance:
 	var remaining_item:ItemInstance = item
 	for inventory in inventories:
 		remaining_item = inventory.add_item(item, allow_split)
+		if !remaining_item:
+			return
+	return remaining_item
+
+func receive_item(item:ItemInstance) -> ItemInstance:
+	#TODO handle stacking
+	var remaining_item:ItemInstance = item
+	for inventory in inventories:
+		remaining_item = inventory.receive_item(item)
 		if !remaining_item:
 			return
 	return remaining_item
