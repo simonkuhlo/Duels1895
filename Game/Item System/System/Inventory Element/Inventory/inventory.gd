@@ -15,6 +15,7 @@ signal slots_changed()
 var slots:Array[InventorySlot] = []
 
 func _ready() -> void:
+	super._ready()
 	var index = 0
 	for child in get_children():
 		if child is InventorySlot:

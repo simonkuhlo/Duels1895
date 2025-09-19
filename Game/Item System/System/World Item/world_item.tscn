@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://3a7aipi4tn0v" path="res://Game/Item System/System/World Item/world_item.gd" id="1_fen2o"]
 [ext_resource type="PackedScene" uid="uid://w5xpnydfpqf5" path="res://Game/Hit & Hurtboxes/interaction_hurtbox.tscn" id="2_8ttpb"]
-[ext_resource type="PackedScene" uid="uid://cop5ohxc0jlqs" path="res://Game/Item System/System/Inventory/inventory.tscn" id="2_mtb1x"]
-[ext_resource type="PackedScene" uid="uid://clsurtm10to0e" path="res://Game/Item System/System/Inventory/Slot/inventory_slot.tscn" id="3_jif0c"]
+[ext_resource type="PackedScene" uid="uid://cop5ohxc0jlqs" path="res://Game/Item System/System/Inventory Element/Inventory/inventory.tscn" id="2_mtb1x"]
+[ext_resource type="PackedScene" uid="uid://clsurtm10to0e" path="res://Game/Item System/System/Inventory Element/Slot/inventory_slot.tscn" id="3_jif0c"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mtb1x"]
 
@@ -19,8 +19,11 @@ properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
 
-[node name="WorldItem" type="RigidBody3D"]
+[node name="WorldItem" type="RigidBody3D" node_paths=PackedStringArray("_held_slot", "interaction_hurtbox", "collision_shape")]
 script = ExtResource("1_fen2o")
+_held_slot = NodePath("Inventory/InventorySlot")
+interaction_hurtbox = NodePath("InteractionHurtbox")
+collision_shape = NodePath("CollisionShape3D")
 metadata/_custom_type_script = "uid://3a7aipi4tn0v"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

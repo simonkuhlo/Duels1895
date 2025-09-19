@@ -1,13 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://715oy5d5svy5"]
+[gd_scene load_steps=12 format=3 uid="uid://715oy5d5svy5"]
 
 [ext_resource type="PackedScene" uid="uid://vr1rchrbhnqw" path="res://Game/Entities/entity_body.tscn" id="1_b5oby"]
-[ext_resource type="Script" uid="uid://d0m3jkocdricv" path="res://Game/Entities/PlayerCharacter/player_character_body_3d.gd" id="2_2ckjl"]
+[ext_resource type="Script" uid="uid://osnndvrcyeuo" path="res://Game/Entities/PlayerCharacter/player_character_body_3d.gd" id="2_2ckjl"]
 [ext_resource type="PackedScene" uid="uid://qnadki4kfuia" path="res://Game/Entities/Stats/entity_stat_holder.tscn" id="2_wrub7"]
-[ext_resource type="PackedScene" uid="uid://bthqp0o7o2bv5" path="res://Game/Item System/System/Inventory/inventory_collection.tscn" id="3_8uba2"]
-[ext_resource type="Script" uid="uid://cbhaq6c1g2o5s" path="res://Game/Entities/controller.gd" id="3_ofj4c"]
-[ext_resource type="PackedScene" uid="uid://cop5ohxc0jlqs" path="res://Game/Item System/System/Inventory/inventory.tscn" id="4_ycqsk"]
-[ext_resource type="Script" uid="uid://bnm4oqilbtob0" path="res://Game/Entities/Stats/Scripts/entity_stat.gd" id="5_ofj4c"]
-[ext_resource type="PackedScene" uid="uid://clsurtm10to0e" path="res://Game/Item System/System/Inventory/Slot/inventory_slot.tscn" id="5_vasly"]
+[ext_resource type="Script" uid="uid://p27tnsdjikpo" path="res://Game/Entities/controller.gd" id="3_ofj4c"]
+[ext_resource type="PackedScene" uid="uid://cop5ohxc0jlqs" path="res://Game/Item System/System/Inventory Element/Inventory/inventory.tscn" id="4_ycqsk"]
+[ext_resource type="Script" uid="uid://dbblf8tqoy7rc" path="res://Game/Entities/Stats/Scripts/entity_stat.gd" id="5_ofj4c"]
 
 [sub_resource type="Resource" id="Resource_emag8"]
 script = ExtResource("5_ofj4c")
@@ -54,7 +52,7 @@ regen_per_second = 0.0
 regen_delay_seconds = 0.0
 metadata/_custom_type_script = "uid://dbblf8tqoy7rc"
 
-[node name="EntityBody" node_paths=PackedStringArray("action_stamina", "movement_stamina", "ads_stamina", "jump_strength", "controller", "exclude_client_authority") instance=ExtResource("1_b5oby")]
+[node name="EntityBody" node_paths=PackedStringArray("action_stamina", "movement_stamina", "ads_stamina", "jump_strength", "controller", "exclude_client_authority", "hotbar_inventory") instance=ExtResource("1_b5oby")]
 collision_layer = 0
 floor_max_angle = 0.872665
 script = ExtResource("2_2ckjl")
@@ -64,19 +62,17 @@ ads_stamina = NodePath("Stats/AdsStamina")
 jump_strength = NodePath("Stats/JumpStrength")
 controller = NodePath("Controller")
 exclude_client_authority = [NodePath("Stats"), NodePath("InventoryCollection")]
+hotbar_inventory = NodePath("InventoryCollection/Inventory")
 
-[node name="InventoryCollection" parent="." index="0" instance=ExtResource("3_8uba2")]
-
-[node name="Inventory" parent="InventoryCollection" index="0" instance=ExtResource("4_ycqsk")]
-
-[node name="InventorySlot" parent="InventoryCollection/Inventory" index="1" instance=ExtResource("5_vasly")]
-
-[node name="Controller" type="Node" parent="." index="1" node_paths=PackedStringArray("controlled_entity")]
+[node name="Controller" type="Node" parent="." index="0" node_paths=PackedStringArray("controlled_entity")]
 script = ExtResource("3_ofj4c")
 gravity = 32.0
 sprint_stamina_consumption_per_second = 5.0
 sprint_speed_modifier = 0.3
 controlled_entity = NodePath("..")
+
+[node name="Inventory" parent="InventoryCollection" index="1" instance=ExtResource("4_ycqsk")]
+default_slot_count = 5
 
 [node name="ActionStamina" parent="Stats" index="0" instance=ExtResource("2_wrub7")]
 stat_to_represent = SubResource("Resource_emag8")

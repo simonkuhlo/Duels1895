@@ -16,13 +16,6 @@ var synchronized_slot:InventorySlot:
 
 @export var synchronizer:MultiplayerSynchronizer
 
-@export var synchronized_slot_uid:String:
-	set(new):
-		synchronized_slot_uid = new
-		if !multiplayer.is_server():
-			synchronized_slot.uid_str = synchronized_slot_uid
-
-
 @export var synchronized_item_uid:String = "":
 	set(new):
 		synchronized_item_uid = new
@@ -70,10 +63,6 @@ func _on_slot_item_instance_properties_changed() -> void:
 func _on_server_item_switched(new_item:ItemInstance) -> void:
 	if is_multiplayer_authority():
 		slot_item_instance = new_item
-
-func _on_synchronized_slot_uid_changed() -> void:
-	if multiplayer.is_server():
-		synchronized_slot_uid = synchronized_slot.uid_str
 
 func _ready() -> void:
 	synchronized_slot = _synchronized_slot

@@ -13,6 +13,9 @@ class_name PlayerCharacterBody3D
 			controller.controlled_entity = self
 @export var exclude_client_authority:Array[Node]
 
+@export_group("UI hints")
+@export var hotbar_inventory:Inventory
+
 func _enter_tree() -> void:
 	pass
 

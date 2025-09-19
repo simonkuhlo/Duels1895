@@ -1,10 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://cop5ohxc0jlqs"]
 
-[ext_resource type="Script" uid="uid://dod0ipeybwtma" path="res://Game/Item System/System/Inventory/inventory.gd" id="1_go4da"]
-[ext_resource type="PackedScene" uid="uid://clsurtm10to0e" path="res://Game/Item System/System/Inventory/Slot/inventory_slot.tscn" id="2_nrbf0"]
-[ext_resource type="Script" uid="uid://dbmai845mjtn5" path="res://Game/Item System/System/Inventory/inventory_synchronizer.gd" id="2_og11u"]
+[ext_resource type="Script" uid="uid://b2dlhj78r61" path="res://Game/Item System/System/Inventory Element/Inventory/inventory.gd" id="1_go4da"]
+[ext_resource type="PackedScene" uid="uid://clsurtm10to0e" path="res://Game/Item System/System/Inventory Element/Slot/inventory_slot.tscn" id="2_nrbf0"]
+[ext_resource type="Script" uid="uid://b51n827cp2h6c" path="res://Game/Item System/System/Inventory Element/Inventory/inventory_synchronizer.gd" id="2_og11u"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_nrbf0"]
+properties/0/path = NodePath("..:uid")
+properties/0/spawn = true
+properties/0/replication_mode = 2
 
 [node name="Inventory" type="Node"]
 script = ExtResource("1_go4da")
