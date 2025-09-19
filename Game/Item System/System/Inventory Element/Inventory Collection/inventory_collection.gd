@@ -3,6 +3,12 @@ class_name InventoryCollection
 
 @export var inventories:Array[Inventory] = []
 
+func _ready() -> void:
+	for child in get_children():
+		if child is Inventory:
+			if child not in inventories:
+				add_inventory(child)
+
 func add_inventory(inventory:Inventory) -> void:
 	inventories.append(inventory)
 

@@ -44,3 +44,6 @@ func authority_changed() -> void:
 		set_physics_process(false)
 		set_process(false)
 		collision_shape.disabled = true
+
+func _on_interaction_hurtbox_interaction_requested(entity: EntityBody3D) -> void:
+	on_player_interaction(entity)

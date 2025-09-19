@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://d2t44lfcig42m"]
 
-[ext_resource type="Script" uid="uid://3a7aipi4tn0v" path="res://Game/Item System/System/World Item/world_item.gd" id="1_fen2o"]
+[ext_resource type="Script" uid="uid://cwo1tokxi8hme" path="res://Game/Item System/System/World Item/world_item.gd" id="1_fen2o"]
 [ext_resource type="PackedScene" uid="uid://w5xpnydfpqf5" path="res://Game/Hit & Hurtboxes/interaction_hurtbox.tscn" id="2_8ttpb"]
 [ext_resource type="PackedScene" uid="uid://cop5ohxc0jlqs" path="res://Game/Item System/System/Inventory Element/Inventory/inventory.tscn" id="2_mtb1x"]
 [ext_resource type="PackedScene" uid="uid://clsurtm10to0e" path="res://Game/Item System/System/Inventory Element/Slot/inventory_slot.tscn" id="3_jif0c"]
@@ -24,7 +24,6 @@ script = ExtResource("1_fen2o")
 _held_slot = NodePath("Inventory/InventorySlot")
 interaction_hurtbox = NodePath("InteractionHurtbox")
 collision_shape = NodePath("CollisionShape3D")
-metadata/_custom_type_script = "uid://3a7aipi4tn0v"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_mtb1x")
@@ -37,9 +36,13 @@ shape = SubResource("BoxShape3D_8ttpb")
 [node name="InventorySlot" parent="Inventory" instance=ExtResource("3_jif0c")]
 
 [node name="InteractionHurtbox" parent="." instance=ExtResource("2_8ttpb")]
+collision_layer = 16
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionHurtbox"]
 shape = SubResource("BoxShape3D_wospn")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_16a8e")
+
+[connection signal="interaction_requested" from="InteractionHurtbox" to="." method="_on_interaction_hurtbox_interaction_requested"]

@@ -49,7 +49,7 @@ var slot_item_instance:ItemInstance:
 		slot_item_instance = new
 		if slot_item_instance:
 			slot_item_instance.properties_changed.connect(_on_slot_item_instance_properties_changed)
-			synchronized_item_uid = slot_item_instance.item_reference.item_uid
+			synchronized_item_uid = slot_item_instance.item_reference.uid
 			synchronized_item_properties = slot_item_instance.properties
 		else:
 			synchronized_item_uid = ""

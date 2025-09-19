@@ -4,11 +4,12 @@ class_name ItemInstance
 signal properties_changed()
 signal request_sync()
 
-var item_reference:ItemReference
+@export var item_reference:ItemReference
 var properties:Dictionary[StringName, Variant] = {"amount" = 1}
-var amount:int:
+@export var amount:int:
 	set(new):
-		new = min(new, item_reference.max_stack_size)
+		if item_reference.max_stack_size:
+			new = min(new, item_reference.max_stack_size)
 		set_property("amount", new)
 	get():
 		return properties.get("amount")

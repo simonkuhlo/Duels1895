@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb1t5f6cdur34"]
+
+[ext_resource type="Script" uid="uid://p4wgs83f4ps6" path="res://Game/Item System/Nodes/world_item_spawner.gd" id="1_vdfrs"]
+
+[node name="WorldItemSpawner" type="Marker3D"]
+script = ExtResource("1_vdfrs")

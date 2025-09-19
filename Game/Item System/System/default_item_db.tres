@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="ItemDB" load_steps=3 format=3 uid="uid://bep2pgkw8ppng"]
+[gd_resource type="Resource" script_class="ItemDB" load_steps=4 format=3 uid="uid://bep2pgkw8ppng"]
 
-[ext_resource type="Script" uid="uid://jl8omh2pwst6" path="res://Game/Item System/System/item_reference.gd" id="1_wk0xn"]
-[ext_resource type="Script" uid="uid://dyrnye40dnsve" path="res://Game/Item System/System/item_reference_db.gd" id="2_uxwt2"]
+[ext_resource type="Script" uid="uid://cpykpamshobgw" path="res://Game/Item System/System/item_reference.gd" id="1_wk0xn"]
+[ext_resource type="Resource" uid="uid://d0pfuiioo4pu4" path="res://Game/Item System/Items/TestItem/test_item.tres" id="2_esggx"]
+[ext_resource type="Script" uid="uid://c8w8repe77tga" path="res://Game/Item System/System/item_reference_db.gd" id="2_uxwt2"]
 
 [resource]
 script = ExtResource("2_uxwt2")
-content = Dictionary[StringName, ExtResource("1_wk0xn")]({})
-metadata/_custom_type_script = "uid://dyrnye40dnsve"
+content = Dictionary[StringName, ExtResource("1_wk0xn")]({
+&"item_test": ExtResource("2_esggx")
+})

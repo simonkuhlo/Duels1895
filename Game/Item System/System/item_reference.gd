@@ -1,9 +1,11 @@
 extends Resource
 class_name ItemReference
 
-@export var id:StringName
+@export var uid:StringName
 @export var item_name:String
 @export var description:String
+
+@export var max_stack_size:int = 100
 
 @export var equipped_scene:PackedScene
 @export var equipped_scene_fpv:PackedScene:
