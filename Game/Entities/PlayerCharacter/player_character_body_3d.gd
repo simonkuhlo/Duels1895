@@ -16,9 +16,6 @@ class_name PlayerCharacterBody3D
 @export_group("UI hints")
 @export var hotbar_inventory:Inventory
 
-func _enter_tree() -> void:
-	pass
-
 func _ready() -> void:
 	super._ready()
 	_multiplayer_setup.call_deferred()

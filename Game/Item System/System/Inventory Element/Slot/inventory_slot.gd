@@ -52,7 +52,18 @@ func set_held_item(item:ItemInstance) -> ItemInstance:
 
 func receive_item(item:ItemInstance) -> ItemInstance:
 	#TODO handle stacking
+	if !item:
+		return
 	if held_item:
+		if item.item_reference.uid != held_item.item_reference.uid:
+			return item
+		var max_amount:int = held_item.item_reference.max_stack_size
+		if held_item.amount < max_amount:
+			var added_amount:int = mini(max_amount - held_item.amount, item.amount)
+			held_item.amount += added_amount
+			item.amount -= added_amount
+			if item.amount <= 0:
+				item = null
 		return item
 	held_item = item
 	return 

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ca6610awtca8x" path="res://Ui/Ingame/controlled_entity_ui.tscn" id="1_fyd15"]
 [ext_resource type="Texture2D" uid="uid://bki7lv2ibcdsx" path="res://Assets/Debug Textures/PNG/Dark/texture_07.png" id="1_tcuxq"]
-[ext_resource type="Script" uid="uid://bdhitmcgv1wle" path="res://Maps/System/map_instance.gd" id="1_vkd6p"]
+[ext_resource type="Script" uid="uid://c4nsq07xr6be1" path="res://Maps/System/map_instance.gd" id="1_vkd6p"]
 [ext_resource type="PackedScene" uid="uid://715oy5d5svy5" path="res://Game/Entities/PlayerCharacter/player_character_body.tscn" id="2_2ovxu"]
 [ext_resource type="Texture2D" uid="uid://mcs0qu228yhp" path="res://Assets/Debug Textures/PNG/Orange/texture_01.png" id="2_fyd15"]
 [ext_resource type="PackedScene" uid="uid://d2a855v6411vx" path="res://Ui/pause_menu.tscn" id="2_wdtph"]
@@ -10,10 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://cbblk84fquqkb" path="res://Assets/Debug Textures/PNG/Dark/texture_13.png" id="5_i5nfa"]
 [ext_resource type="Texture2D" uid="uid://yp8dk5alji4n" path="res://Assets/Debug Textures/PNG/Purple/texture_11.png" id="8_i5nfa"]
 [ext_resource type="Texture2D" uid="uid://7ghkovkmvowy" path="res://Assets/Debug Textures/PNG/Purple/texture_02.png" id="9_si7et"]
-[ext_resource type="Script" uid="uid://b3e6ekk32udjw" path="res://Maps/System/spectator_camera_director.gd" id="10_vkd6p"]
-[ext_resource type="Script" uid="uid://c0f1a4e50lbw3" path="res://Maps/System/player_spawner.gd" id="12_wdtph"]
+[ext_resource type="Script" uid="uid://c8r3agj8khox1" path="res://Maps/System/spectator_camera_director.gd" id="10_vkd6p"]
+[ext_resource type="Script" uid="uid://cynpif8v634i3" path="res://Maps/System/player_spawner.gd" id="12_wdtph"]
 [ext_resource type="PackedScene" uid="uid://cb1t5f6cdur34" path="res://Game/Item System/Nodes/world_item_spawner.tscn" id="13_kjpmb"]
-[ext_resource type="Script" uid="uid://si4q0pagftsy" path="res://Game/Item System/System/item_instance.gd" id="14_a58uu"]
+[ext_resource type="Script" uid="uid://csn5lympiiciq" path="res://Game/Item System/System/item_instance.gd" id="14_a58uu"]
 [ext_resource type="Resource" uid="uid://d0pfuiioo4pu4" path="res://Game/Item System/Items/TestItem/test_item.tres" id="14_x3ct3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dxppu"]
@@ -148,15 +148,17 @@ player_character_scene = ExtResource("2_2ovxu")
 parent_map = NodePath("..")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://715oy5d5svy5")
+_spawnable_scenes = PackedStringArray("uid://715oy5d5svy5", "uid://chbyvkb5r0smy")
 spawn_path = NodePath("..")
 
-[node name="WorldItemSpawner2" parent="." instance=ExtResource("13_kjpmb")]
+[node name="WorldItemSpawner2" parent="." node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.98266, 1.89255, 0)
+parent_map = NodePath("..")
 resource_to_spawn = SubResource("Resource_x3ct3")
 
-[node name="WorldItemSpawner" parent="." instance=ExtResource("13_kjpmb")]
+[node name="WorldItemSpawner" parent="." node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.067746, 6.1756, 0.81631)
+parent_map = NodePath("..")
 resource_to_spawn = SubResource("Resource_1jgxu")
 
 [connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
