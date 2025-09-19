@@ -4,6 +4,7 @@ class_name ItemReference
 @export var uid:StringName
 @export var item_name:String
 @export var description:String
+@export var icon:Texture2D
 
 @export var max_stack_size:int = 100
 

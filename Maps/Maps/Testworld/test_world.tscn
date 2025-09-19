@@ -166,4 +166,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.067746, 6.1756, 0.81631)
 parent_map = NodePath("..")
 resource_to_spawn = SubResource("Resource_1jgxu")
 
+[node name="WorldItemSpawner3" parent="." node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.98266, 1.89255, 12)
+parent_map = NodePath("..")
+resource_to_spawn = SubResource("Resource_x3ct3")
+
+[node name="WorldItemSpawner4" parent="." node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.98266, 1.89255, 10)
+parent_map = NodePath("..")
+resource_to_spawn = SubResource("Resource_x3ct3")
+
 [connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]

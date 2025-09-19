@@ -64,6 +64,9 @@ func receive_item(item:ItemInstance) -> ItemInstance:
 			item.amount -= added_amount
 			if item.amount <= 0:
 				item = null
+		elif !max_amount:
+			held_item.amount += item.amount
+			item = null
 		return item
 	held_item = item
 	return 
