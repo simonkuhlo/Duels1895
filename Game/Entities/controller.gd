@@ -36,7 +36,8 @@ func _on_controlled_entity_physics_process(delta: float) -> void:
 	if controlled_entity.is_on_floor():
 		controlled_entity.velocity.y = 0
 		if Input.is_action_pressed("sprint"):
-			move_speed = _sprint(delta)
+			if direction:
+				move_speed = _sprint(delta)
 		controlled_entity.velocity.x = direction.x * move_speed
 		controlled_entity.velocity.z = direction.z * move_speed
 		if Input.is_action_just_pressed("jump"):
