@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://cux0lbg2jjl6t"]
+
+[ext_resource type="PackedScene" uid="uid://c7owo4y6xoy3w" path="res://Game/Item System/Ui/Slot Visualizer/inventory_slot_visualizer.tscn" id="1_kjowd"]
+[ext_resource type="Script" uid="uid://d017ik4k878bq" path="res://Game/Item System/Ui/Slot Visualizer/hotbar_slot_visualizer.gd" id="2_2wgby"]
+
+[node name="HotbarSlotVisualizer" instance=ExtResource("1_kjowd")]
+script = ExtResource("2_2wgby")

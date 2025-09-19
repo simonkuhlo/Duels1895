@@ -4,7 +4,7 @@ extends CanvasLayer
 @export var movement_stamina_bar:EntityStatVisualizer
 @export var ads_stamina_bar:EntityStatVisualizer
 @export var action_stamina_bar:EntityStatVisualizer
-@export var hotbar_inventory_visualizer:InventoryVisualizer
+@export var hotbar_inventory_visualizer:HotbarInventoryVisualizer
 @export var parent_world:MapInstance:
 	set(new):
 		if parent_world:

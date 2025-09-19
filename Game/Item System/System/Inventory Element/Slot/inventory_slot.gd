@@ -51,7 +51,7 @@ func set_held_item(item:ItemInstance) -> ItemInstance:
 	return replaced_item
 
 func receive_item(item:ItemInstance) -> ItemInstance:
-	#TODO handle stacking
+	#TODO handle filters
 	if !item:
 		return
 	if held_item:
