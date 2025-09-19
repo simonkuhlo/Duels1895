@@ -17,6 +17,7 @@ var selected_visualizer:HotbarSlotVisualizer:
 		selected_visualizer = new
 		if selected_visualizer:
 			selected_visualizer.selected = true
+		MapLoader.loaded_map_instance.controlled_entity.item_holder.held_slot = selected_visualizer.represented_slot
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("hotbar_next_item"):

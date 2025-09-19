@@ -9,7 +9,11 @@ func _ready() -> void:
 
 func _spawn_item(item:ItemInstance) -> void:
 	if multiplayer.is_server():
-		var world_item:WorldItem = resource_to_spawn.item_reference.world_item.instantiate()
+		var world_item:WorldItem
+		if resource_to_spawn.item_reference.world_item:
+			world_item = resource_to_spawn.item_reference.world_item.instantiate()
+		else:
+			world_item = Items.item_db.default_world_item_scene.instantiate()
 		world_item._held_slot.receive_item(item)
 		world_item.transform = global_transform
 		parent_map.add_child(world_item, true)

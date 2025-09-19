@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AmmoItem" load_steps=3 format=3 uid="uid://bagw5dxtn2ain"]
+
+[ext_resource type="Script" uid="uid://du6ktdkknkkkd" path="res://Game/Item System/Items/Ammo/ammo_item.gd" id="1_0q536"]
+
+[sub_resource type="Curve" id="Curve_0q536"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.251323, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.198356), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[resource]
+script = ExtResource("1_0q536")
+family = 0
+base_damage = 10.0
+base_velocity = 1000.0
+max_range = 1000.0
+damage_falloff = SubResource("Curve_0q536")
+uid = &""
+item_name = ""
+description = ""
+max_stack_size = 100
+metadata/_custom_type_script = "uid://du6ktdkknkkkd"

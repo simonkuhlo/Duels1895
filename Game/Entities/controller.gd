@@ -13,6 +13,8 @@ class_name BasePlayerCharacterController
 @export var look_sensitivity:float = 0.005
 
 func _unhandled_input(event: InputEvent) -> void:
+	if !is_multiplayer_authority():
+		return
 	if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 		return
 	if event is InputEventMouseMotion:
@@ -23,6 +25,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		controlled_entity.neck.rotation.x = clamp(controlled_entity.neck.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
 func _on_controlled_entity_physics_process(delta: float) -> void:
+	if !is_multiplayer_authority():
+		return
 	var input_vector: Vector2 = _get_input_vector()
 	var direction = Vector3.ZERO
 	# Get the camera's basis if you want camera-relative movement; otherwise use controlled_entity.global_transform.basis.

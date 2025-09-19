@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdk4f5f26rruv"]
+
+[ext_resource type="PackedScene" uid="uid://vcms5ou6eky8" path="res://Game/Item System/Items/Tool/Weapon/weapon_equipped_item.tscn" id="1_1vnc5"]
+[ext_resource type="PackedScene" uid="uid://clsurtm10to0e" path="res://Game/Item System/System/Inventory Element/Slot/inventory_slot.tscn" id="3_gcild"]
+
+[node name="GunEquippedItem" instance=ExtResource("1_1vnc5")]
+
+[node name="InventorySlot" parent="." index="0" instance=ExtResource("3_gcild")]

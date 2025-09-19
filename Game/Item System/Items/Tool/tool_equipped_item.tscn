@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://hysvkh26e5xi"]
+
+[ext_resource type="PackedScene" uid="uid://cg6fa4lu86wt4" path="res://Game/Item System/System/Equipped Item/equipped_item.tscn" id="1_4ctiy"]
+
+[node name="ToolEquippedItem" instance=ExtResource("1_4ctiy")]

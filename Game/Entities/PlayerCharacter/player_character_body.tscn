@@ -53,7 +53,7 @@ regen_delay_seconds = 0.0
 metadata/_custom_type_script = "uid://dbblf8tqoy7rc"
 
 [node name="EntityBody" node_paths=PackedStringArray("action_stamina", "movement_stamina", "ads_stamina", "jump_strength", "controller", "exclude_client_authority", "hotbar_inventory") instance=ExtResource("1_b5oby")]
-collision_layer = 0
+collision_layer = 2
 floor_max_angle = 0.872665
 script = ExtResource("2_2ckjl")
 action_stamina = NodePath("Stats/ActionStamina")
@@ -92,5 +92,5 @@ stat_to_represent = SubResource("Resource_ofj4c")
 [node name="Body" parent="." index="4"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 0)
 
-[node name="FPVCamera" parent="Body/Neck" index="0"]
+[node name="FPVCamera" parent="Body/Neck" index="1"]
 fov = 90.0

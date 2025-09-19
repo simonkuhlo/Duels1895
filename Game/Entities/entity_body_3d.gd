@@ -10,6 +10,13 @@ signal authority_changed(new_authority:int)
 @export var tpv_camera:Camera3D
 @export var neck:Node3D
 @export var skin:MeshInstance3D
+@export var item_holder:ItemHolder3D:
+	set(new):
+		if item_holder:
+			item_holder.parent_entity = null
+		item_holder = new
+		if item_holder:
+			item_holder.parent_entity = self
 @export var inventories:InventoryCollection
 
 var parent_world:MapInstance = MapLoader.loaded_map_instance

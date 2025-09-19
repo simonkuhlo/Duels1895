@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://tyy8a7n6vs1t"]
+[gd_scene load_steps=31 format=3 uid="uid://tyy8a7n6vs1t"]
 
 [ext_resource type="PackedScene" uid="uid://ca6610awtca8x" path="res://Ui/Ingame/controlled_entity_ui.tscn" id="1_fyd15"]
 [ext_resource type="Texture2D" uid="uid://bki7lv2ibcdsx" path="res://Assets/Debug Textures/PNG/Dark/texture_07.png" id="1_tcuxq"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cb1t5f6cdur34" path="res://Game/Item System/Nodes/world_item_spawner.tscn" id="13_kjpmb"]
 [ext_resource type="Script" uid="uid://csn5lympiiciq" path="res://Game/Item System/System/item_instance.gd" id="14_a58uu"]
 [ext_resource type="Resource" uid="uid://d0pfuiioo4pu4" path="res://Game/Item System/Items/TestItem/test_item.tres" id="14_x3ct3"]
+[ext_resource type="Resource" uid="uid://wp5415ckmxuv" path="res://Game/Item System/Items/Tool/Weapon/Gun/TestGun/testgun.tres" id="17_0i1fw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dxppu"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -66,8 +67,8 @@ metadata/_custom_type_script = "uid://si4q0pagftsy"
 
 [sub_resource type="Resource" id="Resource_1jgxu"]
 script = ExtResource("14_a58uu")
-item_reference = ExtResource("14_x3ct3")
-amount = 5
+item_reference = ExtResource("17_0i1fw")
+amount = 1
 metadata/_custom_type_script = "uid://si4q0pagftsy"
 
 [node name="TestWorld" type="Node3D" node_paths=PackedStringArray("player_spawns")]
