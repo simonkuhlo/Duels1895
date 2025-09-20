@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bthqp0o7o2bv5"]
+
+[ext_resource type="Script" uid="uid://c1al0jwkr3f5f" path="res://System/Items/Core/Inventory Element/Inventory Collection/inventory_collection.gd" id="1_30xq4"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_23bqt"]
+properties/0/path = NodePath(".:uid")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+
+[node name="InventoryCollection" type="Node"]
+script = ExtResource("1_30xq4")
+metadata/_custom_type_script = "uid://c1al0jwkr3f5f"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_23bqt")

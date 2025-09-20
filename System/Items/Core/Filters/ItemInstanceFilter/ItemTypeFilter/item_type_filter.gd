@@ -1,0 +1,2 @@
+extends BaseItemFilter
+class_name ItemTypeFilter

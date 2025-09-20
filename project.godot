@@ -11,9 +11,34 @@ config_version=5
 [application]
 
 config/name="Duels1895"
-run/main_scene="uid://tyy8a7n6vs1t"
+run/main_scene="uid://c1hsbaffrvoax"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Items="*res://System/Items/Core/Autoload/items.tscn"
+Lobby="*res://System/MultiplayerLobby/lobby.tscn"
+Settings="*res://System/settings.tscn"
+MapLoader="*res://Maps/_System/multiplayer_map_loader.tscn"
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "purple",
+"res://Items/": "teal",
+"res://Items/Ammo/": "teal",
+"res://Items/TestItem/": "teal",
+"res://Items/_Data/": "orange",
+"res://Items/_Data/_Defaults/": "orange",
+"res://Items/_Templates/": "orange",
+"res://Maps/": "teal",
+"res://Maps/Testworld/": "teal",
+"res://Maps/_Data/": "orange",
+"res://Maps/_System/": "orange",
+"res://System/": "orange",
+"res://Ui/": "orange"
+}
 
 [input]
 
@@ -55,5 +80,25 @@ pause={
 sprint={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194325,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+interact={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":70,"key_label":0,"unicode":102,"location":0,"echo":false,"script":null)
+]
+}
+hotbar_next_item={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":5,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+hotbar_prev_item={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":4,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+helditem_aim={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }

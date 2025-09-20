@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg6fa4lu86wt4"]
+
+[ext_resource type="Script" uid="uid://w1esnfucdgfw" path="res://System/Items/Core/Equipped Item/equipped_item.gd" id="1_64sbr"]
+
+[node name="EquippedItem" type="Node3D"]
+script = ExtResource("1_64sbr")
+metadata/_custom_type_script = "uid://w1esnfucdgfw"

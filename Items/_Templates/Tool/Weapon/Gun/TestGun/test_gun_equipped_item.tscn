@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsu4skealuc0t"]
+
+[ext_resource type="PackedScene" uid="uid://bdk4f5f26rruv" path="res://Items/_Templates/Tool/Weapon/Gun/gun_equipped_item.tscn" id="1_p3rdd"]
+[ext_resource type="PackedScene" uid="uid://d0qhpnij7ow5h" path="res://Assets/Revolver/revolver.fbx" id="2_0vnbi"]
+
+[node name="TestGunEquippedItem" instance=ExtResource("1_p3rdd")]
+
+[node name="revolver" parent="." index="1" instance=ExtResource("2_0vnbi")]
+transform = Transform3D(1.50996e-07, 0, -2, 0, 2, 0, 2, 0, 1.50996e-07, 0, 0, 0)

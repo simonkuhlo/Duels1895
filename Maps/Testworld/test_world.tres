@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="MapResource" load_steps=3 format=3 uid="uid://qlnjnxld20qa"]
+
+[ext_resource type="Script" uid="uid://dc3ecyhu65nn5" path="res://Maps/_System/map_resource.gd" id="1_1vm72"]
+[ext_resource type="PackedScene" uid="uid://tyy8a7n6vs1t" path="res://Maps/Testworld/test_world.tscn" id="1_udpo3"]
+
+[resource]
+script = ExtResource("1_1vm72")
+uid = "map_testworld"
+map_name = "Testworld"
+description = "For testing purposes"
+max_players = 10
+map_scene = ExtResource("1_udpo3")
+metadata/_custom_type_script = "uid://dc3ecyhu65nn5"

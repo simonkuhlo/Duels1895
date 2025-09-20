@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6iot81rg2ivk"]
+
+[ext_resource type="Script" uid="uid://clm11t534lh4b" path="res://System/settings.gd" id="1_x2hje"]
+[ext_resource type="Script" uid="uid://qv217dug5fkv" path="res://System/MultiplayerLobby/connection_settings.gd" id="2_3ykye"]
+[ext_resource type="Script" uid="uid://235p6k3fa0a8" path="res://System/MultiplayerLobby/profile.gd" id="3_gc0em"]
+
+[sub_resource type="Resource" id="Resource_cj1lu"]
+script = ExtResource("3_gc0em")
+player_name = "Simon"
+metadata/_custom_type_script = "uid://235p6k3fa0a8"
+
+[sub_resource type="Resource" id="Resource_71mqq"]
+script = ExtResource("2_3ykye")
+game_port = 6969
+used_profile = SubResource("Resource_cj1lu")
+peer_mode = 0
+max_players = 10
+remote_address = "localhost"
+metadata/_custom_type_script = "uid://qv217dug5fkv"
+
+[node name="Settings" type="Node"]
+script = ExtResource("1_x2hje")
+connection_settings = SubResource("Resource_71mqq")
+metadata/_custom_type_script = "uid://clm11t534lh4b"

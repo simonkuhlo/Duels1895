@@ -1,0 +1,2 @@
+extends ItemReference
+class_name ToolItem

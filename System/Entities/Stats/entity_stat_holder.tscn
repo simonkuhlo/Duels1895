@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://qnadki4kfuia"]
+
+[ext_resource type="Script" uid="uid://bji78sclmpfv" path="res://System/Entities/Stats/Scripts/entity_stat_holder.gd" id="1_jvem8"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_jvem8"]
+properties/0/path = NodePath(".:current_value")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+
+[node name="EntityStatHolder" type="Node" node_paths=PackedStringArray("regen_block_timer")]
+script = ExtResource("1_jvem8")
+regen_block_timer = NodePath("RegenTimer")
+
+[node name="RegenTimer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_jvem8")

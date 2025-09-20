@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpbm2uw0cfyf1"]
+
+[ext_resource type="Script" uid="uid://crtxqcoi14og7" path="res://Ui/Lobby/lobby_peer_visualizer.gd" id="1_f1ch2"]
+[ext_resource type="Texture2D" uid="uid://63g3k38js4id" path="res://Assets/setting.png" id="1_g84wg"]
+
+[node name="LobbyPeerVisualizer" type="PanelContainer" node_paths=PackedStringArray("name_label")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_f1ch2")
+name_label = NodePath("MarginContainer/HBoxContainer/NameLabel")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "NULL"
+
+[node name="SettingsButton" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+icon = ExtResource("1_g84wg")
+expand_icon = true
+
+[node name="ChatButton" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "C"

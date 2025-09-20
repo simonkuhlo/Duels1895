@@ -1,0 +1,2 @@
+extends ToolItem
+class_name WeaponItem

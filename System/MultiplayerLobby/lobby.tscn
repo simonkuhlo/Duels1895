@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://comvymiqalc7a"]
+
+[ext_resource type="Script" uid="uid://cu0mm5hw061gg" path="res://System/MultiplayerLobby/lobby.gd" id="1_1rvit"]
+
+[node name="Lobby" type="Node"]
+script = ExtResource("1_1rvit")
+metadata/_custom_type_script = "uid://cu0mm5hw061gg"
