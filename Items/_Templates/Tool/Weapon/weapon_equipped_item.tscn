@@ -1,5 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://vcms5ou6eky8"]
+[gd_scene load_steps=5 format=3 uid="uid://vcms5ou6eky8"]
 
 [ext_resource type="PackedScene" uid="uid://hysvkh26e5xi" path="res://Items/_Templates/Tool/tool_equipped_item.tscn" id="1_4g2k8"]
 
+[sub_resource type="Animation" id="Animation_gfiny"]
+resource_name = "Idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uks15"]
+_data = {
+&"Idle": SubResource("Animation_gfiny")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h5wa0"]
+
 [node name="WeaponEquippedItem" instance=ExtResource("1_4g2k8")]
+
+[node name="AnimationPlayer" parent="." index="0"]
+libraries = {
+&"": SubResource("AnimationLibrary_uks15"),
+&"WeaponItem": SubResource("AnimationLibrary_h5wa0")
+}

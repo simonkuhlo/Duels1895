@@ -1,85 +1,66 @@
-[gd_scene load_steps=8 format=3 uid="uid://bsu4skealuc0t"]
+[gd_scene load_steps=10 format=3 uid="uid://bsu4skealuc0t"]
 
 [ext_resource type="PackedScene" uid="uid://bdk4f5f26rruv" path="res://Items/_Templates/Tool/Weapon/Gun/gun_equipped_item.tscn" id="1_p3rdd"]
 [ext_resource type="PackedScene" uid="uid://d0qhpnij7ow5h" path="res://Assets/Revolver/revolver.fbx" id="2_0vnbi"]
-[ext_resource type="Script" uid="uid://7a85ty71dvvx" path="res://System/Statechart/state_chart.gd" id="3_my1jw"]
-[ext_resource type="Script" uid="uid://cvf1lgghj5x1v" path="res://System/Statechart/States/compound_state.gd" id="4_yg6gr"]
-[ext_resource type="Script" uid="uid://dtpyv07hk2ad1" path="res://System/Statechart/States/atomic_state.gd" id="5_j314w"]
-[ext_resource type="Script" uid="uid://caf21qoirw4cy" path="res://System/Statechart/Transition/state_transition.gd" id="6_33u5i"]
-[ext_resource type="Script" uid="uid://bkyxe1juynmib" path="res://System/Statechart/Transition/Guards/delay_guard.gd" id="7_7476b"]
+
+[sub_resource type="Animation" id="Animation_gfiny"]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id="Animation_xcr6i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("revolver:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uks15"]
+_data = {
+&"Idle": SubResource("Animation_gfiny"),
+&"RESET": SubResource("Animation_xcr6i")
+}
+
+[sub_resource type="Animation" id="Animation_iwltp"]
+
+[sub_resource type="Animation" id="Animation_33u5i"]
+resource_name = "reload"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("revolver:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0), Vector3(0.820305, -1.5708, 0), Vector3(0.820305, -1.5708, -6.28319)]
+}
+
+[sub_resource type="Animation" id="Animation_7476b"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iwltp"]
+_data = {
+&"aim": SubResource("Animation_iwltp"),
+&"reload": SubResource("Animation_33u5i"),
+&"shoot": SubResource("Animation_7476b")
+}
 
 [node name="TestGunEquippedItem" instance=ExtResource("1_p3rdd")]
 
 [node name="revolver" parent="." index="0" instance=ExtResource("2_0vnbi")]
-transform = Transform3D(1.50996e-07, 0, -2, 0, 2, 0, 2, 0, 1.50996e-07, 0, 0, 0)
+transform = Transform3D(-7.23998e-06, 0, -2, 0, 2, 0, 2, 0, -7.23998e-06, 0, 0, 0)
 
-[node name="StateChart" type="Node" parent="." index="1"]
-script = ExtResource("3_my1jw")
-metadata/_custom_type_script = "uid://7a85ty71dvvx"
-
-[node name="Root" type="Node" parent="StateChart" index="0" node_paths=PackedStringArray("default_substate")]
-script = ExtResource("4_yg6gr")
-default_substate = NodePath("Idle")
-metadata/_custom_type_script = "uid://cvf1lgghj5x1v"
-
-[node name="Idle" type="Node" parent="StateChart/Root" index="0"]
-script = ExtResource("5_j314w")
-metadata/_custom_type_script = "uid://dtpyv07hk2ad1"
-
-[node name="ToAiming" type="Node" parent="StateChart/Root/Idle" index="0" node_paths=PackedStringArray("to")]
-script = ExtResource("6_33u5i")
-to = NodePath("../../Aiming")
-metadata/_custom_type_script = "uid://caf21qoirw4cy"
-
-[node name="DelayGuard" type="Node" parent="StateChart/Root/Idle/ToAiming" index="0" node_paths=PackedStringArray("state_to_watch")]
-script = ExtResource("7_7476b")
-state_to_watch = NodePath("../..")
-delay_seconds = 1.0
-metadata/_custom_type_script = "uid://bkyxe1juynmib"
-
-[node name="Aiming" type="Node" parent="StateChart/Root" index="1"]
-script = ExtResource("5_j314w")
-metadata/_custom_type_script = "uid://dtpyv07hk2ad1"
-
-[node name="ToShooting" type="Node" parent="StateChart/Root/Aiming" index="0" node_paths=PackedStringArray("to")]
-script = ExtResource("6_33u5i")
-to = NodePath("../../Shooting")
-metadata/_custom_type_script = "uid://caf21qoirw4cy"
-
-[node name="DelayGuard" type="Node" parent="StateChart/Root/Aiming/ToShooting" index="0" node_paths=PackedStringArray("state_to_watch")]
-script = ExtResource("7_7476b")
-state_to_watch = NodePath("../..")
-delay_seconds = 1.0
-metadata/_custom_type_script = "uid://bkyxe1juynmib"
-
-[node name="Shooting" type="Node" parent="StateChart/Root" index="2"]
-script = ExtResource("5_j314w")
-metadata/_custom_type_script = "uid://dtpyv07hk2ad1"
-
-[node name="ToReloading" type="Node" parent="StateChart/Root/Shooting" index="0" node_paths=PackedStringArray("to")]
-script = ExtResource("6_33u5i")
-to = NodePath("../../Reloading")
-metadata/_custom_type_script = "uid://caf21qoirw4cy"
-
-[node name="DelayGuard" type="Node" parent="StateChart/Root/Shooting/ToReloading" index="0" node_paths=PackedStringArray("state_to_watch")]
-script = ExtResource("7_7476b")
-state_to_watch = NodePath("../..")
-delay_seconds = 1.0
-metadata/_custom_type_script = "uid://bkyxe1juynmib"
-
-[node name="Reloading" type="Node" parent="StateChart/Root" index="3"]
-script = ExtResource("5_j314w")
-metadata/_custom_type_script = "uid://dtpyv07hk2ad1"
-
-[node name="ToIdle" type="Node" parent="StateChart/Root/Reloading" index="0" node_paths=PackedStringArray("to")]
-script = ExtResource("6_33u5i")
-to = NodePath("../../Idle")
-metadata/_custom_type_script = "uid://caf21qoirw4cy"
-
-[node name="DelayGuard" type="Node" parent="StateChart/Root/Reloading/ToIdle" index="0" node_paths=PackedStringArray("state_to_watch")]
-script = ExtResource("7_7476b")
-state_to_watch = NodePath("../..")
-delay_seconds = 1.0
-metadata/_custom_type_script = "uid://bkyxe1juynmib"
-
-[connection signal="state_switched" from="StateChart/Root" to="." method="_on_root_state_switched"]
+[node name="AnimationPlayer" parent="." index="1"]
+libraries = {
+&"": SubResource("AnimationLibrary_uks15"),
+&"TestGun": SubResource("AnimationLibrary_iwltp")
+}
