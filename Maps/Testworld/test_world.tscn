@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ca6610awtca8x" path="res://Ui/Ingame/controlled_entity_ui.tscn" id="1_fyd15"]
 [ext_resource type="Texture2D" uid="uid://bki7lv2ibcdsx" path="res://Assets/Debug Textures/PNG/Dark/texture_07.png" id="1_tcuxq"]
-[ext_resource type="Script" uid="uid://c4nsq07xr6be1" path="res://Maps/System/map_instance.gd" id="1_vkd6p"]
+[ext_resource type="Script" uid="uid://c4nsq07xr6be1" path="res://Maps/_System/map_instance.gd" id="1_vkd6p"]
 [ext_resource type="PackedScene" uid="uid://715oy5d5svy5" path="res://System/Entities/PlayerCharacter/player_character_body.tscn" id="2_2ovxu"]
 [ext_resource type="Texture2D" uid="uid://mcs0qu228yhp" path="res://Assets/Debug Textures/PNG/Orange/texture_01.png" id="2_fyd15"]
 [ext_resource type="PackedScene" uid="uid://d2a855v6411vx" path="res://Ui/pause_menu.tscn" id="2_wdtph"]
@@ -10,13 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://cbblk84fquqkb" path="res://Assets/Debug Textures/PNG/Dark/texture_13.png" id="5_i5nfa"]
 [ext_resource type="Texture2D" uid="uid://yp8dk5alji4n" path="res://Assets/Debug Textures/PNG/Purple/texture_11.png" id="8_i5nfa"]
 [ext_resource type="Texture2D" uid="uid://7ghkovkmvowy" path="res://Assets/Debug Textures/PNG/Purple/texture_02.png" id="9_si7et"]
-[ext_resource type="Script" uid="uid://c8r3agj8khox1" path="res://Maps/System/spectator_camera_director.gd" id="10_vkd6p"]
-[ext_resource type="Script" uid="uid://cynpif8v634i3" path="res://Maps/System/player_spawner.gd" id="12_wdtph"]
+[ext_resource type="Script" uid="uid://c8r3agj8khox1" path="res://Maps/_System/spectator_camera_director.gd" id="10_vkd6p"]
+[ext_resource type="Script" uid="uid://cynpif8v634i3" path="res://Maps/_System/player_spawner.gd" id="12_wdtph"]
 [ext_resource type="Script" uid="uid://di5xcpy15e0ky" path="res://System/Items/Core/multiplayer_world_item_spawner.gd" id="13_1jgxu"]
 [ext_resource type="PackedScene" uid="uid://cb1t5f6cdur34" path="res://System/Items/Nodes/world_item_spawner.tscn" id="13_kjpmb"]
 [ext_resource type="Script" uid="uid://csn5lympiiciq" path="res://System/Items/Core/item_instance.gd" id="14_a58uu"]
-[ext_resource type="Resource" uid="uid://d0pfuiioo4pu4" path="res://System/Items/Items/TestItem/test_item.tres" id="14_x3ct3"]
-[ext_resource type="Resource" uid="uid://wp5415ckmxuv" path="res://System/Items/Items/Tool/Weapon/Gun/TestGun/testgun.tres" id="17_0i1fw"]
+[ext_resource type="Resource" uid="uid://d0pfuiioo4pu4" path="res://Items/TestItem/test_item.tres" id="14_x3ct3"]
+[ext_resource type="Resource" uid="uid://wp5415ckmxuv" path="res://Items/_Templates/Tool/Weapon/Gun/TestGun/testgun.tres" id="17_0i1fw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dxppu"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)

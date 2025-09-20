@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dyyrfd563w77e"]
 
 [ext_resource type="Script" uid="uid://cbxpbkp6f13u2" path="res://System/Items/Core/Autoload/items.gd" id="1_1duft"]
-[ext_resource type="Resource" uid="uid://bep2pgkw8ppng" path="res://System/Items/Core/default_item_db.tres" id="2_78jub"]
+[ext_resource type="Resource" uid="uid://bep2pgkw8ppng" path="res://Items/_Data/default_item_db.tres" id="2_78jub"]
 
 [node name="Items" type="Node"]
 script = ExtResource("1_1duft")

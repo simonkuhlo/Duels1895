@@ -18,9 +18,27 @@ config/icon="res://icon.svg"
 [autoload]
 
 Items="*res://System/Items/Core/Autoload/items.tscn"
-Lobby="*res://MultiplayerLobby/lobby.tscn"
-Settings="*res://settings.tscn"
-MapLoader="*res://Maps/System/multiplayer_map_loader.tscn"
+Lobby="*res://System/MultiplayerLobby/lobby.tscn"
+Settings="*res://System/settings.tscn"
+MapLoader="*res://Maps/_System/multiplayer_map_loader.tscn"
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "purple",
+"res://Items/": "teal",
+"res://Items/Ammo/": "teal",
+"res://Items/TestItem/": "teal",
+"res://Items/_Data/": "orange",
+"res://Items/_Data/_Defaults/": "orange",
+"res://Items/_Templates/": "orange",
+"res://Maps/": "teal",
+"res://Maps/Testworld/": "teal",
+"res://Maps/_Data/": "orange",
+"res://Maps/_System/": "orange",
+"res://System/": "orange",
+"res://Ui/": "orange"
+}
 
 [input]
 

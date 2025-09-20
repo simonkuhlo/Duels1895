@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bbe4x8ncqvrxj"]
 
-[ext_resource type="Script" uid="uid://8dq4nhy4wlmp" path="res://Maps/System/multiplayer_map_loader.gd" id="1_6pmpa"]
-[ext_resource type="Resource" uid="uid://jcwvvbokphhh" path="res://Maps/default_map_db.tres" id="2_mvg8o"]
+[ext_resource type="Script" uid="uid://8dq4nhy4wlmp" path="res://Maps/_System/multiplayer_map_loader.gd" id="1_6pmpa"]
+[ext_resource type="Resource" uid="uid://jcwvvbokphhh" path="res://Maps/_Data/default_map_db.tres" id="2_mvg8o"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_mvg8o"]
 properties/0/path = NodePath(".:loaded_peers")
