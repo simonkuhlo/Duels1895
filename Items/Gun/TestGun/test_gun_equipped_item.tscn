@@ -29,7 +29,6 @@ metadata/_custom_type_script = "uid://dtpyv07hk2ad1"
 [node name="ToAiming" type="Node" parent="StateChart/Root/Idle" index="0" node_paths=PackedStringArray("to")]
 script = ExtResource("6_33u5i")
 to = NodePath("../../Aiming")
-delay_seconds = 0.0
 metadata/_custom_type_script = "uid://caf21qoirw4cy"
 
 [node name="DelayGuard" type="Node" parent="StateChart/Root/Idle/ToAiming" index="0" node_paths=PackedStringArray("state_to_watch")]
@@ -45,7 +44,6 @@ metadata/_custom_type_script = "uid://dtpyv07hk2ad1"
 [node name="ToShooting" type="Node" parent="StateChart/Root/Aiming" index="0" node_paths=PackedStringArray("to")]
 script = ExtResource("6_33u5i")
 to = NodePath("../../Shooting")
-delay_seconds = 0.0
 metadata/_custom_type_script = "uid://caf21qoirw4cy"
 
 [node name="DelayGuard" type="Node" parent="StateChart/Root/Aiming/ToShooting" index="0" node_paths=PackedStringArray("state_to_watch")]
@@ -61,7 +59,6 @@ metadata/_custom_type_script = "uid://dtpyv07hk2ad1"
 [node name="ToReloading" type="Node" parent="StateChart/Root/Shooting" index="0" node_paths=PackedStringArray("to")]
 script = ExtResource("6_33u5i")
 to = NodePath("../../Reloading")
-delay_seconds = 0.0
 metadata/_custom_type_script = "uid://caf21qoirw4cy"
 
 [node name="DelayGuard" type="Node" parent="StateChart/Root/Shooting/ToReloading" index="0" node_paths=PackedStringArray("state_to_watch")]
@@ -77,7 +74,6 @@ metadata/_custom_type_script = "uid://dtpyv07hk2ad1"
 [node name="ToIdle" type="Node" parent="StateChart/Root/Reloading" index="0" node_paths=PackedStringArray("to")]
 script = ExtResource("6_33u5i")
 to = NodePath("../../Idle")
-delay_seconds = 0.0
 metadata/_custom_type_script = "uid://caf21qoirw4cy"
 
 [node name="DelayGuard" type="Node" parent="StateChart/Root/Reloading/ToIdle" index="0" node_paths=PackedStringArray("state_to_watch")]

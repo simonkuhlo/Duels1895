@@ -8,7 +8,6 @@ class_name StateChart
 func _get_root_state() -> StateChartState:
 	for child in get_children():
 		if child is StateChartState:
-			child.state_chart = self
 			return child
 	push_error("No root state")
 	return null

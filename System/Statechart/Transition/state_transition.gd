@@ -23,21 +23,6 @@ var _cached_guards:Array[TransitionGuard] = []
 			_add_all_guards()
 		return _cached_guards
 
-var _state_chart:StateChart
-## Reference to the parent StateChart
-var state_chart:StateChart:
-	set(new_state_chart):
-		_edit_state_chart(new_state_chart)
-	get:
-		return _state_chart
-
-var parent_state:StateChartState
-
-func _edit_state_chart(new_state_chart) -> void:
-	_state_chart = new_state_chart
-	for guard in guards:
-		guard.state_chart = state_chart
-
 ## Called when the Node enters the SceneTree
 func _ready() -> void:
 	child_entered_tree.connect(_on_child_entered_tree)

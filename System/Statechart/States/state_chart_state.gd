@@ -21,18 +21,6 @@ signal deactivated()
 ## Wether the state is cuerrently active or not
 var active:bool = false
 
-var _state_chart:StateChart
-## Reference to the parent StateChart
-var state_chart:StateChart:
-	set(new_state_chart):
-		_edit_state_chart(new_state_chart)
-	get:
-		return _state_chart
-
-func _edit_state_chart(new_state_chart) -> void:
-	_state_chart = new_state_chart
-	for transition in transitions:
-		transition.state_chart = state_chart
 
 ## Private variable, use "transitions"
 var _cached_transitions:Array[StateTransition] = []
@@ -104,8 +92,7 @@ func _on_transition_possible(transition:StateTransition) -> void:
 ## Try all transitions that don't have a specific Trigger
 func _try_transitions() -> void:
 	for transition:StateTransition in transitions:
-		if !transition.trigger:
-			transition.try_transition()
+		transition.try_transition()
 
 ## Get all current Transitions of this State
 func _add_all_transitions() -> void:
@@ -116,7 +103,6 @@ func _add_all_transitions() -> void:
 ## Add a new transition to this state
 func _add_transition(transition:StateTransition) -> void:
 	if !Engine.is_editor_hint():
-		transition.parent_state = self
 		transition.transition_possible.connect(_on_transition_possible)
 	_cached_transitions.append(transition)
 	update_configuration_warnings()

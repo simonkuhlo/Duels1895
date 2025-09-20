@@ -29,11 +29,6 @@ func on_tick() -> void:
 	for child_state in child_states:
 		child_state.on_tick()
 
-func _edit_state_chart(new_state_chart) -> void:
-	super._edit_state_chart(new_state_chart)
-	for child in child_states:
-		child.state_chart = new_state_chart
-
 func _add_all_child_states() -> void:
 	_cached_child_states = []
 	for child in get_children():
