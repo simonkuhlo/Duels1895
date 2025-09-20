@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://hysvkh26e5xi"]
+
+[ext_resource type="PackedScene" uid="uid://cg6fa4lu86wt4" path="res://System/Items/Core/Equipped Item/equipped_item.tscn" id="1_4ctiy"]
+[ext_resource type="Script" uid="uid://c8es0dmbfligd" path="res://System/Items/Items/Tool/tool_equipped_item.gd" id="2_jegox"]
+
+[node name="ToolEquippedItem" instance=ExtResource("1_4ctiy")]
+script = ExtResource("2_jegox")

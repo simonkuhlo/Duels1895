@@ -26,7 +26,6 @@ func start_game() -> void:
 	for peer in MapLoader.loaded_peers:
 		player_spawns[0].spawn_player(peer)
 	paused = false
-	print("Game Started", MapLoader.loaded_peers)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):

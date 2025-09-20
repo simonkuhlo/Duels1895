@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Items="*res://Game/Item System/System/Autoload/items.tscn"
+Items="*res://System/Items/Core/Autoload/items.tscn"
 Lobby="*res://MultiplayerLobby/lobby.tscn"
 Settings="*res://settings.tscn"
 MapLoader="*res://Maps/System/multiplayer_map_loader.tscn"
@@ -77,5 +77,10 @@ hotbar_next_item={
 hotbar_prev_item={
 "deadzone": 0.2,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":4,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+helditem_aim={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }

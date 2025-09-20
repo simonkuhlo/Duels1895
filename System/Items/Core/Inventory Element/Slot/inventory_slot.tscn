@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://clsurtm10to0e"]
+
+[ext_resource type="Script" uid="uid://bhibbtgqik7lx" path="res://System/Items/Core/Inventory Element/Slot/inventory_slot.gd" id="1_x21mo"]
+[ext_resource type="Script" uid="uid://bhh3tkauofkap" path="res://System/Items/Core/Inventory Element/Slot/inventory_slot_synchronizer.gd" id="2_muo1k"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_pkrkv"]
+properties/0/path = NodePath(".:synchronized_item_uid")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:synchronized_item_properties")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath("..:uid")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+
+[node name="InventorySlot" type="Node"]
+script = ExtResource("1_x21mo")
+
+[node name="InventorySlotSynchronizer" type="Node" parent="." node_paths=PackedStringArray("_synchronized_slot", "synchronizer")]
+script = ExtResource("2_muo1k")
+_synchronized_slot = NodePath("..")
+synchronizer = NodePath("MultiplayerSynchronizer")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="InventorySlotSynchronizer"]
+replication_config = SubResource("SceneReplicationConfig_pkrkv")

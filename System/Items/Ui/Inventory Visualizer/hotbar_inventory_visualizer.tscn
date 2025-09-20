@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgew5opgbyvk4"]
+
+[ext_resource type="PackedScene" uid="uid://byy2ddnfcfr4s" path="res://System/Items/Ui/Inventory Visualizer/inventory_visualizer.tscn" id="1_ec0sv"]
+[ext_resource type="Script" uid="uid://cw3jdx6rm7427" path="res://System/Items/Ui/Inventory Visualizer/hotbar_inventory_visualizer.gd" id="2_hgpeb"]
+[ext_resource type="PackedScene" uid="uid://cux0lbg2jjl6t" path="res://System/Items/Ui/Slot Visualizer/hotbar_slot_visualizer.tscn" id="3_7b1aj"]
+
+[node name="HotbarInventoryVisualizer" instance=ExtResource("1_ec0sv")]
+script = ExtResource("2_hgpeb")
+slot_visualizer_scene = ExtResource("3_7b1aj")

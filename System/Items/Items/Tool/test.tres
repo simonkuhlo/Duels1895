@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="HeldToolItemAction" load_steps=2 format=3 uid="uid://sllgb40vkv0"]
+
+[ext_resource type="Script" uid="uid://c531onyrfd143" path="res://System/Items/Items/Tool/equipped_tool_item_action.gd" id="1_hmn42"]
+
+[resource]
+script = ExtResource("1_hmn42")
+trigger_mode = 0
+trigger_action_name = ""
+metadata/_custom_type_script = "uid://c531onyrfd143"
