@@ -37,6 +37,7 @@ folder_colors={
 "res://Maps/_Data/": "orange",
 "res://Maps/_System/": "orange",
 "res://System/": "orange",
+"res://System/Statechart/Assets/": "purple",
 "res://Ui/": "orange"
 }
 
