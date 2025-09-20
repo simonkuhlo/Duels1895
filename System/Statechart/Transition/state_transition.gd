@@ -13,12 +13,6 @@ signal transition_taken()
 		name = "To" + new_state.name
 		update_configuration_warnings()
 
-## The Event that should trigger this Transition
-@export var trigger:StringName
-
-## Delay in Seconds before transitioning
-@export var delay_seconds:float
-
 ## Private variable, use "guards"
 var _cached_guards:Array[TransitionGuard] = []
 
@@ -67,14 +61,8 @@ func _on_child_exiting_tree(node) -> void:
 func _on_tree_changed() -> void:
 	update_configuration_warnings()
 
-## Check if received Event is the same as the Trigger of this Transition
-func on_event_received(event:StringName) -> void:
-	if event == trigger:
-		try_transition()
-
 ## Check all Guards if they are statisfied. If they are, signal that transition is possible
 func try_transition() -> void:
-	#print(name)
 	for guard:TransitionGuard in guards:
 		if !guard.is_statisfied():
 			return

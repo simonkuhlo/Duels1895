@@ -26,9 +26,6 @@ func _physics_process(delta):
 		root_state.on_tick()
 		root_state.on_physics_processing(delta)
 
-func send_event(event:StringName):
-	root_state.on_event_received(event)
-
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: PackedStringArray = []
 	

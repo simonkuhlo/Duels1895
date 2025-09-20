@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://d0pfuiioo4pu4" path="res://Items/TestItem/test_item.tres" id="2_esggx"]
 [ext_resource type="Script" uid="uid://dyrnye40dnsve" path="res://System/Items/Core/item_reference_db.gd" id="2_uxwt2"]
 [ext_resource type="PackedScene" uid="uid://3qy1ind6vn2l" path="res://Items/_Data/_Defaults/default_equipped_item.tscn" id="3_esggx"]
-[ext_resource type="Resource" uid="uid://wp5415ckmxuv" path="res://Items/_Templates/Tool/Weapon/Gun/TestGun/testgun.tres" id="3_jxoet"]
+[ext_resource type="Resource" uid="uid://wp5415ckmxuv" path="res://Items/Gun/TestGun/testgun.tres" id="3_jxoet"]
 [ext_resource type="PackedScene" uid="uid://g8li15ckmp3y" path="res://Items/_Data/_Defaults/default_world_item.tscn" id="4_k8bs4"]
 
 [resource]

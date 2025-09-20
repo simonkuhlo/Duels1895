@@ -12,7 +12,7 @@ signal activated()
 ## Emitted when active and processing (once per frame)
 signal processing(delta)
 
-## Emitted when active and physics_processing (once per physics_tick)
+## Emitted when active and physics_processing (once per physics tick)
 signal physics_processing(delta)
 
 ## Emitted when State gets deactivated
@@ -69,11 +69,6 @@ func _on_child_exiting_tree(node) -> void:
 ## Called when SceneTree has changed
 func _on_tree_changed() -> void:
 	update_configuration_warnings()
-
-## Called when the StateChart received an event
-func on_event_received(event:StringName) -> void:
-	for transition:StateTransition in transitions:
-		transition.on_event_received(event)
 
 ## Called every StateChart tick
 func on_tick() -> void:

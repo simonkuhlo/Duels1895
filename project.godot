@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Items="*res://System/Items/Core/Autoload/items.tscn"
-Lobby="*res://System/MultiplayerLobby/lobby.tscn"
+Lobby="*res://System/Multiplayer Lobby/lobby.tscn"
 Settings="*res://System/Settings/settings.tscn"
 MapLoader="*res://Maps/_System/multiplayer_map_loader.tscn"
 

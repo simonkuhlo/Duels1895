@@ -22,3 +22,7 @@ func _process_aim_input() -> void:
 				aiming = true
 			else:
 				aiming = false
+
+
+func _on_root_state_switched(old_state: Variant, new_state: Variant) -> void:
+	print(new_state)
