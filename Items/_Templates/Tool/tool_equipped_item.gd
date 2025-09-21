@@ -16,12 +16,3 @@ func _on_idle_activated() -> void:
 
 func _on_aiming_processing(delta: Variant) -> void:
 	print("aiming")
-
-func _on_aiming_physics_processing(delta: Variant) -> void:
-	print("aiming")
-
-func _on_aiming_activated() -> void:
-	print("aiming")
-
-func _on_aiming_want_transition(transition: StateTransition) -> void:
-	print(transition)

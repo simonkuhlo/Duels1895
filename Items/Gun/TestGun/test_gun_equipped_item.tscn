@@ -64,3 +64,18 @@ libraries = {
 &"": SubResource("AnimationLibrary_uks15"),
 &"TestGun": SubResource("AnimationLibrary_iwltp")
 }
+
+[node name="InputGuard" parent="StateChart/Root/Idle/ToAiming" index="0"]
+invert_value = null
+
+[node name="InputGuard" parent="StateChart/Root/Idle/ToReloading" index="0"]
+invert_value = null
+
+[node name="InputGuard" parent="StateChart/Root/Idle/ToShooting" index="0"]
+invert_value = null
+
+[node name="InputGuard" parent="StateChart/Root/Aiming/ToShooting" index="0"]
+invert_value = null
+
+[node name="InputGuard" parent="StateChart/Root/Aiming/ToIdle" index="0"]
+invert_value = null

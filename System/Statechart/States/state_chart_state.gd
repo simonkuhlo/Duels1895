@@ -91,6 +91,8 @@ func _on_transition_possible(transition:StateTransition) -> void:
 
 ## Try all transitions that don't have a specific Trigger
 func _try_transitions() -> void:
+	if Engine.is_editor_hint():
+		return
 	for transition:StateTransition in transitions:
 		transition.try_transition()
 
