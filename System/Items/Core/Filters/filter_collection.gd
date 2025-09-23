@@ -11,9 +11,9 @@ func filter(item:Variant) -> bool:
 		Mode.ALL:
 			return mode_all(item)
 		Mode.ANY:
-			return mode_all(item)
+			return mode_any(item)
 		Mode.NONE:
-			return mode_all(item)
+			return mode_none(item)
 	return false
 
 func mode_all(item:Variant) -> bool:

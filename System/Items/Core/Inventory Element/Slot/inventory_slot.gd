@@ -28,9 +28,11 @@ func has_item() -> bool:
 	return false
 
 func receive_item(item:ItemInstance) -> ItemInstance:
-	#TODO handle filters
 	if !item:
-		return
+		return item
+	if filter:
+		if !filter.filter(item):
+			return item
 	if held_item:
 		if item.item_reference.uid != held_item.item_reference.uid:
 			return item
