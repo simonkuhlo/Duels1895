@@ -1,0 +1,176 @@
+[gd_scene load_steps=27 format=3 uid="uid://bsu4skealuc0t"]
+
+[ext_resource type="PackedScene" uid="uid://bdk4f5f26rruv" path="res://Items/_Templates/Tool/Weapon/Gun/gun_equipped_item.tscn" id="1_p3rdd"]
+[ext_resource type="PackedScene" uid="uid://d0qhpnij7ow5h" path="res://Assets/Revolver/revolver.fbx" id="2_0vnbi"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7evcr"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_my1jw"]
+animation = &"TestGun/Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yv20a"]
+animation = &"TestGun/Reload"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yg6gr"]
+animation = &"TestGun/Shoot"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j314w"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iwltp"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xcr6i"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7evcr"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_my1jw"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yv20a"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yg6gr"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xkyr2"]
+states/RESET/node = SubResource("AnimationNodeAnimation_7evcr")
+states/RESET/position = Vector2(354, 100)
+states/Start/position = Vector2(159, 100)
+states/TestGun_Idle/node = SubResource("AnimationNodeAnimation_my1jw")
+states/TestGun_Idle/position = Vector2(562, 100)
+states/TestGun_Reload/node = SubResource("AnimationNodeAnimation_yv20a")
+states/TestGun_Reload/position = Vector2(475, -20)
+states/TestGun_Shoot/node = SubResource("AnimationNodeAnimation_yg6gr")
+states/TestGun_Shoot/position = Vector2(456, 244)
+transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_j314w"), "TestGun_Shoot", "RESET", SubResource("AnimationNodeStateMachineTransition_iwltp"), "TestGun_Reload", "RESET", SubResource("AnimationNodeStateMachineTransition_xcr6i"), "TestGun_Idle", "RESET", SubResource("AnimationNodeStateMachineTransition_7evcr"), "RESET", "TestGun_Reload", SubResource("AnimationNodeStateMachineTransition_my1jw"), "RESET", "TestGun_Shoot", SubResource("AnimationNodeStateMachineTransition_yv20a"), "RESET", "TestGun_Idle", SubResource("AnimationNodeStateMachineTransition_yg6gr")]
+graph_offset = Vector2(79, -29)
+
+[sub_resource type="Animation" id="Animation_gfiny"]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id="Animation_wxj6c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("revolver:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("revolver:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uks15"]
+_data = {
+&"Idle": SubResource("Animation_gfiny"),
+&"RESET": SubResource("Animation_wxj6c")
+}
+
+[sub_resource type="Animation" id="Animation_prq1c"]
+
+[sub_resource type="Animation" id="Animation_evmsm"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_78soq"]
+_data = {
+&"Reload": SubResource("Animation_prq1c"),
+&"Shoot": SubResource("Animation_evmsm")
+}
+
+[sub_resource type="Animation" id="Animation_7evcr"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("revolver:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.433333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0), Vector3(0.261799, -1.5708, -9.69973e-07), Vector3(0.261799, -1.5708, -6.28319), Vector3(0, -1.5708, -6.28319)]
+}
+
+[sub_resource type="Animation" id="Animation_my1jw"]
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("revolver:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0), Vector3(0, -1.5708, 0.523599), Vector3(0, -1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c4ldf"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("revolver:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.04, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yv20a"]
+_data = {
+&"Idle": SubResource("Animation_c4ldf"),
+&"Reload": SubResource("Animation_7evcr"),
+&"Shoot": SubResource("Animation_my1jw")
+}
+
+[sub_resource type="Animation" id="Animation_ijx3d"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ijx3d"]
+_data = {
+&"Aim_down_sights": SubResource("Animation_ijx3d")
+}
+
+[node name="TestGunEquippedItem" instance=ExtResource("1_p3rdd")]
+
+[node name="revolver" parent="." index="0" instance=ExtResource("2_0vnbi")]
+transform = Transform3D(-7.23998e-06, 0, -2, 0, 2, 0, 2, 0, -7.23998e-06, 0, 0, 0)
+
+[node name="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeStateMachine_xkyr2")
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_uks15"),
+&"GunItem": SubResource("AnimationLibrary_78soq"),
+&"TestGun": SubResource("AnimationLibrary_yv20a"),
+&"ToolItem": SubResource("AnimationLibrary_ijx3d")
+}
+
+[connection signal="activated" from="StateChart/Root/Idle" to="." method="_on_idle_activated"]
+[connection signal="activated" from="StateChart/Root/Aiming" to="." method="_on_aiming_activated"]
+[connection signal="activated" from="StateChart/Root/Shooting" to="." method="_on_shooting_activated"]
+[connection signal="activated" from="StateChart/Root/Reloading" to="." method="_on_reloading_activated"]

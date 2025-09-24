@@ -1,7 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://cg6fa4lu86wt4"]
+[gd_scene load_steps=3 format=3 uid="uid://cg6fa4lu86wt4"]
 
 [ext_resource type="Script" uid="uid://w1esnfucdgfw" path="res://System/Items/Core/Equipped Item/equipped_item.gd" id="1_64sbr"]
 
-[node name="EquippedItem" type="Node3D"]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_gfiny"]
+
+[node name="EquippedItem" type="Node3D" node_paths=PackedStringArray("animation_tree")]
 script = ExtResource("1_64sbr")
+animation_tree = NodePath("AnimationTree")
 metadata/_custom_type_script = "uid://w1esnfucdgfw"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_gfiny")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

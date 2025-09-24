@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://b6iot81rg2ivk"]
 
-[ext_resource type="Script" uid="uid://clm11t534lh4b" path="res://System/settings.gd" id="1_x2hje"]
-[ext_resource type="Script" uid="uid://qv217dug5fkv" path="res://System/MultiplayerLobby/connection_settings.gd" id="2_3ykye"]
-[ext_resource type="Script" uid="uid://235p6k3fa0a8" path="res://System/MultiplayerLobby/profile.gd" id="3_gc0em"]
+[ext_resource type="Script" uid="uid://c2nsq67slciu" path="res://System/Settings/settings.gd" id="1_x2hje"]
+[ext_resource type="Script" uid="uid://cpd35l3wr54n7" path="res://System/Multiplayer Lobby/connection_settings.gd" id="2_3ykye"]
+[ext_resource type="Script" uid="uid://bvavgicdbclrr" path="res://System/Multiplayer Lobby/profile.gd" id="3_gc0em"]
 
 [sub_resource type="Resource" id="Resource_cj1lu"]
 script = ExtResource("3_gc0em")

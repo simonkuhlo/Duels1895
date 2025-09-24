@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cb1t5f6cdur34" path="res://System/Items/Nodes/world_item_spawner.tscn" id="13_kjpmb"]
 [ext_resource type="Script" uid="uid://csn5lympiiciq" path="res://System/Items/Core/item_instance.gd" id="14_a58uu"]
 [ext_resource type="Resource" uid="uid://d0pfuiioo4pu4" path="res://Items/TestItem/test_item.tres" id="14_x3ct3"]
-[ext_resource type="Resource" uid="uid://wp5415ckmxuv" path="res://Items/_Templates/Tool/Weapon/Gun/TestGun/testgun.tres" id="17_0i1fw"]
+[ext_resource type="Resource" uid="uid://wp5415ckmxuv" path="res://Items/Gun/TestGun/testgun.tres" id="17_0i1fw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dxppu"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)

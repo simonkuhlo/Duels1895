@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Items="*res://System/Items/Core/Autoload/items.tscn"
-Lobby="*res://System/MultiplayerLobby/lobby.tscn"
+Lobby="*res://System/Multiplayer Lobby/lobby.tscn"
 Settings="*res://System/Settings/settings.tscn"
 MapLoader="*res://Maps/_System/multiplayer_map_loader.tscn"
 
@@ -29,14 +29,16 @@ folder_colors={
 "res://Items/": "teal",
 "res://Items/Ammo/": "teal",
 "res://Items/TestItem/": "teal",
-"res://Items/_Data/": "orange",
-"res://Items/_Data/_Defaults/": "orange",
+"res://Items/_System/": "orange",
+"res://Items/_System/Slots/": "orange",
+"res://Items/_System/_Defaults/": "orange",
 "res://Items/_Templates/": "orange",
 "res://Maps/": "teal",
 "res://Maps/Testworld/": "teal",
 "res://Maps/_Data/": "orange",
 "res://Maps/_System/": "orange",
 "res://System/": "orange",
+"res://System/Statechart/Assets/": "purple",
 "res://Ui/": "orange"
 }
 
@@ -98,6 +100,16 @@ hotbar_prev_item={
 ]
 }
 helditem_aim={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+gun_reload={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":82,"key_label":0,"unicode":114,"location":0,"echo":false,"script":null)
+]
+}
+gun_shoot={
 "deadzone": 0.2,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]

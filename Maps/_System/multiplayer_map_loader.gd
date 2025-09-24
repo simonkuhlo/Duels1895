@@ -9,6 +9,7 @@ signal loaded_peers_changed(loaded_peers:Array[int])
 @export var map_db:MapDB
 @export var map_instance_root:Node
 
+@export_group("Networking only")
 @export var awaited_peers:Array[int] = []
 @export var loaded_peers:Array[int] = []
 
