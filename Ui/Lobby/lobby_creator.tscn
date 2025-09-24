@@ -1,0 +1,139 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6ennwobbvjhx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8xss"]
+bg_color = Color(0.894118, 0.407843, 0.619608, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_d8xss"]
+font_size = 34
+
+[node name="LobbyCreator" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -249.5
+offset_top = -182.0
+offset_right = 249.5
+offset_bottom = 182.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d8xss")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "♥ Create a lobby ♥"
+label_settings = SubResource("LabelSettings_d8xss")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 30
+columns = 2
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Title"
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Testlobby"
+
+[node name="Label2" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Password"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="LineEdit2" type="LineEdit" parent="MarginContainer/CenterContainer/VBoxContainer/GridContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+editable = false
+secret_character = "♥"
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/CenterContainer/VBoxContainer/GridContainer/HBoxContainer"]
+layout_mode = 2
+disabled = true
+button_pressed = true
+text = "Hidden"
+
+[node name="Label3" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Host mode"
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+selected = 0
+item_count = 4
+popup/item_0/text = "Local Network"
+popup/item_0/id = 0
+popup/item_1/text = "Public [WebRTC]"
+popup/item_1/id = 1
+popup/item_1/disabled = true
+popup/item_2/text = "Dedicated Server"
+popup/item_2/id = 3
+popup/item_2/disabled = true
+popup/item_3/text = "Steam"
+popup/item_3/id = 2
+popup/item_3/disabled = true
+
+[node name="Label5" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Discovery Server"
+
+[node name="LineEdit3" type="LineEdit" parent="MarginContainer/CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "https://matchmaking.simonkuhlo.de"
+editable = false
+
+[node name="Label4" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Game Port"
+
+[node name="SpinBox" type="SpinBox" parent="MarginContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+max_value = 9000.0
+value = 6969.0
+
+[node name="Label6" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Max Players"
+
+[node name="SpinBox2" type="SpinBox" parent="MarginContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+value = 10.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Button2" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Cancel"
+
+[node name="Button" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Create!"
