@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ccjysjbgkfqm0" path="res://Ui/Lobby/lobby_visualizer.gd" id="1_22sjt"]
 [ext_resource type="Resource" uid="uid://qlnjnxld20qa" path="res://Maps/Testworld/test_world.tres" id="2_bg863"]
 [ext_resource type="Script" uid="uid://27f4sks1h8dy" path="res://Ui/Lobby/player_list.gd" id="2_rdvlu"]
-[ext_resource type="PackedScene" uid="uid://bpbm2uw0cfyf1" path="res://Ui/Lobby/lobby_peer_visualizer.tscn" id="3_cxr7h"]
+[ext_resource type="PackedScene" uid="uid://bpbm2uw0cfyf1" path="res://Ui/Lobby/lobby_memebr_visualizer.tscn" id="3_cxr7h"]
 
 [node name="LobbyVisualizer" type="Control"]
 layout_mode = 3

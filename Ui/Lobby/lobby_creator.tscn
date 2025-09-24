@@ -1,11 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c6ennwobbvjhx"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8xss"]
-bg_color = Color(0.894118, 0.407843, 0.619608, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+[ext_resource type="Script" uid="uid://df8syjomyxfur" path="res://Ui/Lobby/lobby_creator.gd" id="1_0pfai"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8xss"]
 font_size = 34
@@ -22,7 +17,7 @@ offset_right = 249.5
 offset_bottom = 182.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_d8xss")
+script = ExtResource("1_0pfai")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

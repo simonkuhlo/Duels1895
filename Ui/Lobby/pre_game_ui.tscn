@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6kwoh1wnxv4i"]
+
+[ext_resource type="Script" uid="uid://c8nxwjo6cc34b" path="res://Ui/Lobby/pre_game_ui.gd" id="1_bqatx"]
+[ext_resource type="PackedScene" uid="uid://boqxlupec5yd1" path="res://Ui/Lobby/pre_lobby.tscn" id="2_p4hkc"]
+[ext_resource type="PackedScene" uid="uid://cww4pw6cpc8b5" path="res://Ui/Lobby/lobby_visualizer.tscn" id="3_rq4ff"]
+
+[node name="PreGameUI" type="TabContainer" node_paths=PackedStringArray("lobby_browser", "lobby_visualizer")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+script = ExtResource("1_bqatx")
+lobby_browser = NodePath("PreLobby")
+lobby_visualizer = NodePath("LobbyVisualizer")
+
+[node name="PreLobby" parent="." instance=ExtResource("2_p4hkc")]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="LobbyBrowser" type="Control" parent="."]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="LobbyVisualizer" parent="." instance=ExtResource("3_rq4ff")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
