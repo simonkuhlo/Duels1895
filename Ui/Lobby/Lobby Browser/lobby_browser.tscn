@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://gs4pfxwug7kg"]
+[gd_scene load_steps=5 format=3 uid="uid://gs4pfxwug7kg"]
 
-[ext_resource type="PackedScene" uid="uid://b73bv0au12e2m" path="res://Ui/Lobby/Lobby Browser/lobby_list_lobby_visualizer.tscn" id="1_84krl"]
+[ext_resource type="Script" uid="uid://bhimteo2qc3il" path="res://Ui/Lobby/Lobby Browser/lobby_browser.gd" id="1_iym8f"]
+[ext_resource type="Script" uid="uid://on00pvdl044o" path="res://Ui/Lobby/Lobby Browser/discover_server_editor.gd" id="2_nhwqr"]
 [ext_resource type="PackedScene" uid="uid://bk4ky6bbhnbf4" path="res://Ui/Lobby/Lobby Browser/direct_connection_panel.tscn" id="2_rfs6s"]
+[ext_resource type="Script" uid="uid://6belikyrym8" path="res://Ui/Lobby/Lobby Browser/lobby_list.gd" id="3_nhwqr"]
 
 [node name="LobbyBrowser" type="PanelContainer"]
 anchors_preset = 8
@@ -17,6 +19,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_iym8f")
 metadata/_tab_index = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -34,49 +37,39 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 30
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="DiscoverServerEditor" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("discovery_server_edit")]
 layout_mode = 2
 theme_override_constants/separation = 10
+script = ExtResource("2_nhwqr")
+discovery_server_edit = NodePath("LineEdit")
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/HBoxContainer/VBoxContainer/DiscoverServerEditor"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "https://matchmaking.simonkuhlo.de"
-editable = false
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/VBoxContainer/DiscoverServerEditor"]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-color = Color(0.207843, 1, 1, 1)
+tooltip_text = "DISCONNECTED"
+color = Color(0.889476, 0, 0.0987225, 1)
 
-[node name="ChangeButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="ChangeButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/DiscoverServerEditor"]
 layout_mode = 2
-disabled = true
 text = "Change"
 
-[node name="UpdateButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="UpdateButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/DiscoverServerEditor"]
 layout_mode = 2
 disabled = true
 text = "Update"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="LobbyList" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-
-[node name="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" instance=ExtResource("1_84krl")]
-layout_mode = 2
-
-[node name="PanelContainer2" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" instance=ExtResource("1_84krl")]
-layout_mode = 2
-
-[node name="PanelContainer3" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" instance=ExtResource("1_84krl")]
-layout_mode = 2
-
-[node name="PanelContainer4" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer" instance=ExtResource("1_84krl")]
-layout_mode = 2
+script = ExtResource("3_nhwqr")
 
 [node name="CreateLobbyButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -124,3 +117,5 @@ size_flags_vertical = 3
 
 [node name="DirectConnectionPanel" parent="MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_rfs6s")]
 layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/DiscoverServerEditor/ChangeButton" to="MarginContainer/HBoxContainer/VBoxContainer/DiscoverServerEditor" method="_on_change_button_pressed"]
