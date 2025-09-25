@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bpbm2uw0cfyf1"]
 
-[ext_resource type="Script" uid="uid://crtxqcoi14og7" path="res://Ui/Lobby/lobby_member_visualizer.gd" id="1_na1aj"]
-[ext_resource type="Texture2D" uid="uid://63g3k38js4id" path="res://Assets/setting.png" id="2_qfvin"]
+[ext_resource type="Script" uid="uid://c5aypm6p4txcs" path="res://Ui/Lobby/In Lobby/lobby_member_visualizer.gd" id="1_5uwnn"]
+[ext_resource type="Texture2D" uid="uid://63g3k38js4id" path="res://Assets/setting.png" id="2_lybgt"]
 
 [node name="LobbyPeerVisualizer" type="PanelContainer" node_paths=PackedStringArray("name_label")]
 anchors_preset = 8
@@ -12,7 +12,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-script = ExtResource("1_na1aj")
+script = ExtResource("1_5uwnn")
 name_label = NodePath("MarginContainer/HBoxContainer/NameLabel")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -33,7 +33,7 @@ text = "NULL"
 [node name="SettingsButton" type="Button" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-icon = ExtResource("2_qfvin")
+icon = ExtResource("2_lybgt")
 expand_icon = true
 
 [node name="ChatButton" type="Button" parent="MarginContainer/HBoxContainer"]

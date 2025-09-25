@@ -1,6 +1,9 @@
 extends Resource
 class_name ConnectionSettings
 
+enum ConnectionModes {ENET, ENET_DISCOVERY, WEBRTC, WEBSOCKET, SETAM}
+
+@export var connection_mode = ConnectionModes.ENET
 @export var game_port:int = 6969
 @export var used_profile:MultiplayerProfile = MultiplayerProfile.new()
 @export var discovery_server_address:String = "https://matchmaking.simonkuhlo.de"

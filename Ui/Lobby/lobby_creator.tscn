@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://c6ennwobbvjhx"]
 
-[ext_resource type="Script" uid="uid://df8syjomyxfur" path="res://Ui/Lobby/lobby_creator.gd" id="1_0pfai"]
+[ext_resource type="Script" uid="uid://b1votmsvsetru" path="res://Ui/Lobby/lobby_creator.gd" id="1_0pfai"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8xss"]
 font_size = 34
 
-[node name="LobbyCreator" type="PanelContainer"]
+[node name="LobbyCreator" type="PanelContainer" node_paths=PackedStringArray("title_edit", "password_edit", "connection_type_select", "discovery_server_edit", "game_port_edit", "max_players_edit")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -18,6 +18,12 @@ offset_bottom = 182.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0pfai")
+title_edit = NodePath("MarginContainer/CenterContainer/VBoxContainer/GridContainer/TitleEdit")
+password_edit = NodePath("MarginContainer/CenterContainer/VBoxContainer/GridContainer/HBoxContainer/LineEdit2")
+connection_type_select = NodePath("MarginContainer/CenterContainer/VBoxContainer/GridContainer/OptionButton")
+discovery_server_edit = NodePath("MarginContainer/CenterContainer/VBoxContainer/GridContainer/LineEdit3")
+game_port_edit = NodePath("MarginContainer/CenterContainer/VBoxContainer/GridContainer/SpinBox")
+max_players_edit = NodePath("MarginContainer/CenterContainer/VBoxContainer/GridContainer/SpinBox2")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -49,7 +55,7 @@ columns = 2
 layout_mode = 2
 text = "Title"
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/CenterContainer/VBoxContainer/GridContainer"]
+[node name="TitleEdit" type="LineEdit" parent="MarginContainer/CenterContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Testlobby"
@@ -67,7 +73,7 @@ size_flags_horizontal = 3
 editable = false
 secret_character = "♥"
 
-[node name="CheckBox" type="CheckBox" parent="MarginContainer/CenterContainer/VBoxContainer/GridContainer/HBoxContainer"]
+[node name="HidePassword" type="CheckBox" parent="MarginContainer/CenterContainer/VBoxContainer/GridContainer/HBoxContainer"]
 layout_mode = 2
 disabled = true
 button_pressed = true
@@ -125,10 +131,14 @@ value = 10.0
 layout_mode = 2
 alignment = 2
 
-[node name="Button2" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="CancelButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Cancel"
 
-[node name="Button" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="CreateButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Create!"
+
+[connection signal="toggled" from="MarginContainer/CenterContainer/VBoxContainer/GridContainer/HBoxContainer/HidePassword" to="." method="_on_hide_password_toggled"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer/CreateButton" to="." method="_on_create_button_pressed"]

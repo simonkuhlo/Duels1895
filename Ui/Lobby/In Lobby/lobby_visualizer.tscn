@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cww4pw6cpc8b5"]
 
-[ext_resource type="Script" uid="uid://ccjysjbgkfqm0" path="res://Ui/Lobby/lobby_visualizer.gd" id="1_22sjt"]
+[ext_resource type="Script" uid="uid://bhrq1iwrq5v5a" path="res://Ui/Lobby/In Lobby/lobby_visualizer.gd" id="1_22sjt"]
 [ext_resource type="Resource" uid="uid://qlnjnxld20qa" path="res://Maps/Testworld/test_world.tres" id="2_bg863"]
-[ext_resource type="Script" uid="uid://27f4sks1h8dy" path="res://Ui/Lobby/player_list.gd" id="2_rdvlu"]
-[ext_resource type="PackedScene" uid="uid://bpbm2uw0cfyf1" path="res://Ui/Lobby/lobby_memebr_visualizer.tscn" id="3_cxr7h"]
+[ext_resource type="Script" uid="uid://bewjigshh11ju" path="res://Ui/Lobby/In Lobby/player_list.gd" id="2_rdvlu"]
+[ext_resource type="PackedScene" uid="uid://bpbm2uw0cfyf1" path="res://Ui/Lobby/In Lobby/lobby_member_visualizer.tscn" id="3_cxr7h"]
 
 [node name="LobbyVisualizer" type="Control"]
 layout_mode = 3
