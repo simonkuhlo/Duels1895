@@ -70,12 +70,10 @@ layout_mode = 2
 [node name="LineEdit2" type="LineEdit" parent="MarginContainer/CenterContainer/VBoxContainer/GridContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-editable = false
 secret_character = "♥"
 
 [node name="HidePassword" type="CheckBox" parent="MarginContainer/CenterContainer/VBoxContainer/GridContainer/HBoxContainer"]
 layout_mode = 2
-disabled = true
 button_pressed = true
 text = "Hidden"
 

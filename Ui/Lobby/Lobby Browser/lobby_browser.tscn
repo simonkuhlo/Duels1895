@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://gs4pfxwug7kg"]
+[gd_scene load_steps=3 format=3 uid="uid://gs4pfxwug7kg"]
 
 [ext_resource type="PackedScene" uid="uid://b73bv0au12e2m" path="res://Ui/Lobby/Lobby Browser/lobby_list_lobby_visualizer.tscn" id="1_84krl"]
+[ext_resource type="PackedScene" uid="uid://bk4ky6bbhnbf4" path="res://Ui/Lobby/Lobby Browser/direct_connection_panel.tscn" id="2_rfs6s"]
 
 [node name="LobbyBrowser" type="PanelContainer"]
 anchors_preset = 8
@@ -121,90 +122,5 @@ text = "Simon"
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="DirectConnectionPanel" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="DirectConnectionPanel" parent="MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_rfs6s")]
 layout_mode = 2
-size_flags_vertical = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/DirectConnectionPanel"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/DirectConnectionPanel/MarginContainer"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/DirectConnectionPanel/MarginContainer/VBoxContainer2"]
-layout_mode = 2
-text = "Direct Connection"
-horizontal_alignment = 1
-
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/DirectConnectionPanel/MarginContainer/VBoxContainer2"]
-layout_mode = 2
-columns = 2
-
-[node name="ModeText" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/DirectConnectionPanel/MarginContainer/VBoxContainer2/GridContainer"]
-layout_mode = 2
-text = "Mode: "
-
-[node name="ModeSelect" type="OptionButton" parent="MarginContainer/HBoxContainer/VBoxContainer2/DirectConnectionPanel/MarginContainer/VBoxContainer2/GridContainer"]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-size_flags_horizontal = 3
-selected = 0
-item_count = 3
-popup/item_0/text = "Ethernet"
-popup/item_0/id = 0
-popup/item_1/text = "WebRTC"
-popup/item_1/id = 1
-popup/item_1/disabled = true
-popup/item_2/text = "Websockets"
-popup/item_2/id = 3
-popup/item_2/disabled = true
-
-[node name="UrlText" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/DirectConnectionPanel/MarginContainer/VBoxContainer2/GridContainer"]
-layout_mode = 2
-text = "Address:"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/DirectConnectionPanel/MarginContainer/VBoxContainer2/GridContainer"]
-layout_mode = 2
-
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/HBoxContainer/VBoxContainer2/DirectConnectionPanel/MarginContainer/VBoxContainer2/GridContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "localhost"
-
-[node name="SpinBox" type="SpinBox" parent="MarginContainer/HBoxContainer/VBoxContainer2/DirectConnectionPanel/MarginContainer/VBoxContainer2/GridContainer/HBoxContainer"]
-layout_mode = 2
-max_value = 9000.0
-value = 6969.0
-
-[node name="PasswordText" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/DirectConnectionPanel/MarginContainer/VBoxContainer2/GridContainer"]
-layout_mode = 2
-text = "Password: "
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/DirectConnectionPanel/MarginContainer/VBoxContainer2/GridContainer"]
-layout_mode = 2
-
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/HBoxContainer/VBoxContainer2/DirectConnectionPanel/MarginContainer/VBoxContainer2/GridContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-secret = true
-
-[node name="CheckBox" type="CheckBox" parent="MarginContainer/HBoxContainer/VBoxContainer2/DirectConnectionPanel/MarginContainer/VBoxContainer2/GridContainer/HBoxContainer2"]
-layout_mode = 2
-button_pressed = true
-text = "Hidden"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/DirectConnectionPanel/MarginContainer/VBoxContainer2"]
-layout_mode = 2
-
-[node name="Spacer" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer2/DirectConnectionPanel/MarginContainer/VBoxContainer2"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/DirectConnectionPanel/MarginContainer/VBoxContainer2"]
-layout_mode = 2
-text = "Join Lobby"
