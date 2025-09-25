@@ -6,7 +6,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4es5y"]
 
-[node name="PreLobby" type="Control" node_paths=PackedStringArray("lobby_creator")]
+[node name="PreLobby" type="Control" node_paths=PackedStringArray("lobby_creator", "lobby_browser")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1135d")
 lobby_creator = NodePath("CenterContainer/VBoxContainer/TabContainer/LobbyCreator")
+lobby_browser = NodePath("CenterContainer/VBoxContainer/TabContainer/LobbyBrowser")
 
 [node name="CenterContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -40,6 +41,7 @@ alignment = 2
 
 [node name="Button" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+disabled = true
 text = "Quit
 "
 
@@ -65,6 +67,7 @@ text = "Create Lobby"
 [node name="SettingsButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+disabled = true
 text = "Settings"
 icon_alignment = 1
 expand_icon = true
@@ -80,6 +83,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_4es5y")
 current_tab = 1
+tabs_visible = false
 deselect_enabled = true
 
 [node name="LobbyCreator" parent="CenterContainer/VBoxContainer/TabContainer" instance=ExtResource("3_4es5y")]
