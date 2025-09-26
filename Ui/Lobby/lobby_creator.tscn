@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c6ennwobbvjhx"]
 
-[ext_resource type="Script" uid="uid://b1votmsvsetru" path="res://Ui/Lobby/lobby_creator.gd" id="1_0pfai"]
+[ext_resource type="Script" uid="uid://df8syjomyxfur" path="res://Ui/Lobby/lobby_creator.gd" id="1_0pfai"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8xss"]
 font_size = 34
@@ -70,6 +70,7 @@ layout_mode = 2
 [node name="LineEdit2" type="LineEdit" parent="MarginContainer/CenterContainer/VBoxContainer/GridContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+secret = true
 secret_character = "♥"
 
 [node name="HidePassword" type="CheckBox" parent="MarginContainer/CenterContainer/VBoxContainer/GridContainer/HBoxContainer"]

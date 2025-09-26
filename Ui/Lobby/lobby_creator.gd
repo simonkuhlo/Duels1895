@@ -35,4 +35,4 @@ func _on_cancel_button_pressed() -> void:
 	hide()
 
 func _on_hide_password_toggled(toggled_on: bool) -> void:
-	password_edit.visible = !toggled_on
+	password_edit.secret = toggled_on
