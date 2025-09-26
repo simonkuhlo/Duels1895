@@ -15,22 +15,31 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
 script = ExtResource("1_yqf2f")
-name_label = NodePath("HBoxContainer/NameLabel")
-max_player_label = NodePath("HBoxContainer/MaxPlayerLabel")
+name_label = NodePath("MarginContainer/HBoxContainer/NameLabel")
+max_player_label = NodePath("MarginContainer/HBoxContainer/MaxPlayerLabel")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="NameLabel" type="Label" parent="HBoxContainer"]
+[node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "Map Name"
 
-[node name="Control" type="Control" parent="HBoxContainer"]
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 
-[node name="MaxPlayerLabel" type="Label" parent="HBoxContainer"]
+[node name="MaxPlayerLabel" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "5"
