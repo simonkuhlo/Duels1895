@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://bbe4x8ncqvrxj"]
+
+[ext_resource type="Script" uid="uid://c81lqv7aqsj1i" path="res://System/Maps/Loader/multiplayer_map_loader.gd" id="1_6pmpa"]
+[ext_resource type="Script" uid="uid://dh0jiadca171o" path="res://System/Maps/map_resource.gd" id="2_ghr5j"]
+[ext_resource type="Resource" uid="uid://qlnjnxld20qa" path="res://Maps/Testworld/test_world.tres" id="3_7rp2h"]
+[ext_resource type="Script" uid="uid://d2aih74dme78v" path="res://System/Maps/map_db.gd" id="4_nwsxw"]
+
+[sub_resource type="Resource" id="Resource_pgmh6"]
+script = ExtResource("4_nwsxw")
+maps = Dictionary[StringName, ExtResource("2_ghr5j")]({
+&"map_testworld": ExtResource("3_7rp2h")
+})
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_mvg8o"]
+properties/0/path = NodePath(".:loaded_peers")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:awaited_peers")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+
+[node name="MultiplayerMapLoader" type="Node" node_paths=PackedStringArray("map_instance_root")]
+script = ExtResource("1_6pmpa")
+map_db = SubResource("Resource_pgmh6")
+map_instance_root = NodePath(".")
+
+[node name="ProcessDeadlineTimer" type="Timer" parent="."]
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_mvg8o")

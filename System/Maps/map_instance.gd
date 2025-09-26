@@ -11,6 +11,8 @@ var controlled_entity:EntityBody3D:
 		controlled_entity = new
 		controlled_entity_changed.emit(controlled_entity)
 
+var peer_entity_mapping:Dictionary[int, EntityBody3D]
+
 var paused:bool:
 	set(new):
 		paused = new

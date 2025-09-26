@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 Items="*res://System/Items/Core/Autoload/items.tscn"
 Lobby="*res://System/Multiplayer Lobby/lobby.tscn"
 Settings="*res://System/Settings/settings.tscn"
-MapLoader="*res://Maps/_System/multiplayer_map_loader.tscn"
+MapLoader="*res://System/Maps/Loader/multiplayer_map_loader.tscn"
 
 [file_customization]
 
@@ -36,7 +36,7 @@ folder_colors={
 "res://Maps/": "teal",
 "res://Maps/Testworld/": "teal",
 "res://Maps/_Data/": "orange",
-"res://Maps/_System/": "orange",
+"res://Maps/_Templates/": "orange",
 "res://System/": "orange",
 "res://System/Statechart/Assets/": "purple",
 "res://Ui/": "orange"

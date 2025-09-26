@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://gs4pfxwug7kg"]
+[gd_scene load_steps=7 format=3 uid="uid://gs4pfxwug7kg"]
 
 [ext_resource type="Script" uid="uid://bhimteo2qc3il" path="res://Ui/Lobby/Lobby Browser/lobby_browser.gd" id="1_iym8f"]
 [ext_resource type="Script" uid="uid://on00pvdl044o" path="res://Ui/Lobby/Lobby Browser/discover_server_editor.gd" id="2_nhwqr"]
 [ext_resource type="PackedScene" uid="uid://bk4ky6bbhnbf4" path="res://Ui/Lobby/Lobby Browser/direct_connection_panel.tscn" id="2_rfs6s"]
 [ext_resource type="Script" uid="uid://6belikyrym8" path="res://Ui/Lobby/Lobby Browser/lobby_list.gd" id="3_nhwqr"]
 [ext_resource type="PackedScene" uid="uid://c7rf165klljql" path="res://Ui/Lobby/Lobby Browser/profile_editor.tscn" id="4_0qqx8"]
+[ext_resource type="PackedScene" uid="uid://b73bv0au12e2m" path="res://Ui/Lobby/Lobby Browser/lobby_list_lobby_visualizer.tscn" id="4_r0ndo"]
 
 [node name="LobbyBrowser" type="PanelContainer"]
 anchors_preset = 8
@@ -71,6 +72,9 @@ text = "Update"
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("3_nhwqr")
+
+[node name="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/LobbyList" instance=ExtResource("4_r0ndo")]
+layout_mode = 2
 
 [node name="CreateLobbyButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
