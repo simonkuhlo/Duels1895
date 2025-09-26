@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://gs4pfxwug7kg"]
+[gd_scene load_steps=6 format=3 uid="uid://gs4pfxwug7kg"]
 
 [ext_resource type="Script" uid="uid://bhimteo2qc3il" path="res://Ui/Lobby/Lobby Browser/lobby_browser.gd" id="1_iym8f"]
 [ext_resource type="Script" uid="uid://on00pvdl044o" path="res://Ui/Lobby/Lobby Browser/discover_server_editor.gd" id="2_nhwqr"]
 [ext_resource type="PackedScene" uid="uid://bk4ky6bbhnbf4" path="res://Ui/Lobby/Lobby Browser/direct_connection_panel.tscn" id="2_rfs6s"]
 [ext_resource type="Script" uid="uid://6belikyrym8" path="res://Ui/Lobby/Lobby Browser/lobby_list.gd" id="3_nhwqr"]
+[ext_resource type="PackedScene" uid="uid://c7rf165klljql" path="res://Ui/Lobby/Lobby Browser/profile_editor.tscn" id="4_0qqx8"]
 
 [node name="LobbyBrowser" type="PanelContainer"]
 anchors_preset = 8
@@ -79,41 +80,8 @@ text = "+ Create own Lobby"
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="ProfileEditor" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="ProfileEditor" parent="MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("4_0qqx8")]
 layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/ProfileEditor"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/ProfileEditor/MarginContainer"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/ProfileEditor/MarginContainer/VBoxContainer2"]
-layout_mode = 2
-text = "Your Profile"
-horizontal_alignment = 1
-
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/ProfileEditor/MarginContainer/VBoxContainer2"]
-layout_mode = 2
-columns = 2
-
-[node name="NameText" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/ProfileEditor/MarginContainer/VBoxContainer2/GridContainer"]
-layout_mode = 2
-text = "Name: "
-
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/HBoxContainer/VBoxContainer2/ProfileEditor/MarginContainer/VBoxContainer2/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Simon"
-
-[node name="Spacer" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer2/ProfileEditor/MarginContainer/VBoxContainer2"]
-layout_mode = 2
-size_flags_vertical = 3
 
 [node name="DirectConnectionPanel" parent="MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_rfs6s")]
 layout_mode = 2
