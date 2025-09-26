@@ -12,45 +12,53 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_480ut")
-list_root = NodePath("HBoxContainer/MapSelect/MapList")
+list_root = NodePath("MarginContainer/HBoxContainer/MapSelect/MapList")
 visualizer_scene = ExtResource("1_uprcj")
-preview_name_label = NodePath("HBoxContainer/MapPreview/PreviewNameLabel")
+preview_name_label = NodePath("MarginContainer/HBoxContainer/MapPreview/PreviewNameLabel")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="MapSelect" type="VBoxContainer" parent="HBoxContainer"]
+[node name="MapSelect" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ToolBar" type="HBoxContainer" parent="HBoxContainer/MapSelect"]
+[node name="ToolBar" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MapSelect"]
 layout_mode = 2
 alignment = 2
 
-[node name="Button" type="Button" parent="HBoxContainer/MapSelect/ToolBar"]
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/MapSelect/ToolBar"]
 layout_mode = 2
 text = "Refresh"
 
-[node name="MapList" type="VBoxContainer" parent="HBoxContainer/MapSelect"]
+[node name="MapList" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MapSelect"]
 layout_mode = 2
 
-[node name="MapPreview" type="VBoxContainer" parent="HBoxContainer"]
+[node name="MapPreview" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/MapPreview"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/MapPreview"]
 layout_mode = 2
 text = "Selected Map"
 horizontal_alignment = 1
 
-[node name="PreviewNameLabel" type="Label" parent="HBoxContainer/MapPreview"]
+[node name="PreviewNameLabel" type="Label" parent="MarginContainer/HBoxContainer/MapPreview"]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="HBoxContainer/MapPreview"]
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/MapPreview"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="StartButton" type="Button" parent="HBoxContainer/MapPreview"]
+[node name="StartButton" type="Button" parent="MarginContainer/HBoxContainer/MapPreview"]
 layout_mode = 2
 text = "Start!"
 
-[connection signal="pressed" from="HBoxContainer/MapPreview/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/MapPreview/StartButton" to="." method="_on_start_button_pressed"]
