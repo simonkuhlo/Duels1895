@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7rf165klljql"]
+
+[ext_resource type="Script" uid="uid://cog8q2xl08t6p" path="res://Ui/Lobby/Lobby Browser/profile_editor.gd" id="1_iwk80"]
+
+[node name="ProfileEditor" type="PanelContainer" node_paths=PackedStringArray("name_edit")]
+script = ExtResource("1_iwk80")
+name_edit = NodePath("MarginContainer/VBoxContainer2/GridContainer/LineEdit")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Your Profile"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+columns = 2
+
+[node name="NameText" type="Label" parent="MarginContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+text = "Name: "
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer2/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Simon"
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SaveButton" type="Button" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Save"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer2/SaveButton" to="." method="_on_save_button_pressed"]

@@ -1,10 +1,13 @@
 [gd_resource type="Resource" script_class="ConnectionSettings" load_steps=2 format=3 uid="uid://c3oxl1c3eq6qc"]
 
-[ext_resource type="Script" uid="uid://qv217dug5fkv" path="res://System/MultiplayerLobby/connection_settings.gd" id="1_odub8"]
+[ext_resource type="Script" uid="uid://bgi16f0jkx40a" path="res://System/Multiplayer Lobby/connection_settings.gd" id="1_odub8"]
 
 [resource]
 script = ExtResource("1_odub8")
+connection_mode = 0
 game_port = 6969
+discovery_server_address = "https://matchmaking.simonkuhlo.de"
 max_players = 10
+lobby_title = "New Lobby"
+lobby_password = ""
 remote_address = "localhost"
-metadata/_custom_type_script = "uid://qv217dug5fkv"

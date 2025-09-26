@@ -12,6 +12,7 @@ var peer_profile_mapping:Dictionary[int, MultiplayerProfile] = {}
 func _ready() -> void:
 	multiplayer.peer_connected.connect(_on_peer_connected)
 	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
+	multiplayer.connected_to_server.connect(_on_connected_to_server)
 
 func create_server() -> void:
 	var enet_peer = ENetMultiplayerPeer.new()
@@ -26,16 +27,15 @@ func create_server() -> void:
 
 func create_client() -> void:
 	var enet_peer = ENetMultiplayerPeer.new()
-	multiplayer.connected_to_server.connect(_on_connected_to_server)
 	var error = enet_peer.create_client(Settings.connection_settings.remote_address, Settings.connection_settings.game_port)
 	if error:
 		leave_lobby(error)
 		return
 	multiplayer.multiplayer_peer = enet_peer
-	lobby_entered.emit()
 
 func _on_connected_to_server() -> void:
 	request_profile_update_local(Settings.connection_settings.used_profile)
+	lobby_entered.emit()
 
 func _on_peer_connected(id:int) -> void:
 	if !multiplayer.is_server():
