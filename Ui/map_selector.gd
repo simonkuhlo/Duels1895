@@ -12,6 +12,7 @@ var selected_map:MapResource:
 
 func _ready() -> void:
 	setup()
+	selected_map = MapLoader.map_db.get_map_list()[0]
 
 func setup() -> void:
 	clear()
