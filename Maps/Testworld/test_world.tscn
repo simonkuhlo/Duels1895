@@ -1,20 +1,21 @@
-[gd_scene load_steps=31 format=3 uid="uid://tyy8a7n6vs1t"]
+[gd_scene load_steps=32 format=3 uid="uid://tyy8a7n6vs1t"]
 
 [ext_resource type="PackedScene" uid="uid://ca6610awtca8x" path="res://Ui/Ingame/controlled_entity_ui.tscn" id="1_fyd15"]
 [ext_resource type="Texture2D" uid="uid://bki7lv2ibcdsx" path="res://Assets/Debug Textures/PNG/Dark/texture_07.png" id="1_tcuxq"]
-[ext_resource type="Script" uid="uid://d3ugslm6cowby" path="res://System/Maps/map_instance.gd" id="1_vkd6p"]
+[ext_resource type="Script" uid="uid://bf1q50rxsq5sc" path="res://System/Maps/map_instance.gd" id="1_vkd6p"]
 [ext_resource type="PackedScene" uid="uid://715oy5d5svy5" path="res://System/Entities/PlayerCharacter/player_character_body.tscn" id="2_2ovxu"]
 [ext_resource type="Texture2D" uid="uid://mcs0qu228yhp" path="res://Assets/Debug Textures/PNG/Orange/texture_01.png" id="2_fyd15"]
+[ext_resource type="Script" uid="uid://1ty7knkbdqa7" path="res://Maps/Testworld/game_logic.gd" id="2_s2o1y"]
 [ext_resource type="PackedScene" uid="uid://d2a855v6411vx" path="res://Ui/pause_menu.tscn" id="2_wdtph"]
 [ext_resource type="Texture2D" uid="uid://cpdgq4omukce2" path="res://Assets/Debug Textures/Vector/texture_01.svg" id="4_473rr"]
 [ext_resource type="Texture2D" uid="uid://cbblk84fquqkb" path="res://Assets/Debug Textures/PNG/Dark/texture_13.png" id="5_i5nfa"]
 [ext_resource type="Texture2D" uid="uid://yp8dk5alji4n" path="res://Assets/Debug Textures/PNG/Purple/texture_11.png" id="8_i5nfa"]
 [ext_resource type="Texture2D" uid="uid://7ghkovkmvowy" path="res://Assets/Debug Textures/PNG/Purple/texture_02.png" id="9_si7et"]
-[ext_resource type="Script" uid="uid://4aubljxegbnq" path="res://System/Maps/spectator_camera_director.gd" id="10_vkd6p"]
-[ext_resource type="Script" uid="uid://b4an3soj1lvoy" path="res://System/Maps/player_spawner.gd" id="12_wdtph"]
-[ext_resource type="Script" uid="uid://g8pj4ktbudu1" path="res://System/Items/Core/multiplayer_world_item_spawner.gd" id="13_1jgxu"]
+[ext_resource type="Script" uid="uid://bmf2ovmmeiw2a" path="res://System/Maps/spectator_camera_director.gd" id="10_vkd6p"]
+[ext_resource type="Script" uid="uid://n4a5w2003cgh" path="res://System/Maps/player_spawner.gd" id="12_wdtph"]
+[ext_resource type="Script" uid="uid://byobev3x1yhsn" path="res://System/Items/Core/multiplayer_world_item_spawner.gd" id="13_1jgxu"]
 [ext_resource type="PackedScene" uid="uid://cb1t5f6cdur34" path="res://System/Items/Nodes/world_item_spawner.tscn" id="13_kjpmb"]
-[ext_resource type="Script" uid="uid://crq3ojxjwo43d" path="res://System/Items/Core/item_instance.gd" id="14_a58uu"]
+[ext_resource type="Script" uid="uid://fyr8fsubq7lx" path="res://System/Items/Core/item_instance.gd" id="14_a58uu"]
 [ext_resource type="Resource" uid="uid://d0pfuiioo4pu4" path="res://Items/TestItem/test_item.tres" id="14_x3ct3"]
 [ext_resource type="Resource" uid="uid://wp5415ckmxuv" path="res://Items/Gun/TestGun/testgun.tres" id="17_0i1fw"]
 
@@ -71,9 +72,14 @@ item_reference = ExtResource("17_0i1fw")
 amount = 1
 metadata/_custom_type_script = "uid://si4q0pagftsy"
 
-[node name="TestWorld" type="Node3D" node_paths=PackedStringArray("player_spawns")]
+[node name="TestWorld" type="Node3D" node_paths=PackedStringArray("game_logic")]
 script = ExtResource("1_vkd6p")
-player_spawns = [NodePath("PlayerSpawn")]
+game_logic = NodePath("GameLogic")
+
+[node name="GameLogic" type="Node" parent="." node_paths=PackedStringArray("parent_world", "player_spawns")]
+script = ExtResource("2_s2o1y")
+parent_world = NodePath("..")
+player_spawns = [NodePath("../PlayerSpawn")]
 
 [node name="PauseMenu" parent="." node_paths=PackedStringArray("parent_world") instance=ExtResource("2_wdtph")]
 parent_world = NodePath("..")

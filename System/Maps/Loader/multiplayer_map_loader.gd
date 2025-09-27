@@ -61,7 +61,7 @@ func load_map_response(success:bool) -> void:
 func on_load_process_finished() -> void:
 	if !multiplayer.is_server():
 		return
-	loaded_map_instance.start_game()
+	loaded_map_instance.game_logic.start_game()
 
 func load_map(map:MapResource) -> void:
 	load_process_started.emit()
