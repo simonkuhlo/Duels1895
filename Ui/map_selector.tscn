@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://didlja6xj44qh"]
+
+[ext_resource type="Script" uid="uid://dwwnfu8wcvviq" path="res://Ui/map_selector.gd" id="1_480ut"]
+[ext_resource type="PackedScene" uid="uid://dorxbrvdb04h3" path="res://Ui/map_list_map_visualizer.tscn" id="1_uprcj"]
+
+[node name="MapSelector" type="PanelContainer" node_paths=PackedStringArray("list_root", "preview_name_label")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_480ut")
+list_root = NodePath("MarginContainer/HBoxContainer/MapSelect/MapList")
+visualizer_scene = ExtResource("1_uprcj")
+preview_name_label = NodePath("MarginContainer/HBoxContainer/MapPreview/PreviewNameLabel")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MapSelect" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ToolBar" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MapSelect"]
+layout_mode = 2
+alignment = 2
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/MapSelect/ToolBar"]
+layout_mode = 2
+text = "Refresh"
+
+[node name="MapList" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MapSelect"]
+layout_mode = 2
+
+[node name="MapPreview" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/MapPreview"]
+layout_mode = 2
+text = "Selected Map"
+horizontal_alignment = 1
+
+[node name="PreviewNameLabel" type="Label" parent="MarginContainer/HBoxContainer/MapPreview"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/MapPreview"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StartButton" type="Button" parent="MarginContainer/HBoxContainer/MapPreview"]
+layout_mode = 2
+text = "Start!"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/MapPreview/StartButton" to="." method="_on_start_button_pressed"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ca6610awtca8x"]
 
-[ext_resource type="Script" uid="uid://bc0r5k8ng8x47" path="res://Maps/_System/controlled_entity_ui.gd" id="1_530x5"]
-[ext_resource type="Script" uid="uid://b2xs1gil3nm6a" path="res://Ui/Ingame/stat_visualizer.gd" id="2_qudam"]
+[ext_resource type="Script" uid="uid://b6k25nd07x8x2" path="res://Ui/Ingame/controlled_entity_ui.gd" id="1_530x5"]
+[ext_resource type="Script" uid="uid://c2bh1suv4t3s7" path="res://Ui/Ingame/stat_visualizer.gd" id="2_qudam"]
 [ext_resource type="PackedScene" uid="uid://bgew5opgbyvk4" path="res://System/Items/Ui/Inventory Visualizer/hotbar_inventory_visualizer.tscn" id="3_rdj4f"]
 
 [node name="ControlledEntityUI" type="CanvasLayer" node_paths=PackedStringArray("health_bar", "movement_stamina_bar", "ads_stamina_bar", "action_stamina_bar", "hotbar_inventory_visualizer")]

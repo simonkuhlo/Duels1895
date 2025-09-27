@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://vr1rchrbhnqw"]
 
-[ext_resource type="Script" uid="uid://cywrhsjqx26hs" path="res://System/Entities/entity_body_3d.gd" id="1_qtxv7"]
-[ext_resource type="Script" uid="uid://dbblf8tqoy7rc" path="res://System/Entities/Stats/Scripts/entity_stat.gd" id="2_4y1t2"]
+[ext_resource type="Script" uid="uid://dcb0v3s2a6avg" path="res://System/Entities/entity_body_3d.gd" id="1_qtxv7"]
+[ext_resource type="Script" uid="uid://88mtcol24e8l" path="res://System/Entities/Stats/Scripts/entity_stat.gd" id="2_4y1t2"]
 [ext_resource type="PackedScene" uid="uid://bthqp0o7o2bv5" path="res://System/Items/Core/Inventory Element/Inventory Collection/inventory_collection.tscn" id="2_xufau"]
 [ext_resource type="PackedScene" uid="uid://qnadki4kfuia" path="res://System/Entities/Stats/entity_stat_holder.tscn" id="4_xufau"]
 [ext_resource type="PackedScene" uid="uid://fc8wrptdmbc5" path="res://System/Items/Nodes/Item Holder/item_holder.tscn" id="5_23x27"]
-[ext_resource type="Script" uid="uid://bm74bsj5uyg56" path="res://System/Entities/interaction_ray_cast_3d.gd" id="5_rke0j"]
+[ext_resource type="Script" uid="uid://b1i1rqyj11sgw" path="res://System/Entities/interaction_ray_cast_3d.gd" id="5_rke0j"]
 
 [sub_resource type="Resource" id="Resource_v6f86"]
 script = ExtResource("2_4y1t2")

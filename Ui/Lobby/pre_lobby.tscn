@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://boqxlupec5yd1"]
 
-[ext_resource type="Script" uid="uid://bkyjwa1nlb3d6" path="res://Ui/Lobby/pre_lobby.gd" id="1_1135d"]
+[ext_resource type="Script" uid="uid://csrawwxaqdduo" path="res://Ui/Lobby/pre_lobby.gd" id="1_1135d"]
 [ext_resource type="PackedScene" uid="uid://c6ennwobbvjhx" path="res://Ui/Lobby/lobby_creator.tscn" id="3_4es5y"]
 [ext_resource type="PackedScene" uid="uid://gs4pfxwug7kg" path="res://Ui/Lobby/Lobby Browser/lobby_browser.tscn" id="3_y7h0k"]
 
@@ -81,16 +81,17 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_4es5y")
-current_tab = 1
+current_tab = 0
 tabs_visible = false
+use_hidden_tabs_for_min_size = true
 deselect_enabled = true
 
 [node name="LobbyCreator" parent="CenterContainer/VBoxContainer/TabContainer" instance=ExtResource("3_4es5y")]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
 [node name="LobbyBrowser" parent="CenterContainer/VBoxContainer/TabContainer" instance=ExtResource("3_y7h0k")]
+visible = false
 layout_mode = 2
 
 [node name="CreateLobbyButton" parent="CenterContainer/VBoxContainer/TabContainer/LobbyBrowser/MarginContainer/HBoxContainer/VBoxContainer" index="2"]

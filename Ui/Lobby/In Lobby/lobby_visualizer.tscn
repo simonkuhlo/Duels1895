@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cww4pw6cpc8b5"]
+[gd_scene load_steps=6 format=3 uid="uid://cww4pw6cpc8b5"]
 
-[ext_resource type="Script" uid="uid://bhrq1iwrq5v5a" path="res://Ui/Lobby/In Lobby/lobby_visualizer.gd" id="1_22sjt"]
+[ext_resource type="Script" uid="uid://bg1du2i3putc3" path="res://Ui/Lobby/In Lobby/lobby_visualizer.gd" id="1_22sjt"]
 [ext_resource type="Resource" uid="uid://qlnjnxld20qa" path="res://Maps/Testworld/test_world.tres" id="2_bg863"]
-[ext_resource type="Script" uid="uid://bewjigshh11ju" path="res://Ui/Lobby/In Lobby/player_list.gd" id="2_rdvlu"]
+[ext_resource type="Script" uid="uid://41d73pi3jltx" path="res://Ui/Lobby/In Lobby/player_list.gd" id="2_rdvlu"]
 [ext_resource type="PackedScene" uid="uid://bpbm2uw0cfyf1" path="res://Ui/Lobby/In Lobby/lobby_member_visualizer.tscn" id="3_cxr7h"]
+[ext_resource type="PackedScene" uid="uid://didlja6xj44qh" path="res://Ui/map_selector.tscn" id="5_vdqq2"]
 
 [node name="LobbyVisualizer" type="Control"]
 layout_mode = 3
@@ -17,9 +18,10 @@ test_world = ExtResource("2_bg863")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 9
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 300.0
+grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
@@ -53,7 +55,12 @@ list_root = NodePath("VBoxContainer")
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/PlayerListSection/VBoxContainer/PlayerList"]
 layout_mode = 2
 
+[node name="MapSelector" parent="HBoxContainer" instance=ExtResource("5_vdqq2")]
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
