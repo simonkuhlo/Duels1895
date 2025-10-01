@@ -1,4 +1,5 @@
 extends RayCast3D
+class_name BulletInstance
 
 func _physics_process(delta: float) -> void:
 	var ray_cast:RayCast3D = RayCast3D.new()
