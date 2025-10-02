@@ -1,6 +1,8 @@
 extends EquippedWeapon
 class_name EquippedGun
 
+var loaded_ammo:AmmoItem
+
 @export var bullet_scene:PackedScene
 
 func _on_idle_activated() -> void:
@@ -27,5 +29,10 @@ func _request_shoot(origin:Transform3D):
 		if multiplayer.get_remote_sender_id() != get_multiplayer_authority():
 			return
 	var bullet_instance:BulletInstance = bullet_scene.instantiate()
+	var damage_source:ProjectileDamageSource = ProjectileDamageSource.new()
+	damage_source.holder = holder.parent_entity
+	damage_source.peer = multiplayer.get_remote_sender_id()
+	damage_source.weapon = self.instance.item_reference
+	bullet_instance.damage_source = damage_source
 	bullet_instance.global_transform = origin
 	MapLoader.loaded_map_instance.add_child(bullet_instance)

@@ -5,6 +5,7 @@
 [sub_resource type="SphereMesh" id="SphereMesh_5cg1c"]
 
 [node name="BulletInstance" type="RayCast3D"]
+collide_with_areas = true
 script = ExtResource("1_5cg1c")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

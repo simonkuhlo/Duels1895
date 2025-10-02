@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://tyy8a7n6vs1t"]
+[gd_scene load_steps=36 format=3 uid="uid://tyy8a7n6vs1t"]
 
 [ext_resource type="PackedScene" uid="uid://ca6610awtca8x" path="res://Ui/Ingame/controlled_entity_ui.tscn" id="1_fyd15"]
 [ext_resource type="Texture2D" uid="uid://bki7lv2ibcdsx" path="res://Assets/Debug Textures/PNG/Dark/texture_07.png" id="1_tcuxq"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://crq3ojxjwo43d" path="res://System/Items/Core/item_instance.gd" id="14_a58uu"]
 [ext_resource type="Resource" uid="uid://d0pfuiioo4pu4" path="res://Items/TestItem/test_item.tres" id="14_x3ct3"]
 [ext_resource type="Resource" uid="uid://wp5415ckmxuv" path="res://Items/Gun/TestGun/testgun.tres" id="17_0i1fw"]
+[ext_resource type="Script" uid="uid://di5xl248g4osb" path="res://System/Hit & Hurtboxes/hurtbox.gd" id="19_txeu6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dxppu"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -71,6 +72,17 @@ script = ExtResource("14_a58uu")
 item_reference = ExtResource("17_0i1fw")
 amount = 1
 metadata/_custom_type_script = "uid://si4q0pagftsy"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uv4mv"]
+size = Vector3(6, 4, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xxcdt"]
+transparency = 1
+albedo_color = Color(0.847059, 0.196078, 0.219608, 0.47451)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4t017"]
+material = SubResource("StandardMaterial3D_xxcdt")
+size = Vector3(6, 4, 1)
 
 [node name="TestWorld" type="Node3D" node_paths=PackedStringArray("game_logic")]
 script = ExtResource("1_vkd6p")
@@ -182,5 +194,17 @@ resource_to_spawn = SubResource("Resource_x3ct3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.98266, 1.89255, 10)
 parent_map = NodePath("..")
 resource_to_spawn = SubResource("Resource_x3ct3")
+
+[node name="Hurtbox" type="Area3D" parent="."]
+transform = Transform3D(0.981896, 0, -0.189421, 0, 1, 0, 0.189421, 0, 0.981896, 12.4669, 3.37485, -6.41501)
+script = ExtResource("19_txeu6")
+metadata/_custom_type_script = "uid://di5xl248g4osb"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_uv4mv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hurtbox"]
+mesh = SubResource("BoxMesh_4t017")
 
 [connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
