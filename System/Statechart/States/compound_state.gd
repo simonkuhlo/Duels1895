@@ -14,9 +14,8 @@ var current_state:StateChartState:
 		return current_state
 var _current_state:StateChartState
 
-func activate() -> void:
+func _on_activated() -> void:
 	_switch_state(default_substate)
-	super.activate()
 
 func on_tick() -> void:
 	super.on_tick()

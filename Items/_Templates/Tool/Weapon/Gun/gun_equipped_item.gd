@@ -2,7 +2,10 @@ extends EquippedWeapon
 class_name EquippedGun
 
 @export var bullet_scene:PackedScene
-@export var bullet_origin:Marker3D
+var bullet_origin:Transform3D = Transform3D()
+
+func _ready():
+	bullet_origin = holder.parent_entity.neck.global_transform
 
 func _on_idle_activated() -> void:
 	animation_tree["parameters/playback"].travel("TestGun_Idle")
@@ -13,7 +16,7 @@ func _on_aiming_activated() -> void:
 func _on_shooting_activated() -> void:
 	animation_tree["parameters/playback"].travel("TestGun_Shoot")
 	if is_multiplayer_authority():
-		_request_shoot(bullet_origin.global_transform)
+		_request_shoot(bullet_origin)
 
 func _on_reloading_activated() -> void:
 	animation_tree["parameters/playback"].travel("TestGun_Reload")

@@ -7,7 +7,8 @@ class_name StateChart
 @export var active:bool = true:
 	set(new):
 		active = new
-		root_state.active = active
+		if root_state:
+			root_state.active = active
 
 func _get_root_state() -> StateChartState:
 	for child in get_children():
@@ -30,7 +31,7 @@ func _process(delta):
 		return
 	root_state.on_processing(delta)
 
-func _physics_process(delta):	
+func _physics_process(delta):
 	if !active:
 		return
 	if Engine.is_editor_hint():

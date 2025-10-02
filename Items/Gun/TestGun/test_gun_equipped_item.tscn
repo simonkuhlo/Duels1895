@@ -159,6 +159,9 @@ _data = {
 [node name="revolver" parent="." index="0" instance=ExtResource("2_0vnbi")]
 transform = Transform3D(-7.23998e-06, 0, -2, 0, 2, 0, 2, 0, -7.23998e-06, 0, 0, 0)
 
+[node name="StateChart" parent="." index="1"]
+active = true
+
 [node name="AnimationTree" parent="." index="2"]
 tree_root = SubResource("AnimationNodeStateMachine_xkyr2")
 

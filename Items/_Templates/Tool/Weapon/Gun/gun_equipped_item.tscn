@@ -64,13 +64,13 @@ _data = {
 &"Aim_down_sights": SubResource("Animation_ijx3d")
 }
 
-[node name="GunEquippedItem" node_paths=PackedStringArray("bullet_origin") instance=ExtResource("1_1vnc5")]
+[node name="GunEquippedItem" instance=ExtResource("1_1vnc5")]
 script = ExtResource("2_prq1c")
 bullet_scene = ExtResource("3_evmsm")
-bullet_origin = NodePath("BulletOrigin")
 
 [node name="StateChart" type="Node" parent="." index="0"]
 script = ExtResource("2_7ojyg")
+active = null
 
 [node name="ReloadActionWatcher" type="Node" parent="StateChart" index="0"]
 script = ExtResource("3_os25l")
