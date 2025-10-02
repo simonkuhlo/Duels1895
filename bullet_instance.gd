@@ -15,3 +15,7 @@ func calculate_next_position(delta:float) -> Vector3:
 
 func collide(collider:Object) -> void:
 	pass
+
+
+func _on_timer_timeout() -> void:
+	queue_free()
