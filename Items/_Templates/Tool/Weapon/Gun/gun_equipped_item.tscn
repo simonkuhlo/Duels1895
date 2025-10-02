@@ -70,7 +70,6 @@ bullet_scene = ExtResource("3_evmsm")
 
 [node name="StateChart" type="Node" parent="." index="0"]
 script = ExtResource("2_7ojyg")
-active = null
 
 [node name="ReloadActionWatcher" type="Node" parent="StateChart" index="0"]
 script = ExtResource("3_os25l")

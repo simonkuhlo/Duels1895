@@ -22,6 +22,7 @@ func _ready():
 		return
 	if Engine.is_editor_hint():
 		return
+	active = is_multiplayer_authority()
 	root_state.active = active
 
 func _process(delta):

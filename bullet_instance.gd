@@ -9,10 +9,9 @@ func _physics_process(delta: float) -> void:
 	if collider:
 		collide(collider)
 	global_transform.origin = pos_next
-	print(transform.origin)
 
 func calculate_next_position(delta:float) -> Vector3:
-	return global_transform.origin - Vector3.FORWARD * 10 * delta
+	return global_position - global_transform.basis.z * 10 * delta
 
 func collide(collider:Object) -> void:
 	pass
