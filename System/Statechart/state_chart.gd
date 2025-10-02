@@ -4,6 +4,7 @@ extends Node
 class_name StateChart
 
 @onready var root_state:StateChartState = _get_root_state()
+@export var active:bool = true
 
 func _get_root_state() -> StateChartState:
 	for child in get_children():
@@ -13,17 +14,26 @@ func _get_root_state() -> StateChartState:
 	return null
 
 func _ready():
-	if !Engine.is_editor_hint():
-		root_state.activate()
+	if !active:
+		return
+	if Engine.is_editor_hint():
+		return
+	root_state.activate()
 
 func _process(delta):
-	if !Engine.is_editor_hint():
-		root_state.on_processing(delta)
+	if !active:
+		return
+	if Engine.is_editor_hint():
+		return
+	root_state.on_processing(delta)
 
 func _physics_process(delta):	
-	if !Engine.is_editor_hint():
-		root_state.on_tick()
-		root_state.on_physics_processing(delta)
+	if !active:
+		return
+	if Engine.is_editor_hint():
+		return
+	root_state.on_tick()
+	root_state.on_physics_processing(delta)
 
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: PackedStringArray = []
