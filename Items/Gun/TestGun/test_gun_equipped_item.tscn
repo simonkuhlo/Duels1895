@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://bsu4skealuc0t"]
+[gd_scene load_steps=28 format=3 uid="uid://bsu4skealuc0t"]
 
 [ext_resource type="PackedScene" uid="uid://bdk4f5f26rruv" path="res://Items/_Templates/Tool/Weapon/Gun/gun_equipped_item.tscn" id="1_p3rdd"]
 [ext_resource type="PackedScene" uid="uid://d0qhpnij7ow5h" path="res://Assets/Revolver/revolver.fbx" id="2_0vnbi"]
+[ext_resource type="Script" uid="uid://k4tvfulfdia5" path="res://System/Statechart/Transition/Guards/delay_guard.gd" id="3_my1jw"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7evcr"]
 animation = &"RESET"
@@ -45,7 +46,7 @@ states/TestGun_Reload/position = Vector2(475, -20)
 states/TestGun_Shoot/node = SubResource("AnimationNodeAnimation_yg6gr")
 states/TestGun_Shoot/position = Vector2(456, 244)
 transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_j314w"), "TestGun_Shoot", "RESET", SubResource("AnimationNodeStateMachineTransition_iwltp"), "TestGun_Reload", "RESET", SubResource("AnimationNodeStateMachineTransition_xcr6i"), "TestGun_Idle", "RESET", SubResource("AnimationNodeStateMachineTransition_7evcr"), "RESET", "TestGun_Reload", SubResource("AnimationNodeStateMachineTransition_my1jw"), "RESET", "TestGun_Shoot", SubResource("AnimationNodeStateMachineTransition_yv20a"), "RESET", "TestGun_Idle", SubResource("AnimationNodeStateMachineTransition_yg6gr")]
-graph_offset = Vector2(79, -29)
+graph_offset = Vector2(-6, -95.4445)
 
 [sub_resource type="Animation" id="Animation_gfiny"]
 resource_name = "Idle"
@@ -158,6 +159,12 @@ _data = {
 
 [node name="revolver" parent="." index="0" instance=ExtResource("2_0vnbi")]
 transform = Transform3D(-7.23998e-06, 0, -2, 0, 2, 0, 2, 0, -7.23998e-06, 0, 0, 0)
+
+[node name="DelayGuard" type="Node" parent="StateChart/Root/Idle/ToShooting" index="1" node_paths=PackedStringArray("state_to_watch")]
+script = ExtResource("3_my1jw")
+state_to_watch = NodePath("../../../Shooting")
+delay_seconds = 1.0
+metadata/_custom_type_script = "uid://k4tvfulfdia5"
 
 [node name="AnimationTree" parent="." index="2"]
 tree_root = SubResource("AnimationNodeStateMachine_xkyr2")

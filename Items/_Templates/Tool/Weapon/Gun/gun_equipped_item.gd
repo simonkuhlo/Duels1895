@@ -28,5 +28,4 @@ func _request_shoot(origin:Transform3D):
 			return
 	var bullet_instance:BulletInstance = bullet_scene.instantiate()
 	bullet_instance.global_transform = origin
-	print(origin)
 	MapLoader.loaded_map_instance.add_child(bullet_instance)
