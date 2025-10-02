@@ -19,7 +19,13 @@ signal physics_processing(delta)
 signal deactivated()
 
 ## Wether the state is cuerrently active or not
-var active:bool = false
+var active:bool = false:
+	set(new):
+		active = new
+		if active:
+			activated.emit()
+		else:
+			deactivated.emit()
 
 
 ## Private variable, use "transitions"
@@ -76,12 +82,10 @@ func on_physics_processing(delta) -> void:
 ## Called when State gets activated
 func activate() -> void:
 	active = true
-	activated.emit()
 
 ## Called when State gets deactivated
 func deactivate() -> void:
 	active = false
-	deactivated.emit()
 
 ## Called when a child transition signals that the transition is possible
 func _on_transition_possible(transition:StateTransition) -> void:

@@ -4,7 +4,10 @@ extends Node
 class_name StateChart
 
 @onready var root_state:StateChartState = _get_root_state()
-@export var active:bool = true
+@export var active:bool = true:
+	set(new):
+		active = new
+		root_state.active = active
 
 func _get_root_state() -> StateChartState:
 	for child in get_children():
@@ -18,7 +21,7 @@ func _ready():
 		return
 	if Engine.is_editor_hint():
 		return
-	root_state.activate()
+	root_state.active = active
 
 func _process(delta):
 	if !active:
