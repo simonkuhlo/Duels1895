@@ -12,7 +12,7 @@ func _physics_process(delta: float) -> void:
 	print(transform.origin)
 
 func calculate_next_position(delta:float) -> Vector3:
-	return global_transform.origin + Vector3.FORWARD * 10 * delta
+	return global_transform.origin - Vector3.FORWARD * 10 * delta
 
 func collide(collider:Object) -> void:
 	pass

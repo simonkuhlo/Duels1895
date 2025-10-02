@@ -27,8 +27,9 @@ func _request_shoot(origin:Transform3D):
 		if is_multiplayer_authority():
 			_request_shoot.rpc_id(1, origin)
 		return
-	if multiplayer.get_remote_sender_id() != get_multiplayer_authority():
-		return
+	if multiplayer.get_remote_sender_id():
+		if multiplayer.get_remote_sender_id() != get_multiplayer_authority():
+			return
 	var bullet_instance:BulletInstance = bullet_scene.instantiate()
 	bullet_instance.global_transform = origin
 	MapLoader.loaded_map_instance.add_child(bullet_instance)
