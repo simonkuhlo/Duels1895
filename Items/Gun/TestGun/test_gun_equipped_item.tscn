@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bdk4f5f26rruv" path="res://Items/_Templates/Tool/Weapon/Gun/gun_equipped_item.tscn" id="1_p3rdd"]
 [ext_resource type="PackedScene" uid="uid://d0qhpnij7ow5h" path="res://Assets/Revolver/revolver.fbx" id="2_0vnbi"]
-[ext_resource type="Script" uid="uid://k4tvfulfdia5" path="res://System/Statechart/Transition/Guards/delay_guard.gd" id="3_my1jw"]
+[ext_resource type="Script" uid="uid://d4i5esoutf3k0" path="res://System/Statechart/Transition/Guards/delay_guard.gd" id="3_my1jw"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7evcr"]
 animation = &"RESET"
@@ -160,11 +160,11 @@ _data = {
 [node name="revolver" parent="." index="0" instance=ExtResource("2_0vnbi")]
 transform = Transform3D(-7.23998e-06, 0, -2, 0, 2, 0, 2, 0, -7.23998e-06, 0, 0, 0)
 
-[node name="DelayGuard" type="Node" parent="StateChart/Root/Idle/ToShooting" index="1" node_paths=PackedStringArray("state_to_watch")]
+[node name="DelayGuard" type="Node" parent="StateChart/Root/Shooting/ToIdle" index="0" node_paths=PackedStringArray("state_to_watch")]
 script = ExtResource("3_my1jw")
-state_to_watch = NodePath("../../../Shooting")
-delay_seconds = 1.0
-metadata/_custom_type_script = "uid://k4tvfulfdia5"
+state_to_watch = NodePath("../..")
+delay_seconds = 0.4
+metadata/_custom_type_script = "uid://d4i5esoutf3k0"
 
 [node name="AnimationTree" parent="." index="2"]
 tree_root = SubResource("AnimationNodeStateMachine_xkyr2")

@@ -3,7 +3,8 @@ class_name BulletInstance
 
 var damage_source:ProjectileDamageSource
 var ammo_reference:AmmoItem
-var current_velocity:float = 10
+var current_damage:float = 10
+var current_velocity:float = 200
 
 func _physics_process(delta: float) -> void:
 	var pos_now: Vector3 = global_transform.origin
@@ -23,7 +24,10 @@ func calculate_next_position(delta:float) -> Vector3:
 
 func collide(collider:Object) -> void:
 	if collider is Hurtbox:
-		collider.get_hit(DamageInstance.new())
+		var damage_instance:DamageInstance = DamageInstance.new()
+		damage_instance.damage = current_damage
+		damage_instance.source = damage_source
+		collider.get_hit(damage_instance)
 		queue_free()
 
 func _on_life_timer_timeout() -> void:
