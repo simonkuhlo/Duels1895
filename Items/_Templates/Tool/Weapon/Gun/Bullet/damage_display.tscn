@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dqw4p1tjfdewr"]
 
-[ext_resource type="Script" uid="uid://bcfih5w6qi1ny" path="res://damage_display.gd" id="1_y0sng"]
+[ext_resource type="Script" uid="uid://bcfih5w6qi1ny" path="res://Items/_Templates/Tool/Weapon/Gun/Bullet/damage_display.gd" id="1_y0sng"]
 
 [node name="DamageDisplay" type="Label3D"]
 billboard = 2
