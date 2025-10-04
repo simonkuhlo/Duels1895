@@ -1,6 +1,8 @@
 extends Node3D
 class_name BulletInstance
 
+@export var damage_display:PackedScene
+
 var damage_source:ProjectileDamageSource
 var ammo_reference:AmmoItem
 var current_damage:float = 10
@@ -28,6 +30,16 @@ func collide(collider:Object) -> void:
 		damage_instance.damage = current_damage
 		damage_instance.source = damage_source
 		collider.get_hit(damage_instance)
+		queue_free()	
+		var damage_display_instance = damage_display.instantiate()
+		damage_display_instance.damage_instance = damage_instance
+		damage_display_instance.global_transform = global_transform
+		MapLoader.loaded_map_instance.add_child(damage_display_instance)
+	if collider is PhysicsBody3D or collider is CSGShape3D:
+		var damage_display_instance = damage_display.instantiate()
+		damage_display_instance.text = "0"
+		damage_display_instance.global_transform = global_transform
+		MapLoader.loaded_map_instance.add_child(damage_display_instance)
 		queue_free()
 
 func _on_life_timer_timeout() -> void:

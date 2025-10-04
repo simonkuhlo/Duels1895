@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://tyy8a7n6vs1t"]
+[gd_scene load_steps=36 format=3 uid="uid://tyy8a7n6vs1t"]
 
 [ext_resource type="PackedScene" uid="uid://ca6610awtca8x" path="res://Ui/Ingame/controlled_entity_ui.tscn" id="1_fyd15"]
 [ext_resource type="Texture2D" uid="uid://bki7lv2ibcdsx" path="res://Assets/Debug Textures/PNG/Dark/texture_07.png" id="1_tcuxq"]
@@ -19,7 +19,6 @@
 [ext_resource type="Resource" uid="uid://d0pfuiioo4pu4" path="res://Items/TestItem/test_item.tres" id="14_x3ct3"]
 [ext_resource type="Resource" uid="uid://wp5415ckmxuv" path="res://Items/Gun/TestGun/testgun.tres" id="17_0i1fw"]
 [ext_resource type="Script" uid="uid://c5egtsopygw4i" path="res://System/Hit & Hurtboxes/hurtbox.gd" id="19_txeu6"]
-[ext_resource type="PackedScene" uid="uid://dqw4p1tjfdewr" path="res://damage_display.tscn" id="20_uv4mv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dxppu"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -196,10 +195,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.98266, 1.89255, 10)
 parent_map = NodePath("..")
 resource_to_spawn = SubResource("Resource_x3ct3")
 
+[node name="WorldItemSpawner5" parent="." node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0677, 1.1756, 6.81631)
+parent_map = NodePath("..")
+resource_to_spawn = SubResource("Resource_1jgxu")
+
 [node name="Hurtbox" type="Area3D" parent="."]
 transform = Transform3D(0.981896, 0, -0.189421, 0, 1, 0, 0.189421, 0, 0.981896, 12.4669, 3.37485, -6.41501)
 script = ExtResource("19_txeu6")
-damage_display = ExtResource("20_uv4mv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
 shape = SubResource("BoxShape3D_uv4mv")
