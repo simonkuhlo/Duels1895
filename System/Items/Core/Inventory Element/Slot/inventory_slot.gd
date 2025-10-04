@@ -7,9 +7,7 @@ signal item_switched(new_item:ItemInstance)
 
 @export var item_dropper:ItemDropper3D
 
-var _parent_inventory:Inventory
-
-var held_item:ItemInstance:
+@export var held_item:ItemInstance:
 	set(new):
 		if held_item:
 			held_item.properties_changed.disconnect(_on_held_item_properites_changed)
@@ -17,6 +15,12 @@ var held_item:ItemInstance:
 		if held_item:
 			held_item.properties_changed.connect(_on_held_item_properites_changed)
 		item_switched.emit(held_item)
+
+var _parent_inventory:Inventory
+
+func _ready() -> void:
+	super._ready()
+	item_switched.emit(held_item)
 
 func _on_held_item_properites_changed() -> void:
 	if held_item.amount <= 0:
