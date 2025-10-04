@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://didlja6xj44qh"]
 
-[ext_resource type="Script" uid="uid://dwwnfu8wcvviq" path="res://Ui/map_selector.gd" id="1_480ut"]
+[ext_resource type="Script" uid="uid://7ubi22emnifq" path="res://Ui/map_selector.gd" id="1_480ut"]
 [ext_resource type="PackedScene" uid="uid://dorxbrvdb04h3" path="res://Ui/map_list_map_visualizer.tscn" id="1_uprcj"]
 
 [node name="MapSelector" type="PanelContainer" node_paths=PackedStringArray("list_root", "preview_name_label")]

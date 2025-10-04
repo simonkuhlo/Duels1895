@@ -1,13 +1,11 @@
 extends Node
 class_name BasePlayerCharacterController
 
-
 @export var gravity:float = 9.81
 @export var sprint_stamina_consumption_per_second:float = 1
 @export var jump_stamina_consumption = 10
 @export var air_control:float = 5
-@export var sprint_speed_modifier = 0.2
-
+@export var sprint_speed_modifier = 0.4
 
 @export var controlled_entity:PlayerCharacterBody3D
 @export var look_sensitivity:float = 0.005
