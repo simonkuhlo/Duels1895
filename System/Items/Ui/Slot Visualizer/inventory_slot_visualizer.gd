@@ -12,6 +12,7 @@ var represented_slot:InventorySlot:
 		represented_slot = new
 		if represented_slot:
 			represented_slot.item_switched.connect(_on_represented_slot_item_switched)
+		_on_represented_slot_item_switched(represented_slot.held_item)
 
 var _mapped_item_instance:ItemInstance:
 	set(new):

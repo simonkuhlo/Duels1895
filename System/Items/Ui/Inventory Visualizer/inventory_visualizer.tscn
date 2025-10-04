@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://byy2ddnfcfr4s"]
 
-[ext_resource type="Script" uid="uid://p5p87m1k61ex" path="res://System/Items/Ui/Inventory Visualizer/inventory_visualizer.gd" id="1_jeobg"]
+[ext_resource type="Script" uid="uid://dp8w0mdrw1qwd" path="res://System/Items/Ui/Inventory Visualizer/inventory_visualizer.gd" id="1_jeobg"]
 [ext_resource type="PackedScene" uid="uid://c7owo4y6xoy3w" path="res://System/Items/Ui/Slot Visualizer/inventory_slot_visualizer.tscn" id="2_qxo7b"]
 
 [node name="InventoryDisplay" type="Control" node_paths=PackedStringArray("slot_visualizer_root")]

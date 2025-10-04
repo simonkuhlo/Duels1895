@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c7owo4y6xoy3w"]
 
-[ext_resource type="Script" uid="uid://b2x4r4phuhx2s" path="res://System/Items/Ui/Slot Visualizer/inventory_slot_visualizer.gd" id="1_oof44"]
+[ext_resource type="Script" uid="uid://cjueq1gtnsfxj" path="res://System/Items/Ui/Slot Visualizer/inventory_slot_visualizer.gd" id="1_oof44"]
 
 [node name="InventorySlotVisualizer" type="PanelContainer" node_paths=PackedStringArray("icon_display", "amount_display")]
 custom_minimum_size = Vector2(60, 60)
