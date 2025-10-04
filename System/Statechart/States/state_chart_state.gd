@@ -19,7 +19,15 @@ signal physics_processing(delta)
 signal deactivated()
 
 ## Wether the state is cuerrently active or not
-var active:bool = false
+var active:bool = false:
+	set(new):
+		active = new
+		if active:
+			activated.emit()
+			_on_activated()
+		else:
+			deactivated.emit()
+			_on_deactivated()
 
 
 ## Private variable, use "transitions"
@@ -31,6 +39,12 @@ var transitions: Array[StateTransition]:
 		if _cached_transitions.is_empty():
 			_add_all_transitions()
 		return _cached_transitions
+
+func _on_activated() -> void:
+	pass
+
+func _on_deactivated() -> void:
+	pass
 
 ## Called when the Node enters the SceneTree
 func _ready() -> void:
@@ -76,12 +90,10 @@ func on_physics_processing(delta) -> void:
 ## Called when State gets activated
 func activate() -> void:
 	active = true
-	activated.emit()
 
 ## Called when State gets deactivated
 func deactivate() -> void:
 	active = false
-	deactivated.emit()
 
 ## Called when a child transition signals that the transition is possible
 func _on_transition_possible(transition:StateTransition) -> void:

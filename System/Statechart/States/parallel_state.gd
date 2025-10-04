@@ -4,8 +4,7 @@ extends ParentState
 class_name ParallelState
 
 ## Called when State gets activated
-func activate() -> void:
-	super.activate()
+func _on_activated() -> void:
 	for child_state in child_states:
 		child_state.activate()
 
@@ -20,8 +19,7 @@ func on_physics_processing(delta) -> void:
 		child_state.on_physics_processing(delta)
 
 ## Called when State gets deactivated
-func deactivate() -> void:
-	super.deactivate()
+func _on_deactivated() -> void:
 	for child_state in child_states:
 		child_state.deactivate()
 

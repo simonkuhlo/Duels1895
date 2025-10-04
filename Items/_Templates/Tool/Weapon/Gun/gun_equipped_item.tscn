@@ -1,14 +1,15 @@
-[gd_scene load_steps=18 format=3 uid="uid://bdk4f5f26rruv"]
+[gd_scene load_steps=19 format=3 uid="uid://bdk4f5f26rruv"]
 
 [ext_resource type="PackedScene" uid="uid://vcms5ou6eky8" path="res://Items/_Templates/Tool/Weapon/weapon_equipped_item.tscn" id="1_1vnc5"]
-[ext_resource type="Script" uid="uid://dppseieus8eof" path="res://System/Statechart/state_chart.gd" id="2_7ojyg"]
-[ext_resource type="Script" uid="uid://bsdo56gipopi6" path="res://Items/_Templates/Tool/Weapon/Gun/gun_equipped_item.gd" id="2_prq1c"]
-[ext_resource type="Script" uid="uid://b5w1lyqirt5o1" path="res://System/Statechart/input_action_watcher.gd" id="3_os25l"]
-[ext_resource type="Script" uid="uid://cwukbpihf3lvu" path="res://System/Statechart/States/compound_state.gd" id="3_vfad7"]
-[ext_resource type="Script" uid="uid://cwfixmjh6s5l5" path="res://System/Statechart/States/atomic_state.gd" id="4_8onvc"]
-[ext_resource type="Script" uid="uid://eefansunrpt3" path="res://System/Statechart/Transition/state_transition.gd" id="5_os25l"]
-[ext_resource type="Script" uid="uid://blu14f6fk0ttd" path="res://System/Statechart/Transition/Guards/input_guard.gd" id="6_8onvc"]
-[ext_resource type="Script" uid="uid://k4tvfulfdia5" path="res://System/Statechart/Transition/Guards/delay_guard.gd" id="7_os25l"]
+[ext_resource type="Script" uid="uid://8eiub14v3ar4" path="res://System/Statechart/state_chart.gd" id="2_7ojyg"]
+[ext_resource type="Script" uid="uid://c5g1f6tem28cu" path="res://Items/_Templates/Tool/Weapon/Gun/gun_equipped_item.gd" id="2_prq1c"]
+[ext_resource type="PackedScene" uid="uid://d1snt8eeuw3w4" path="res://Items/_Templates/Tool/Weapon/Gun/Bullet/bullet_instance.tscn" id="3_evmsm"]
+[ext_resource type="Script" uid="uid://bxb1gqwcjgqkc" path="res://System/Statechart/input_action_watcher.gd" id="3_os25l"]
+[ext_resource type="Script" uid="uid://bmtbv53c168xb" path="res://System/Statechart/States/compound_state.gd" id="3_vfad7"]
+[ext_resource type="Script" uid="uid://cebbknmpf88yh" path="res://System/Statechart/States/atomic_state.gd" id="4_8onvc"]
+[ext_resource type="Script" uid="uid://dyc30ur4vw88b" path="res://System/Statechart/Transition/state_transition.gd" id="5_os25l"]
+[ext_resource type="Script" uid="uid://cua7uxardneih" path="res://System/Statechart/Transition/Guards/input_guard.gd" id="6_8onvc"]
+[ext_resource type="Script" uid="uid://d4i5esoutf3k0" path="res://System/Statechart/Transition/Guards/delay_guard.gd" id="7_os25l"]
 
 [sub_resource type="Animation" id="Animation_gfiny"]
 resource_name = "Idle"
@@ -65,116 +66,95 @@ _data = {
 
 [node name="GunEquippedItem" instance=ExtResource("1_1vnc5")]
 script = ExtResource("2_prq1c")
+bullet_scene = ExtResource("3_evmsm")
 
 [node name="StateChart" type="Node" parent="." index="0"]
 script = ExtResource("2_7ojyg")
-metadata/_custom_type_script = "uid://7a85ty71dvvx"
 
 [node name="ReloadActionWatcher" type="Node" parent="StateChart" index="0"]
 script = ExtResource("3_os25l")
 action = "gun_reload"
 input_mode = 2
-metadata/_custom_type_script = "uid://c6t643ue6kbsf"
 
 [node name="AimActionWatcher" type="Node" parent="StateChart" index="1"]
 script = ExtResource("3_os25l")
 action = "helditem_aim"
 input_mode = 1
-metadata/_custom_type_script = "uid://c6t643ue6kbsf"
 
 [node name="ShootActionWatcher" type="Node" parent="StateChart" index="2"]
 script = ExtResource("3_os25l")
 action = "gun_shoot"
 input_mode = 2
-metadata/_custom_type_script = "uid://c6t643ue6kbsf"
 
 [node name="Root" type="Node" parent="StateChart" index="3" node_paths=PackedStringArray("default_substate")]
 script = ExtResource("3_vfad7")
 default_substate = NodePath("Idle")
-metadata/_custom_type_script = "uid://cvf1lgghj5x1v"
 
 [node name="Idle" type="Node" parent="StateChart/Root" index="0"]
 script = ExtResource("4_8onvc")
-metadata/_custom_type_script = "uid://dtpyv07hk2ad1"
 
 [node name="ToAiming" type="Node" parent="StateChart/Root/Idle" index="0" node_paths=PackedStringArray("to")]
 script = ExtResource("5_os25l")
 to = NodePath("../../Aiming")
-metadata/_custom_type_script = "uid://caf21qoirw4cy"
 
 [node name="InputGuard" type="Node" parent="StateChart/Root/Idle/ToAiming" index="0" node_paths=PackedStringArray("input_action_watcher_to_watch")]
 script = ExtResource("6_8onvc")
 input_action_watcher_to_watch = NodePath("../../../../AimActionWatcher")
-metadata/_custom_type_script = "uid://bhrqmwwg1da25"
 
 [node name="ToReloading" type="Node" parent="StateChart/Root/Idle" index="1" node_paths=PackedStringArray("to")]
 script = ExtResource("5_os25l")
 to = NodePath("../../Reloading")
-metadata/_custom_type_script = "uid://caf21qoirw4cy"
 
 [node name="InputGuard" type="Node" parent="StateChart/Root/Idle/ToReloading" index="0" node_paths=PackedStringArray("input_action_watcher_to_watch")]
 script = ExtResource("6_8onvc")
 input_action_watcher_to_watch = NodePath("../../../../ReloadActionWatcher")
-metadata/_custom_type_script = "uid://bhrqmwwg1da25"
 
 [node name="ToShooting" type="Node" parent="StateChart/Root/Idle" index="2" node_paths=PackedStringArray("to")]
 script = ExtResource("5_os25l")
 to = NodePath("../../Shooting")
-metadata/_custom_type_script = "uid://caf21qoirw4cy"
 
 [node name="InputGuard" type="Node" parent="StateChart/Root/Idle/ToShooting" index="0" node_paths=PackedStringArray("input_action_watcher_to_watch")]
 script = ExtResource("6_8onvc")
 input_action_watcher_to_watch = NodePath("../../../../ShootActionWatcher")
-metadata/_custom_type_script = "uid://bhrqmwwg1da25"
 
 [node name="Aiming" type="Node" parent="StateChart/Root" index="1"]
 script = ExtResource("4_8onvc")
-metadata/_custom_type_script = "uid://dtpyv07hk2ad1"
 
 [node name="ToShooting" type="Node" parent="StateChart/Root/Aiming" index="0" node_paths=PackedStringArray("to")]
 script = ExtResource("5_os25l")
 to = NodePath("../../Shooting")
-metadata/_custom_type_script = "uid://caf21qoirw4cy"
 
 [node name="InputGuard" type="Node" parent="StateChart/Root/Aiming/ToShooting" index="0" node_paths=PackedStringArray("input_action_watcher_to_watch")]
 script = ExtResource("6_8onvc")
 input_action_watcher_to_watch = NodePath("../../../../ShootActionWatcher")
-metadata/_custom_type_script = "uid://bhrqmwwg1da25"
 
 [node name="ToIdle" type="Node" parent="StateChart/Root/Aiming" index="1" node_paths=PackedStringArray("to")]
 script = ExtResource("5_os25l")
 to = NodePath("../../Idle")
-metadata/_custom_type_script = "uid://caf21qoirw4cy"
 
 [node name="InputGuard" type="Node" parent="StateChart/Root/Aiming/ToIdle" index="0" node_paths=PackedStringArray("input_action_watcher_to_watch")]
 script = ExtResource("6_8onvc")
 invert_value = true
 input_action_watcher_to_watch = NodePath("../../../../AimActionWatcher")
-metadata/_custom_type_script = "uid://bhrqmwwg1da25"
 
 [node name="Shooting" type="Node" parent="StateChart/Root" index="2"]
 script = ExtResource("4_8onvc")
-metadata/_custom_type_script = "uid://dtpyv07hk2ad1"
 
 [node name="ToIdle" type="Node" parent="StateChart/Root/Shooting" index="0" node_paths=PackedStringArray("to")]
 script = ExtResource("5_os25l")
 to = NodePath("../../Idle")
-metadata/_custom_type_script = "uid://caf21qoirw4cy"
 
 [node name="Reloading" type="Node" parent="StateChart/Root" index="3"]
 script = ExtResource("4_8onvc")
-metadata/_custom_type_script = "uid://dtpyv07hk2ad1"
 
 [node name="ToIdle" type="Node" parent="StateChart/Root/Reloading" index="0" node_paths=PackedStringArray("to")]
 script = ExtResource("5_os25l")
 to = NodePath("../../Idle")
-metadata/_custom_type_script = "uid://caf21qoirw4cy"
 
 [node name="DelayGuard" type="Node" parent="StateChart/Root/Reloading/ToIdle" index="0" node_paths=PackedStringArray("state_to_watch")]
 script = ExtResource("7_os25l")
 state_to_watch = NodePath("../..")
 delay_seconds = 1.0
-metadata/_custom_type_script = "uid://bkyxe1juynmib"
 
 [node name="AnimationPlayer" parent="." index="2"]
 libraries = {
@@ -182,3 +162,5 @@ libraries = {
 &"GunItem": SubResource("AnimationLibrary_78soq"),
 &"ToolItem": SubResource("AnimationLibrary_ijx3d")
 }
+
+[node name="BulletOrigin" type="Marker3D" parent="." index="3"]

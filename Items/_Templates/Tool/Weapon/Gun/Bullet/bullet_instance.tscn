@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1snt8eeuw3w4"]
+
+[ext_resource type="Script" uid="uid://b1scoofinoovn" path="res://Items/_Templates/Tool/Weapon/Gun/Bullet/bullet_instance.gd" id="1_5cg1c"]
+[ext_resource type="PackedScene" uid="uid://dqw4p1tjfdewr" path="res://Items/_Templates/Tool/Weapon/Gun/Bullet/damage_display.tscn" id="2_vxoel"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_5cg1c"]
+
+[node name="BulletInstance" type="Node3D"]
+script = ExtResource("1_5cg1c")
+damage_display = ExtResource("2_vxoel")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_5cg1c")
+
+[node name="LifeTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://bsu4skealuc0t"]
+[gd_scene load_steps=28 format=3 uid="uid://bsu4skealuc0t"]
 
 [ext_resource type="PackedScene" uid="uid://bdk4f5f26rruv" path="res://Items/_Templates/Tool/Weapon/Gun/gun_equipped_item.tscn" id="1_p3rdd"]
 [ext_resource type="PackedScene" uid="uid://d0qhpnij7ow5h" path="res://Assets/Revolver/revolver.fbx" id="2_0vnbi"]
+[ext_resource type="Script" uid="uid://d4i5esoutf3k0" path="res://System/Statechart/Transition/Guards/delay_guard.gd" id="3_my1jw"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7evcr"]
 animation = &"RESET"
@@ -45,7 +46,7 @@ states/TestGun_Reload/position = Vector2(475, -20)
 states/TestGun_Shoot/node = SubResource("AnimationNodeAnimation_yg6gr")
 states/TestGun_Shoot/position = Vector2(456, 244)
 transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_j314w"), "TestGun_Shoot", "RESET", SubResource("AnimationNodeStateMachineTransition_iwltp"), "TestGun_Reload", "RESET", SubResource("AnimationNodeStateMachineTransition_xcr6i"), "TestGun_Idle", "RESET", SubResource("AnimationNodeStateMachineTransition_7evcr"), "RESET", "TestGun_Reload", SubResource("AnimationNodeStateMachineTransition_my1jw"), "RESET", "TestGun_Shoot", SubResource("AnimationNodeStateMachineTransition_yv20a"), "RESET", "TestGun_Idle", SubResource("AnimationNodeStateMachineTransition_yg6gr")]
-graph_offset = Vector2(79, -29)
+graph_offset = Vector2(-6, -95.4445)
 
 [sub_resource type="Animation" id="Animation_gfiny"]
 resource_name = "Idle"
@@ -93,6 +94,23 @@ _data = {
 &"Shoot": SubResource("Animation_evmsm")
 }
 
+[sub_resource type="Animation" id="Animation_c4ldf"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("revolver:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.04, 0), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_7evcr"]
 length = 0.5
 tracks/0/type = "value"
@@ -123,23 +141,6 @@ tracks/0/keys = {
 "values": [Vector3(0, -1.5708, 0), Vector3(0, -1.5708, 0.523599), Vector3(0, -1.5708, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_c4ldf"]
-resource_name = "Idle"
-length = 3.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("revolver:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0.04, 0), Vector3(0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yv20a"]
 _data = {
 &"Idle": SubResource("Animation_c4ldf"),
@@ -159,6 +160,12 @@ _data = {
 [node name="revolver" parent="." index="0" instance=ExtResource("2_0vnbi")]
 transform = Transform3D(-7.23998e-06, 0, -2, 0, 2, 0, 2, 0, -7.23998e-06, 0, 0, 0)
 
+[node name="DelayGuard" type="Node" parent="StateChart/Root/Shooting/ToIdle" index="0" node_paths=PackedStringArray("state_to_watch")]
+script = ExtResource("3_my1jw")
+state_to_watch = NodePath("../..")
+delay_seconds = 0.4
+metadata/_custom_type_script = "uid://d4i5esoutf3k0"
+
 [node name="AnimationTree" parent="." index="2"]
 tree_root = SubResource("AnimationNodeStateMachine_xkyr2")
 
@@ -169,6 +176,9 @@ libraries = {
 &"TestGun": SubResource("AnimationLibrary_yv20a"),
 &"ToolItem": SubResource("AnimationLibrary_ijx3d")
 }
+
+[node name="BulletOrigin" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0164582, 0.448478)
 
 [connection signal="activated" from="StateChart/Root/Idle" to="." method="_on_idle_activated"]
 [connection signal="activated" from="StateChart/Root/Aiming" to="." method="_on_aiming_activated"]
