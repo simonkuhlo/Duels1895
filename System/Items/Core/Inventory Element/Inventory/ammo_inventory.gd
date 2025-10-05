@@ -14,3 +14,16 @@ func receive_item(item:ItemInstance) -> ItemInstance:
 		else:
 			held_ammo_items[reference] = item.amount
 	return null
+
+func get_content(filter:BaseFilter = null) -> Array[ItemInstance]:
+	var returned_array:Array[ItemInstance] = []
+	for item in held_ammo_items.keys():
+		var item_instance = ItemInstance.new()
+		item_instance.item_reference = item
+		item_instance.amount = held_ammo_items.get(item)
+		if filter:
+			if !filter.filter(item_instance):
+				continue
+		returned_array.append(item_instance)
+	return returned_array
+		

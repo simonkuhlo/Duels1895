@@ -11,8 +11,8 @@ func _defaults() -> void:
 func filter(item:Variant) -> bool:
 	if !super.filter(item):
 		return false
-	var filtered_item:ItemReference = item
+	var filtered_item:ItemInstance = item
 	for accepted_item in accepted_items:
-		if filtered_item.uid == accepted_item.uid:
+		if filtered_item.item_reference.uid == accepted_item.uid:
 			return true
 	return false
