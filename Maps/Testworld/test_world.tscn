@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://tyy8a7n6vs1t"]
+[gd_scene load_steps=37 format=3 uid="uid://tyy8a7n6vs1t"]
 
 [ext_resource type="PackedScene" uid="uid://ca6610awtca8x" path="res://Ui/Ingame/controlled_entity_ui.tscn" id="1_fyd15"]
 [ext_resource type="Texture2D" uid="uid://bki7lv2ibcdsx" path="res://Assets/Debug Textures/PNG/Dark/texture_07.png" id="1_tcuxq"]
@@ -16,7 +16,7 @@
 [ext_resource type="Script" uid="uid://cdepghbsfroln" path="res://System/Items/Core/multiplayer_world_item_spawner.gd" id="13_1jgxu"]
 [ext_resource type="PackedScene" uid="uid://cb1t5f6cdur34" path="res://System/Items/Nodes/world_item_spawner.tscn" id="13_kjpmb"]
 [ext_resource type="Script" uid="uid://dhwvy3d8fdrct" path="res://System/Items/Core/item_instance.gd" id="14_a58uu"]
-[ext_resource type="Resource" uid="uid://d0pfuiioo4pu4" path="res://Items/TestItem/test_item.tres" id="14_x3ct3"]
+[ext_resource type="Resource" uid="uid://bagw5dxtn2ain" path="res://Items/Ammo/testammo.tres" id="16_txeu6"]
 [ext_resource type="Resource" uid="uid://wp5415ckmxuv" path="res://Items/Gun/TestGun/testgun.tres" id="17_0i1fw"]
 [ext_resource type="Script" uid="uid://c5egtsopygw4i" path="res://System/Hit & Hurtboxes/hurtbox.gd" id="19_txeu6"]
 
@@ -61,16 +61,22 @@ uv1_triplanar = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sp1l4"]
 albedo_texture = ExtResource("9_si7et")
 
-[sub_resource type="Resource" id="Resource_x3ct3"]
+[sub_resource type="Resource" id="Resource_4t017"]
 script = ExtResource("14_a58uu")
-item_reference = ExtResource("14_x3ct3")
-amount = 5
-metadata/_custom_type_script = "uid://si4q0pagftsy"
+item_reference = ExtResource("16_txeu6")
+amount = 10
+metadata/_custom_type_script = "uid://dhwvy3d8fdrct"
 
 [sub_resource type="Resource" id="Resource_1jgxu"]
 script = ExtResource("14_a58uu")
 item_reference = ExtResource("17_0i1fw")
 amount = 1
+metadata/_custom_type_script = "uid://si4q0pagftsy"
+
+[sub_resource type="Resource" id="Resource_x3ct3"]
+script = ExtResource("14_a58uu")
+item_reference = ExtResource("16_txeu6")
+amount = 5
 metadata/_custom_type_script = "uid://si4q0pagftsy"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uv4mv"]
@@ -178,7 +184,7 @@ script = ExtResource("13_1jgxu")
 [node name="WorldItemSpawner2" parent="." node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.98266, 1.89255, 0)
 parent_map = NodePath("..")
-resource_to_spawn = SubResource("Resource_x3ct3")
+resource_to_spawn = SubResource("Resource_4t017")
 
 [node name="WorldItemSpawner" parent="." node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.067746, 6.1756, 0.81631)

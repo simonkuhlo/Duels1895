@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://715oy5d5svy5"]
+[gd_scene load_steps=20 format=3 uid="uid://715oy5d5svy5"]
 
 [ext_resource type="PackedScene" uid="uid://vr1rchrbhnqw" path="res://System/Entities/entity_body.tscn" id="1_b5oby"]
 [ext_resource type="Script" uid="uid://whk1oqxwy0bs" path="res://System/Entities/PlayerCharacter/player_character_body_3d.gd" id="2_2ckjl"]
 [ext_resource type="PackedScene" uid="uid://qnadki4kfuia" path="res://System/Entities/Stats/entity_stat_holder.tscn" id="2_wrub7"]
 [ext_resource type="Script" uid="uid://csuws0tdksq3l" path="res://System/Entities/controller.gd" id="3_ofj4c"]
-[ext_resource type="PackedScene" uid="uid://cop5ohxc0jlqs" path="res://System/Items/Core/Inventory Element/Inventory/inventory.tscn" id="4_ycqsk"]
+[ext_resource type="PackedScene" uid="uid://ccj5hjerlgbef" path="res://System/Items/Core/Inventory Element/Inventory/ammo_inventory.tscn" id="4_px6uy"]
+[ext_resource type="PackedScene" uid="uid://cop5ohxc0jlqs" path="res://System/Items/Core/Inventory Element/Inventory/slot_inventory.tscn" id="4_ycqsk"]
 [ext_resource type="Script" uid="uid://ct5u4d6w5ptm5" path="res://System/Entities/Stats/Scripts/entity_stat.gd" id="5_ofj4c"]
 [ext_resource type="PackedScene" uid="uid://clsurtm10to0e" path="res://System/Items/Core/Inventory Element/Slot/inventory_slot.tscn" id="5_oghua"]
 [ext_resource type="Script" uid="uid://cbc4plhquo8j6" path="res://Items/_System/Filters/ItemTypeFilter/gun_filter.gd" id="6_jo2fw"]
@@ -14,6 +15,7 @@
 [sub_resource type="Resource" id="Resource_qjgax"]
 script = ExtResource("6_jo2fw")
 allowed_ammo_families = Array[int]([])
+accept_special = false
 metadata/_custom_type_script = "uid://c7fpq0bexdg6s"
 
 [sub_resource type="Resource" id="Resource_s6gwo"]
@@ -25,6 +27,7 @@ metadata/_custom_type_script = "uid://dhwvy3d8fdrct"
 [sub_resource type="Resource" id="Resource_px6uy"]
 script = ExtResource("6_jo2fw")
 allowed_ammo_families = Array[int]([])
+accept_special = false
 metadata/_custom_type_script = "uid://c7fpq0bexdg6s"
 
 [sub_resource type="Resource" id="Resource_emag8"]
@@ -91,7 +94,7 @@ sprint_stamina_consumption_per_second = 5.0
 sprint_speed_modifier = 0.3
 controlled_entity = NodePath("..")
 
-[node name="Inventory" parent="InventoryCollection" index="1" instance=ExtResource("4_ycqsk")]
+[node name="Inventory" parent="InventoryCollection" index="0" instance=ExtResource("4_ycqsk")]
 
 [node name="InventorySlot" parent="InventoryCollection/Inventory" index="0" instance=ExtResource("5_oghua")]
 filter = SubResource("Resource_qjgax")
@@ -107,6 +110,8 @@ filter = SubResource("Resource_px6uy")
 [node name="InventorySlot5" parent="InventoryCollection/Inventory" index="5" instance=ExtResource("5_oghua")]
 
 [node name="InventorySlot6" parent="InventoryCollection/Inventory" index="6" instance=ExtResource("5_oghua")]
+
+[node name="AmmoInventory" parent="InventoryCollection" index="2" instance=ExtResource("4_px6uy")]
 
 [node name="ActionStamina" parent="Stats" index="0" instance=ExtResource("2_wrub7")]
 stat_to_represent = SubResource("Resource_emag8")

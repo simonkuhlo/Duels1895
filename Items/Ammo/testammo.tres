@@ -16,4 +16,5 @@ damage_falloff = SubResource("Curve_0q536")
 uid = &"item_ammo_test"
 item_name = "Test Ammo"
 description = ""
-max_stack_size = 100
+special = true
+max_stack_size = 0

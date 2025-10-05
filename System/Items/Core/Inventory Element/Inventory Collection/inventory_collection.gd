@@ -18,6 +18,8 @@ func remove_inventory(inventory:Inventory) -> void:
 
 func get_content(filter:BaseFilter = null) -> Array[ItemInstance]:
 	var returned_array:Array[ItemInstance] = []
+	if !inventories:
+		return returned_array
 	for inventory in inventories:
 		returned_array.append_array(inventory.get_content(filter))
 	return returned_array

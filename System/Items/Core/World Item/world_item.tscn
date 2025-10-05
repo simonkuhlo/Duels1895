@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://d2t44lfcig42m"]
 
-[ext_resource type="Script" uid="uid://3a7aipi4tn0v" path="res://System/Items/Core/World Item/world_item.gd" id="1_fen2o"]
+[ext_resource type="Script" uid="uid://cdlpa4npkjo3c" path="res://System/Items/Core/World Item/world_item.gd" id="1_fen2o"]
 [ext_resource type="PackedScene" uid="uid://w5xpnydfpqf5" path="res://System/Hit & Hurtboxes/interaction_hurtbox.tscn" id="2_8ttpb"]
-[ext_resource type="PackedScene" uid="uid://cop5ohxc0jlqs" path="res://System/Items/Core/Inventory Element/Inventory/inventory.tscn" id="2_mtb1x"]
+[ext_resource type="PackedScene" uid="uid://cop5ohxc0jlqs" path="res://System/Items/Core/Inventory Element/Inventory/slot_inventory.tscn" id="2_mtb1x"]
 [ext_resource type="PackedScene" uid="uid://clsurtm10to0e" path="res://System/Items/Core/Inventory Element/Slot/inventory_slot.tscn" id="3_jif0c"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mtb1x"]

@@ -8,7 +8,7 @@ signal request_sync()
 var properties:Dictionary[StringName, Variant] = {"amount" = 1}
 @export var amount:int:
 	set(new):
-		if item_reference.max_stack_size:
+		if item_reference.max_stack_size != 0:
 			new = min(new, item_reference.max_stack_size)
 		set_property("amount", new)
 	get():
