@@ -1,4 +1,5 @@
 extends Inventory
+class_name AmmoInventory
 
 var held_ammo_items:Dictionary[AmmoItem, int] = {}
 

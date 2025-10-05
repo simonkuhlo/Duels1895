@@ -75,7 +75,7 @@ regen_per_second = 0.0
 regen_delay_seconds = 0.0
 metadata/_custom_type_script = "uid://dbblf8tqoy7rc"
 
-[node name="EntityBody" node_paths=PackedStringArray("action_stamina", "movement_stamina", "ads_stamina", "jump_strength", "controller", "exclude_client_authority", "hotbar_inventory") instance=ExtResource("1_b5oby")]
+[node name="EntityBody" node_paths=PackedStringArray("action_stamina", "movement_stamina", "ads_stamina", "jump_strength", "controller", "exclude_client_authority", "ammo_inventory", "hotbar_inventory") instance=ExtResource("1_b5oby")]
 collision_layer = 2
 floor_max_angle = 0.872665
 script = ExtResource("2_2ckjl")
@@ -85,6 +85,7 @@ ads_stamina = NodePath("Stats/AdsStamina")
 jump_strength = NodePath("Stats/JumpStrength")
 controller = NodePath("Controller")
 exclude_client_authority = [NodePath("Stats"), NodePath("InventoryCollection")]
+ammo_inventory = NodePath("InventoryCollection/AmmoInventory")
 hotbar_inventory = NodePath("InventoryCollection/Inventory")
 
 [node name="Controller" type="Node" parent="." index="0" node_paths=PackedStringArray("controlled_entity")]
