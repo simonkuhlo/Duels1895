@@ -26,21 +26,27 @@ func _on_aiming_activated() -> void:
 	pass
 
 func _on_shooting_activated() -> void:
-	animation_tree["parameters/playback"].travel("TestGun_Shoot")
 	if is_multiplayer_authority():
-		_request_shoot(holder.parent_entity.neck.global_transform)
+		_request_shoot.rpc_id(1, holder.parent_entity.neck.global_transform)
+		_on_shooting_activated_rpc.rpc()
 
 @rpc("authority", "call_local", "reliable")
+func _on_shooting_activated_rpc() -> void:
+	animation_tree["parameters/playback"].travel("TestGun_Shoot")
+
 func _on_reloading_activated() -> void:
+	if is_multiplayer_authority():
+		_on_reloading_activated_rpc.rpc()
+
+@rpc("authority", "call_local", "reliable")
+func _on_reloading_activated_rpc():
 	if multiplayer.is_server():
 		loaded_ammo_amount = filtered_gun_item.magazine_size
 	animation_tree["parameters/playback"].travel("TestGun_Reload")
 
-@rpc("any_peer", "call_local", "reliable")
+@rpc("authority", "call_local", "reliable")
 func _request_shoot(origin:Transform3D):
 	if !multiplayer.is_server():
-		if is_multiplayer_authority():
-			_request_shoot.rpc_id(1, origin)
 		return
 	if multiplayer.get_remote_sender_id():
 		if multiplayer.get_remote_sender_id() != get_multiplayer_authority():
@@ -60,4 +66,4 @@ func _request_shoot(origin:Transform3D):
 	bullet_instance.current_damage = filtered_gun_item.base_damage * loaded_ammo.damage_modifier
 	bullet_instance.damage_source = damage_source
 	bullet_instance.global_transform = origin
-	MapLoader.loaded_map_instance.add_child(bullet_instance)
+	MapLoader.loaded_map_instance.add_child(bullet_instance, true)
