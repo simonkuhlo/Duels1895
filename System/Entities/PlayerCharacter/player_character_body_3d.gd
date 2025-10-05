@@ -12,7 +12,6 @@ class_name PlayerCharacterBody3D
 		if controller:
 			controller.controlled_entity = self
 @export var exclude_client_authority:Array[Node]
-@export var ammo_inventory:AmmoInventory
 
 @export_group("UI hints")
 @export var hotbar_inventory:SlotInventory

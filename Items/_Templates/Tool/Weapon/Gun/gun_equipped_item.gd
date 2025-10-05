@@ -6,7 +6,7 @@ var loaded_ammo_amount:int = 1:
 		loaded_ammo_amount = new
 		print(loaded_ammo_amount)
 
-var loaded_ammo:AmmoItem
+@export var loaded_ammo:AmmoItem
 
 var filtered_gun_item:GunItem:
 	set(new):
@@ -41,7 +41,15 @@ func _on_reloading_activated() -> void:
 @rpc("authority", "call_local", "reliable")
 func _on_reloading_activated_rpc():
 	if multiplayer.is_server():
-		loaded_ammo_amount = filtered_gun_item.magazine_size
+		var loaded_ammo_filter := ItemIdFilter.new()
+		loaded_ammo_filter.accepted_items = [loaded_ammo]
+		var inventory_ammo = holder.parent_entity.ammo_inventory.get_content(loaded_ammo_filter)
+		if !inventory_ammo:
+			return
+		var missing_amount = filtered_gun_item.magazine_size - loaded_ammo_amount
+		var added_amount = min(missing_amount, inventory_ammo[0].amount)
+		loaded_ammo_amount += added_amount
+		inventory_ammo[0].amount -= added_amount
 	animation_tree["parameters/playback"].travel("TestGun_Reload")
 
 @rpc("authority", "call_local", "reliable")

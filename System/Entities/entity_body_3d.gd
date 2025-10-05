@@ -18,6 +18,7 @@ signal authority_changed(new_authority:int)
 		if item_holder:
 			item_holder.parent_entity = self
 @export var inventories:InventoryCollection
+@export var ammo_inventory:AmmoInventory
 
 var parent_world:MapInstance = MapLoader.loaded_map_instance
 

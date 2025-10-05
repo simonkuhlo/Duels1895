@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://bsu4skealuc0t"]
+[gd_scene load_steps=29 format=3 uid="uid://bsu4skealuc0t"]
 
 [ext_resource type="PackedScene" uid="uid://bdk4f5f26rruv" path="res://Items/_Templates/Tool/Weapon/Gun/gun_equipped_item.tscn" id="1_p3rdd"]
 [ext_resource type="PackedScene" uid="uid://d0qhpnij7ow5h" path="res://Assets/Revolver/revolver.fbx" id="2_0vnbi"]
+[ext_resource type="Resource" uid="uid://bagw5dxtn2ain" path="res://Items/Ammo/testammo.tres" id="2_yv20a"]
 [ext_resource type="Script" uid="uid://d4i5esoutf3k0" path="res://System/Statechart/Transition/Guards/delay_guard.gd" id="3_my1jw"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7evcr"]
@@ -156,6 +157,7 @@ _data = {
 }
 
 [node name="TestGunEquippedItem" instance=ExtResource("1_p3rdd")]
+loaded_ammo = ExtResource("2_yv20a")
 
 [node name="revolver" parent="." index="0" instance=ExtResource("2_0vnbi")]
 transform = Transform3D(-7.23998e-06, 0, -2, 0, 2, 0, 2, 0, -7.23998e-06, 0, 0, 0)

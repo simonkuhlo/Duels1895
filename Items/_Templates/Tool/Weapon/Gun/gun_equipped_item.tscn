@@ -66,6 +66,7 @@ _data = {
 
 [node name="GunEquippedItem" instance=ExtResource("1_1vnc5")]
 script = ExtResource("2_prq1c")
+loaded_ammo = null
 bullet_scene = ExtResource("3_evmsm")
 
 [node name="StateChart" type="Node" parent="." index="0"]
