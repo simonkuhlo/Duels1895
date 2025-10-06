@@ -21,9 +21,10 @@ func _on_instance_changed(new_instance:ItemInstance) -> void:
 func _get_available_ammo(loaded_type_only:bool = false) -> Array[ItemInstance]:
 	var returned_ammo:Array[ItemInstance] = []
 	var filter = null
-	if loaded_type_only:
+	if loaded_type_only and loaded_ammo:
 		filter = ItemIdFilter.new()
-		filter.accepted_items = [loaded_ammo]
+		var accepted_items:Array[ItemReference] = [loaded_ammo]
+		filter.accepted_items = accepted_items
 	else:
 		filter = AmmoFilter.new()
 		filter.allowed_ammo_families = [filtered_gun_item.ammo_family]
