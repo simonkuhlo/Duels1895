@@ -179,9 +179,6 @@ libraries = {
 &"ToolItem": SubResource("AnimationLibrary_ijx3d")
 }
 
-[node name="BulletOrigin" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0164582, 0.448478)
-
 [connection signal="activated" from="StateChart/Root/Idle" to="." method="_on_idle_activated"]
 [connection signal="activated" from="StateChart/Root/Aiming" to="." method="_on_aiming_activated"]
 [connection signal="activated" from="StateChart/Root/Shooting" to="." method="_on_shooting_activated"]

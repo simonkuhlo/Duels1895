@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbeno2owtveyk"]
+
+[ext_resource type="Script" uid="uid://47xa7mph10i" path="res://Ui/Ingame/RadialMenu/radial_menu_ui.gd" id="1_c1vjf"]
+[ext_resource type="PackedScene" uid="uid://bxyhi0olljmbn" path="res://Ui/Ingame/RadialMenu/radial_menu.tscn" id="2_fhlbh"]
+
+[node name="RadialMenuUiLayer" type="CanvasLayer" node_paths=PackedStringArray("radial_menu")]
+script = ExtResource("1_c1vjf")
+radial_menu = NodePath("RadialMenu")
+
+[node name="RadialMenu" parent="." instance=ExtResource("2_fhlbh")]
+options = [null]
