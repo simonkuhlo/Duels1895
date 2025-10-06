@@ -13,6 +13,7 @@ func receive_item(item:ItemInstance) -> ItemInstance:
 			held_ammo_items[reference] = held_ammo_items[reference] + item.amount
 		else:
 			held_ammo_items[reference] = item.amount
+	content_updated.emit()
 	return null
 
 func get_content(filter:BaseFilter = null) -> Array[ItemInstance]:

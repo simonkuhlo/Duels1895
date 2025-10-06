@@ -4,7 +4,6 @@ class_name EquippedGun
 var loaded_ammo_amount:int = 1:
 	set(new):
 		loaded_ammo_amount = new
-		print(loaded_ammo_amount)
 
 @export var loaded_ammo:AmmoItem
 
@@ -18,6 +17,18 @@ var filtered_gun_item:GunItem:
 
 func _on_instance_changed(new_instance:ItemInstance) -> void:
 	filtered_gun_item = new_instance.item_reference
+
+func _get_available_ammo(loaded_type_only:bool = false) -> Array[ItemInstance]:
+	var returned_ammo:Array[ItemInstance] = []
+	var filter = null
+	if loaded_type_only:
+		filter = ItemIdFilter.new()
+		filter.accepted_items = [loaded_ammo]
+	else:
+		filter = AmmoFilter.new()
+		filter.allowed_ammo_families = [filtered_gun_item.ammo_family]
+	returned_ammo = holder.parent_entity.ammo_inventory.get_content(filter)
+	return returned_ammo
 
 func _on_idle_activated() -> void:
 	animation_tree["parameters/playback"].travel("TestGun_Idle")
@@ -41,9 +52,7 @@ func _on_reloading_activated() -> void:
 @rpc("authority", "call_local", "reliable")
 func _on_reloading_activated_rpc():
 	if multiplayer.is_server():
-		var loaded_ammo_filter := ItemIdFilter.new()
-		loaded_ammo_filter.accepted_items = [loaded_ammo]
-		var inventory_ammo = holder.parent_entity.ammo_inventory.get_content(loaded_ammo_filter)
+		var inventory_ammo = _get_available_ammo(true)
 		if !inventory_ammo:
 			return
 		var missing_amount = filtered_gun_item.magazine_size - loaded_ammo_amount

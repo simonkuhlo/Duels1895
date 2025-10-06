@@ -3,6 +3,10 @@ class_name AmmoFilter
 
 @export var allowed_ammo_families:Array[AmmoItem.Family]
 
+func _defaults() -> void:
+	super._defaults()
+	accept_special = true
+
 func filter(item:Variant) -> bool:
 	if !super.filter(item):
 		return false

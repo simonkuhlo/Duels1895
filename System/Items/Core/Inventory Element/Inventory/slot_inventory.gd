@@ -34,10 +34,14 @@ func add_slot(slot:InventorySlot) -> void:
 		slots.append(slot)
 	if !slot.is_inside_tree():
 		add_child(slot, true)
+	if slot.has_item():
+		content_updated.emit()
 	slots_changed.emit()
 
 func remove_slot(slot:InventorySlot) -> void:
 	slots.erase(slot)
+	if slot.has_item():
+		content_updated.emit()
 	slot.queue_free()
 	slots_changed.emit()
 
@@ -62,20 +66,10 @@ func has_free_slot() -> bool:
 		return true
 	return false
 
-##Adds a given item to the first free inventoryslot in the collection. Returns any items it was unable to add.
-##If allow_split is true, it will fill already existing stacks first.
-func add_item(item:ItemInstance, allow_split:bool = true) -> ItemInstance:
-	#TODO add stacking
-	var slot:InventorySlot = get_free_slot()
-	if !slot:
-		return item
-	var returned_item:ItemInstance = slot.set_held_item(item)
-	return returned_item
-
 func receive_item(item:ItemInstance) -> ItemInstance:
-	#TODO handle stacking
 	for slot in slots:
 		item = slot.receive_item(item)
 		if !item:
+			content_updated.emit()
 			return
 	return item

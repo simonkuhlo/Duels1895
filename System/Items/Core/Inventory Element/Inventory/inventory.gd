@@ -1,6 +1,7 @@
 extends InventoryElement
 class_name Inventory
 
+signal content_updated()
 
 func get_content(filter:BaseFilter = null) -> Array[ItemInstance]:
 	return []
