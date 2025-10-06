@@ -61,6 +61,17 @@ uv1_triplanar = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sp1l4"]
 albedo_texture = ExtResource("9_si7et")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_uv4mv"]
+size = Vector3(6, 4, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xxcdt"]
+transparency = 1
+albedo_color = Color(0.847059, 0.196078, 0.219608, 0.47451)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4t017"]
+material = SubResource("StandardMaterial3D_xxcdt")
+size = Vector3(6, 4, 1)
+
 [sub_resource type="Resource" id="Resource_4t017"]
 script = ExtResource("14_a58uu")
 item_reference = ExtResource("16_txeu6")
@@ -79,17 +90,6 @@ item_reference = ExtResource("16_txeu6")
 amount = 5
 metadata/_custom_type_script = "uid://si4q0pagftsy"
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_uv4mv"]
-size = Vector3(6, 4, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xxcdt"]
-transparency = 1
-albedo_color = Color(0.847059, 0.196078, 0.219608, 0.47451)
-
-[sub_resource type="BoxMesh" id="BoxMesh_4t017"]
-material = SubResource("StandardMaterial3D_xxcdt")
-size = Vector3(6, 4, 1)
-
 [node name="TestWorld" type="Node3D" node_paths=PackedStringArray("game_logic")]
 script = ExtResource("1_vkd6p")
 game_logic = NodePath("GameLogic")
@@ -97,7 +97,7 @@ game_logic = NodePath("GameLogic")
 [node name="GameLogic" type="Node" parent="." node_paths=PackedStringArray("parent_world", "player_spawns")]
 script = ExtResource("2_s2o1y")
 parent_world = NodePath("..")
-player_spawns = [NodePath("../PlayerSpawn")]
+player_spawns = [NodePath("../SpawnLocations/PlayerSpawn")]
 
 [node name="PauseMenu" parent="." node_paths=PackedStringArray("parent_world") instance=ExtResource("2_wdtph")]
 parent_world = NodePath("..")
@@ -112,18 +112,20 @@ environment = SubResource("Environment_1lwx6")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="Structures" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Structures"]
 use_collision = true
 size = Vector3(100, 1, 100)
 material = SubResource("StandardMaterial3D_kt6p6")
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGBox3D"]
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Structures/CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 operation = 2
 polygon = PackedVector2Array(0, 0, -3, 1, 3, 1, 1, 0)
 depth = 5.37
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Structures"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 material_override = SubResource("StandardMaterial3D_cnaw2")
 use_collision = true
@@ -131,29 +133,39 @@ radius = 3.0
 height = 5.0
 sides = 16
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Structures"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 14)
 use_collision = true
 mesh = SubResource("PrismMesh_dxppu")
 material = SubResource("StandardMaterial3D_uu1iw")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Structures"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 0)
 material_override = SubResource("StandardMaterial3D_4tg7h")
 use_collision = true
 material = SubResource("StandardMaterial3D_ud3vi")
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Structures"]
 transform = Transform3D(-0.707106, 0, 0.707106, 0, 1, 0, -0.707106, 0, -0.707106, -3, 0.5, 6)
 material_override = SubResource("StandardMaterial3D_phhhp")
 use_collision = true
 polygon = PackedVector2Array(0, 0, 0, 0, 5, 5, 5, 0)
 depth = 3.0
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="CSGPolygon3D"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Structures/CSGPolygon3D"]
 transform = Transform3D(0.999982, 0, 0, 0, 1, 0, 0, 0, 0.999982, 6.99999, 2.5, -1.5)
 material_override = SubResource("StandardMaterial3D_sp1l4")
 size = Vector3(4, 5, 3)
+
+[node name="Hurtbox" type="Area3D" parent="Structures"]
+transform = Transform3D(0.981896, 0, -0.189421, 0, 1, 0, 0.189421, 0, 0.981896, 12.4669, 3.37485, -6.41501)
+script = ExtResource("19_txeu6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Structures/Hurtbox"]
+shape = SubResource("BoxShape3D_uv4mv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Structures/Hurtbox"]
+mesh = SubResource("BoxMesh_4t017")
 
 [node name="SpectatorCameraDirector" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
@@ -167,11 +179,38 @@ spring_length = 30.0
 transform = Transform3D(1, 0, 0, 0, 1, 1.19209e-07, 0, -1.19209e-07, 1, 0, 0, 0)
 current = true
 
-[node name="PlayerSpawn" type="Marker3D" parent="." node_paths=PackedStringArray("parent_map")]
+[node name="SpawnLocations" type="Node3D" parent="."]
+
+[node name="PlayerSpawn" type="Marker3D" parent="SpawnLocations" node_paths=PackedStringArray("parent_map")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0821, 3.42629, 8.01913)
 script = ExtResource("12_wdtph")
 player_character_scene = ExtResource("2_2ovxu")
-parent_map = NodePath("..")
+parent_map = NodePath("../..")
+
+[node name="WorldItemSpawner2" parent="SpawnLocations" node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.98266, 1.89255, 0)
+parent_map = NodePath("../..")
+resource_to_spawn = SubResource("Resource_4t017")
+
+[node name="WorldItemSpawner" parent="SpawnLocations" node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.067746, 6.1756, 0.81631)
+parent_map = NodePath("../..")
+resource_to_spawn = SubResource("Resource_1jgxu")
+
+[node name="WorldItemSpawner3" parent="SpawnLocations" node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.98266, 1.89255, 12)
+parent_map = NodePath("../..")
+resource_to_spawn = SubResource("Resource_x3ct3")
+
+[node name="WorldItemSpawner4" parent="SpawnLocations" node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.98266, 1.89255, 10)
+parent_map = NodePath("../..")
+resource_to_spawn = SubResource("Resource_x3ct3")
+
+[node name="WorldItemSpawner5" parent="SpawnLocations" node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0677, 1.1756, 6.81631)
+parent_map = NodePath("../..")
+resource_to_spawn = SubResource("Resource_1jgxu")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://715oy5d5svy5")
@@ -180,40 +219,5 @@ spawn_path = NodePath("..")
 [node name="MultiplayerWorldItemSpawner" type="MultiplayerSpawner" parent="."]
 spawn_path = NodePath("..")
 script = ExtResource("13_1jgxu")
-
-[node name="WorldItemSpawner2" parent="." node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.98266, 1.89255, 0)
-parent_map = NodePath("..")
-resource_to_spawn = SubResource("Resource_4t017")
-
-[node name="WorldItemSpawner" parent="." node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.067746, 6.1756, 0.81631)
-parent_map = NodePath("..")
-resource_to_spawn = SubResource("Resource_1jgxu")
-
-[node name="WorldItemSpawner3" parent="." node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.98266, 1.89255, 12)
-parent_map = NodePath("..")
-resource_to_spawn = SubResource("Resource_x3ct3")
-
-[node name="WorldItemSpawner4" parent="." node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.98266, 1.89255, 10)
-parent_map = NodePath("..")
-resource_to_spawn = SubResource("Resource_x3ct3")
-
-[node name="WorldItemSpawner5" parent="." node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0677, 1.1756, 6.81631)
-parent_map = NodePath("..")
-resource_to_spawn = SubResource("Resource_1jgxu")
-
-[node name="Hurtbox" type="Area3D" parent="."]
-transform = Transform3D(0.981896, 0, -0.189421, 0, 1, 0, 0.189421, 0, 0.981896, 12.4669, 3.37485, -6.41501)
-script = ExtResource("19_txeu6")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
-shape = SubResource("BoxShape3D_uv4mv")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Hurtbox"]
-mesh = SubResource("BoxMesh_4t017")
 
 [connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
