@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbeno2owtveyk"]
+[gd_scene load_steps=5 format=3 uid="uid://cbeno2owtveyk"]
 
 [ext_resource type="Script" uid="uid://47xa7mph10i" path="res://Ui/Ingame/RadialMenu/radial_menu_ui.gd" id="1_c1vjf"]
 [ext_resource type="PackedScene" uid="uid://bxyhi0olljmbn" path="res://Ui/Ingame/RadialMenu/radial_menu.tscn" id="2_fhlbh"]
+[ext_resource type="Script" uid="uid://b5u28gvjx1gov" path="res://Ui/Ingame/RadialMenu/radial_menu_option.gd" id="3_f13wv"]
+[ext_resource type="PackedScene" uid="uid://64ohm54wsya8" path="res://Ui/Ingame/VirtualCursor/virtual_cursor.tscn" id="4_cwwuv"]
 
 [node name="RadialMenuUiLayer" type="CanvasLayer" node_paths=PackedStringArray("radial_menu")]
 script = ExtResource("1_c1vjf")
 radial_menu = NodePath("RadialMenu")
 
 [node name="RadialMenu" parent="." instance=ExtResource("2_fhlbh")]
-options = [null]
+options = Array[ExtResource("3_f13wv")]([null])
+
+[node name="VirtualCursor" parent="." instance=ExtResource("4_cwwuv")]

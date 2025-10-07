@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AmmoItem" load_steps=3 format=3 uid="uid://bagw5dxtn2ain"]
 
-[ext_resource type="Script" uid="uid://1fv2gvyqcwyn" path="res://Items/_Templates/Ammo/ammo_item.gd" id="1_0q536"]
+[ext_resource type="Script" uid="uid://cpi14d458ylap" path="res://Items/_Templates/Ammo/ammo_item.gd" id="1_0q536"]
 
 [sub_resource type="Curve" id="Curve_0q536"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.251323, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.198356), 0.0, 0.0, 0, 0]
