@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxyhi0olljmbn"]
+[gd_scene load_steps=8 format=3 uid="uid://bxyhi0olljmbn"]
 
 [ext_resource type="Script" uid="uid://cvuv7sgca6q1i" path="res://Ui/Ingame/RadialMenu/radial_menu.gd" id="1_ktpuk"]
 [ext_resource type="Script" uid="uid://b5u28gvjx1gov" path="res://Ui/Ingame/RadialMenu/radial_menu_option.gd" id="2_i6ggd"]
-[ext_resource type="Texture2D" uid="uid://d0bw6aikw44cm" path="res://icon.svg" id="3_tgbc4"]
+[ext_resource type="Texture2D" uid="uid://ck0qtjeg75rg5" path="res://icon.svg" id="3_tgbc4"]
 [ext_resource type="PackedScene" uid="uid://cimijyyveuexq" path="res://Ui/Ingame/RadialMenu/radial_menu_option_visualizer.tscn" id="4_tgbc4"]
 [ext_resource type="PackedScene" uid="uid://64ohm54wsya8" path="res://Ui/Ingame/VirtualCursor/virtual_cursor.tscn" id="5_m1c22"]
 
@@ -18,13 +18,7 @@ text = "test2"
 icon = ExtResource("3_tgbc4")
 metadata/_custom_type_script = "uid://b5u28gvjx1gov"
 
-[sub_resource type="Resource" id="Resource_tgbc4"]
-script = ExtResource("2_i6ggd")
-text = "test3"
-icon = ExtResource("3_tgbc4")
-metadata/_custom_type_script = "uid://b5u28gvjx1gov"
-
-[node name="RadialMenu" type="Control"]
+[node name="RadialMenu" type="Control" node_paths=PackedStringArray("cursor")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -34,21 +28,16 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ktpuk")
-bkg_color = Color(0.325441, 0.325441, 0.325441, 1)
-line_color = Color(0.957664, 0.609392, 0.770681, 1)
-highlight_color = Color(0.976272, 0.743727, 0.978943, 1)
+bkg_color = Color(0.843137, 0.560784, 0.933333, 0.588235)
+line_color = Color(0.305882, 0.337255, 0.752941, 0.784314)
+highlight_color = Color(0.607843, 0.364706, 0.878431, 0.588235)
 outer_radius = 256
 line_width = 5.0
-options = Array[ExtResource("2_i6ggd")]([SubResource("Resource_m1c22"), SubResource("Resource_i6ggd"), SubResource("Resource_tgbc4")])
+options = Array[ExtResource("2_i6ggd")]([SubResource("Resource_m1c22"), SubResource("Resource_i6ggd"), null, null, null])
 option_visualizer = ExtResource("4_tgbc4")
+cursor = NodePath("VirtualCursor")
 
 [node name="VirtualCursor" parent="." instance=ExtResource("5_m1c22")]
 layout_mode = 1
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 437.0
-offset_top = -287.0
-offset_right = 534.0
-offset_bottom = -264.0
-text = "Red = Debug"
+max_radius_visible = false
+cursor_visible = false

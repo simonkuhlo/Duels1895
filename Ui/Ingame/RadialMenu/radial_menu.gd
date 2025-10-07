@@ -1,5 +1,6 @@
 @tool
 extends Control
+class_name RadialMenu
 
 signal option_selected(option:RadialMenuOption)
 
@@ -16,10 +17,11 @@ const sprite_size = Vector2(32, 32)
 @export var options:Array[RadialMenuOption] = []
 
 @export var option_visualizer:PackedScene
+@export var cursor:VirtualCursor
 
-var selection:int:
+var selection_preview:int:
 	set(new):
-		selection = new
+		selection_preview = new
 		queue_redraw()
 
 func _draw() -> void:
@@ -27,15 +29,15 @@ func _draw() -> void:
 	draw_arc(Vector2.ZERO, inner_radius, 0, TAU, 120, line_color, line_width)
 	if options.size() <= 1:
 		return
+	if selection_preview == -1:
+		draw_circle(Vector2.ZERO, inner_radius, highlight_color)
 	for i in range(options.size()):
-		if !options[i]:
-			continue
-		var start_rads:float = TAU * (i-1) / options.size() - 1 - deg_to_rad(90)
-		var end_rads = TAU * i / options.size() - 1 - deg_to_rad(90)
+		var start_rads:float = TAU * i / options.size()
+		var end_rads = TAU * (i+1) / options.size()
 		var mid_rads = (start_rads + end_rads) / 2.0 * 1
 		var radius_mid = (inner_radius + outer_radius) / 2
 		
-		if selection == i:
+		if selection_preview == i:
 			var points_per_arc := 32
 			var points_inner := PackedVector2Array()
 			var points_outer := PackedVector2Array()
@@ -46,36 +48,45 @@ func _draw() -> void:
 			points_outer.reverse()
 			draw_polygon(points_inner + points_outer, PackedColorArray([highlight_color]))
 		
-		var line_origin := Vector2.from_angle(start_rads)
-		draw_line(line_origin * inner_radius, line_origin * outer_radius, line_color, line_width)
-
-func update() -> void:
-	queue_redraw()
-	_visualize_options()
-
-func _ready() -> void:
-	update()
-
-func _visualize_options() -> void:
-	for i in range(options.size()):
-		if !options[i]:
-			continue
-		var start_rads:float = TAU * i / options.size() - deg_to_rad(90)
-		var end_rads = TAU * (i+1) / options.size() - deg_to_rad(90)
 		var texture_origin := Vector2.from_angle(start_rads + (end_rads - start_rads) / 2)
 		var texture_origin_radius:float = inner_radius + ( (outer_radius - inner_radius) / 2) 
 		texture_origin = texture_origin * texture_origin_radius
 		var visualizer_instance = option_visualizer.instantiate()
 		visualizer_instance.position = texture_origin
-		visualizer_instance.visualized_option = options[i]
+		var reversed_options := options.duplicate()
+		reversed_options.reverse()
+		visualizer_instance.visualized_option = reversed_options[i]
 		add_child(visualizer_instance)
+		
+		var line_origin := Vector2.from_angle(start_rads)
+		draw_line(line_origin * inner_radius, line_origin * outer_radius, line_color, line_width)
+
+func reset() -> void:
+	if cursor:
+		cursor.reset()
+
+func update() -> void:
+	queue_redraw()
+
+func select() -> void:
+	if selection_preview == -1:
+		option_selected.emit(null)
+		return
+	option_selected.emit(options[selection_preview])
+
+func _ready() -> void:
+	update()
 
 func _process(delta: float) -> void:
-	var mouse_pos = get_local_mouse_position()
-	var mouse_radius = mouse_pos.length()
-	
-	if mouse_radius < inner_radius:
-		selection = -1
+	var cursor_pos:Vector2
+	if cursor:
+		cursor_pos = cursor.cursor_pos
 	else:
-		var mouse_rads := fposmod(mouse_pos.angle() * -1, TAU)
-		selection = ceil((mouse_rads / TAU) * options.size() - 1)
+		cursor_pos = get_local_mouse_position()
+	var cursor_radius = cursor_pos.length()
+	
+	if cursor_radius < inner_radius:
+		selection_preview = -1
+	else:
+		var cursor_rads := fposmod(cursor_pos.angle() * -1, TAU)
+		selection_preview = ceil((cursor_rads / TAU) * options.size()-1)

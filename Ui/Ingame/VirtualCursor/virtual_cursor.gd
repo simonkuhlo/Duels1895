@@ -1,5 +1,6 @@
 @tool
 extends Control
+class_name VirtualCursor
 
 @export var max_radius:float = 200
 
@@ -18,11 +19,19 @@ extends Control
 @export_group("Linking")
 @export var auto_retract_timer:Timer
 
+var active:bool = true:
+	set(new):
+		active = new
+		reset()
+
 var cursor_pos:Vector2 = Vector2.ZERO:
 	set(new):
 		cursor_pos = new
 	get():
 		return cursor_pos
+
+func reset() -> void:
+	cursor_pos = Vector2.ZERO
 
 func _process(delta: float) -> void:
 	queue_redraw()
