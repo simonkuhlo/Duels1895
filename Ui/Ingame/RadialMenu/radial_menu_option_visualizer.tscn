@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cimijyyveuexq"]
 
-[ext_resource type="Texture2D" uid="uid://d0bw6aikw44cm" path="res://icon.svg" id="1_02ufi"]
+[ext_resource type="Texture2D" uid="uid://ck0qtjeg75rg5" path="res://icon.svg" id="1_02ufi"]
 [ext_resource type="Script" uid="uid://bq80frjl52she" path="res://Ui/Ingame/RadialMenu/radial_menu_option_visualizer.gd" id="1_xnep2"]
 
 [node name="RadialMenuOptionVisualizer" type="Control" node_paths=PackedStringArray("texture_rect", "label")]
@@ -32,10 +32,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("1_02ufi")
-expand_mode = 4
+expand_mode = 2
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2

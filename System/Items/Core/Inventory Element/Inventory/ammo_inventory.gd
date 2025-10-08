@@ -25,6 +25,10 @@ func get_content(filter:BaseFilter = null) -> Array[ItemInstance]:
 			if !filter.filter(item):
 				continue
 		returned_array.append(item)
-	print(returned_array)
 	return returned_array
-		
+
+func get_held_amount(item:AmmoItem) -> int:
+	return 0
+
+func change_held_amount(item:AmmoItem, value:int) -> void:
+	return
