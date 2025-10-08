@@ -23,8 +23,8 @@ class_name ItemReference
 func _init() -> void:
 	_defaults()
 
-func get_default_custom_properties() -> Dictionary[StringName, Variant]:
-	return {}
+#func get_default_custom_properties() -> Dictionary[StringName, Variant]:
+	#return {}
 
 func _defaults() -> void:
 	pass

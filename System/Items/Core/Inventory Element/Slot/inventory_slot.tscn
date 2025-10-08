@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://clsurtm10to0e"]
 
-[ext_resource type="Script" uid="uid://bjqg4u5gikmnf" path="res://System/Items/Core/Inventory Element/Slot/inventory_slot.gd" id="1_x21mo"]
-[ext_resource type="Script" uid="uid://guen4uljop6e" path="res://System/Items/Core/Inventory Element/Slot/inventory_slot_synchronizer.gd" id="2_muo1k"]
+[ext_resource type="Script" uid="uid://8ux33vu2ewae" path="res://System/Items/Core/Inventory Element/Slot/inventory_slot.gd" id="1_x21mo"]
+[ext_resource type="Script" uid="uid://4ajgkfnv3ste" path="res://System/Items/Core/Inventory Element/Slot/inventory_slot_synchronizer.gd" id="2_muo1k"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_pkrkv"]
 properties/0/path = NodePath(".:synchronized_item_uid")

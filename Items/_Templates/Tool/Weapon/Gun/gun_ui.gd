@@ -9,8 +9,22 @@ class_name EquippedGunUI
 		ammo_select = new
 		if ammo_select:
 			ammo_select.option_selected.connect(_on_ammo_selected)
+@export var ammo_count_label:Label
 
-@onready var filtered_gun_item:EquippedGun = parent_item
+var filtered_gun_instance:EquippedGun:
+	set(new):
+		if filtered_gun_instance:
+			filtered_gun_instance.loaded_ammo_amount_changed.disconnect(_on_loaded_ammo_amount_changed)
+		filtered_gun_instance = new
+		if filtered_gun_instance:
+			filtered_gun_instance.loaded_ammo_amount_changed.connect(_on_loaded_ammo_amount_changed)
+			_on_loaded_ammo_amount_changed(filtered_gun_instance.loaded_ammo_amount)
+
+func _ready() -> void:
+	filtered_gun_instance = parent_item
+
+func _on_loaded_ammo_amount_changed(new_amount:int) -> void:
+	ammo_count_label.text = str(new_amount) + " / " + str(filtered_gun_instance.filtered_gun_item.magazine_size)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("select_ammo_type"):
@@ -26,14 +40,14 @@ func _on_ammo_selected(option:RadialMenuOption) -> void:
 
 func show_ammo_select() -> void:
 	var ammo_select_options:Array[RadialMenuOption] = []
-	for ammo_instance in filtered_gun_item._get_available_ammo():
+	for ammo_instance in filtered_gun_instance._get_available_ammo():
 		var option := RadialMenuItemOption.new()
 		option.item_instance = ammo_instance
 		option.displayed_text = option.TextMode.ITEM_AMOUNT
 		option.update()
 		ammo_select_options.append(option)
 	ammo_select.overwrite_options(ammo_select_options)
-	ammo_select.reset()
+	ammo_select.reset() 
 	ammo_select_root.show()
 
 func hide_ammo_select() -> void:

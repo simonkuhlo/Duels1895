@@ -1,11 +1,18 @@
 extends EquippedWeapon
 class_name EquippedGun
 
+signal loaded_ammo_type_changed(new_ammo:AmmoItem)
+signal loaded_ammo_amount_changed(new_amount:int)
+
 var loaded_ammo_amount:int = 1:
 	set(new):
 		loaded_ammo_amount = new
+		loaded_ammo_amount_changed.emit(loaded_ammo_amount)
 
-@export var loaded_ammo:AmmoItem
+@export var loaded_ammo:AmmoItem:
+	set(new):
+		loaded_ammo = new
+		loaded_ammo_type_changed.emit(loaded_ammo)
 
 var filtered_gun_item:GunItem:
 	set(new):
