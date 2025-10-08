@@ -14,7 +14,6 @@ func filter(item:Variant) -> bool:
 	var filtered_item:ItemInstance = item
 	print(accepted_items)
 	for accepted_item in accepted_items:
-		
 		print(accepted_item.uid, "-",filtered_item.item_reference.uid)
 		if filtered_item.item_reference.uid == accepted_item.uid:
 			return true

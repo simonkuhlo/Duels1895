@@ -1,7 +1,7 @@
 extends Inventory
 class_name AmmoInventory
 
-var held_ammo_items:Dictionary[AmmoItem, ItemInstance] = {}
+var held_ammo_instances:Array[ItemInstance] = []
 
 ##Returns an ItemInstance containing the content this element did was not able to receive
 func receive_item(item:ItemInstance) -> ItemInstance:
@@ -9,20 +9,22 @@ func receive_item(item:ItemInstance) -> ItemInstance:
 		return item
 	var reference:AmmoItem = item.item_reference
 	if reference is AmmoItem:
-		if reference in held_ammo_items.keys():
-			held_ammo_items[reference].amount += item.amount
-		else:
-			held_ammo_items[reference] = item
-	content_updated.emit()
+		for ammo_instance in held_ammo_instances:
+			if reference == ammo_instance.item_reference:
+				ammo_instance.amount += item.amount
+				content_updated.emit()
+				return null
+		held_ammo_instances.append(item)
+		content_updated.emit()
 	return null
 
 func get_content(filter:BaseFilter = null) -> Array[ItemInstance]:
 	var returned_array:Array[ItemInstance] = []
-	for item in held_ammo_items.keys():
+	for item in held_ammo_instances:
 		if filter:
-			if !filter.filter(held_ammo_items[item]):
+			if !filter.filter(item):
 				continue
-		returned_array.append(held_ammo_items[item])
+		returned_array.append(item)
 	print(returned_array)
 	return returned_array
 		

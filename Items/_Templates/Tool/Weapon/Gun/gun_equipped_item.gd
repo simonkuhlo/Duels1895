@@ -11,7 +11,12 @@ var loaded_ammo_amount:int = 1:
 
 @export var loaded_ammo:AmmoItem:
 	set(new):
+		if loaded_ammo:
+			_get_available_ammo(true)[0].amount += loaded_ammo_amount
+			loaded_ammo_amount = 0
 		loaded_ammo = new
+		if is_inside_tree():
+			_on_reloading_activated()
 		loaded_ammo_type_changed.emit(loaded_ammo)
 
 var filtered_gun_item:GunItem:
