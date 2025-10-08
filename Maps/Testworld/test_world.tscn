@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://tyy8a7n6vs1t"]
+[gd_scene load_steps=39 format=3 uid="uid://tyy8a7n6vs1t"]
 
 [ext_resource type="PackedScene" uid="uid://ca6610awtca8x" path="res://Ui/Ingame/controlled_entity_ui.tscn" id="1_fyd15"]
 [ext_resource type="Texture2D" uid="uid://bki7lv2ibcdsx" path="res://Assets/Debug Textures/PNG/Dark/texture_07.png" id="1_tcuxq"]
@@ -19,6 +19,7 @@
 [ext_resource type="Resource" uid="uid://bagw5dxtn2ain" path="res://Items/Ammo/testammo.tres" id="16_txeu6"]
 [ext_resource type="Resource" uid="uid://wp5415ckmxuv" path="res://Items/Gun/TestGun/testgun.tres" id="17_0i1fw"]
 [ext_resource type="Script" uid="uid://di5xl248g4osb" path="res://System/Hit & Hurtboxes/hurtbox.gd" id="19_txeu6"]
+[ext_resource type="Resource" uid="uid://ckhywpu00qdet" path="res://Items/Ammo/testammo2.tres" id="19_uv4mv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dxppu"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -84,9 +85,15 @@ item_reference = ExtResource("17_0i1fw")
 amount = 1
 metadata/_custom_type_script = "uid://si4q0pagftsy"
 
-[sub_resource type="Resource" id="Resource_x3ct3"]
+[sub_resource type="Resource" id="Resource_uv4mv"]
 script = ExtResource("14_a58uu")
 item_reference = ExtResource("16_txeu6")
+amount = 100
+metadata/_custom_type_script = "uid://crq3ojxjwo43d"
+
+[sub_resource type="Resource" id="Resource_x3ct3"]
+script = ExtResource("14_a58uu")
+item_reference = ExtResource("19_uv4mv")
 amount = 5
 metadata/_custom_type_script = "uid://si4q0pagftsy"
 
@@ -200,10 +207,10 @@ resource_to_spawn = SubResource("Resource_1jgxu")
 [node name="WorldItemSpawner3" parent="SpawnLocations" node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.98266, 1.89255, 12)
 parent_map = NodePath("../..")
-resource_to_spawn = SubResource("Resource_x3ct3")
+resource_to_spawn = SubResource("Resource_uv4mv")
 
 [node name="WorldItemSpawner4" parent="SpawnLocations" node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.98266, 1.89255, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.98266, 1.89255, 9.99794)
 parent_map = NodePath("../..")
 resource_to_spawn = SubResource("Resource_x3ct3")
 

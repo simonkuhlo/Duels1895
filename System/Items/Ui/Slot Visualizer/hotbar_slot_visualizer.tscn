@@ -1,7 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://cux0lbg2jjl6t"]
 
 [ext_resource type="PackedScene" uid="uid://c7owo4y6xoy3w" path="res://System/Items/Ui/Slot Visualizer/inventory_slot_visualizer.tscn" id="1_kjowd"]
-[ext_resource type="Script" uid="uid://d017ik4k878bq" path="res://System/Items/Ui/Slot Visualizer/hotbar_slot_visualizer.gd" id="2_2wgby"]
+[ext_resource type="Script" uid="uid://bekduwdgilxhd" path="res://System/Items/Ui/Slot Visualizer/hotbar_slot_visualizer.gd" id="2_2wgby"]
 
 [node name="HotbarSlotVisualizer" instance=ExtResource("1_kjowd")]
 script = ExtResource("2_2wgby")
+
+[node name="IconDisplay" parent="." index="0"]
+expand_mode = 2
+stretch_mode = 5

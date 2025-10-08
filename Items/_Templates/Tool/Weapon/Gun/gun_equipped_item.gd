@@ -27,7 +27,8 @@ func _get_available_ammo(loaded_type_only:bool = false) -> Array[ItemInstance]:
 		filter.accepted_items = accepted_items
 	else:
 		filter = AmmoFilter.new()
-		filter.allowed_ammo_families = [filtered_gun_item.ammo_family]
+		var allowed_ammo_families:Array[AmmoItem.Family] = [filtered_gun_item.ammo_family]
+		filter.allowed_ammo_families = allowed_ammo_families
 	returned_ammo = holder.parent_entity.ammo_inventory.get_content(filter)
 	return returned_ammo
 

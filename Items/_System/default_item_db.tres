@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemDB" load_steps=7 format=3 uid="uid://bep2pgkw8ppng"]
+[gd_resource type="Resource" script_class="ItemDB" load_steps=9 format=3 uid="uid://bep2pgkw8ppng"]
 
 [ext_resource type="Script" uid="uid://dynmmpaby6tf3" path="res://System/Items/Core/item_reference.gd" id="1_wk0xn"]
 [ext_resource type="Resource" uid="uid://d0pfuiioo4pu4" path="res://Items/TestItem/test_item.tres" id="2_esggx"]
@@ -6,12 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://3qy1ind6vn2l" path="res://Items/_System/_Defaults/default_equipped_item.tscn" id="3_esggx"]
 [ext_resource type="Resource" uid="uid://wp5415ckmxuv" path="res://Items/Gun/TestGun/testgun.tres" id="3_jxoet"]
 [ext_resource type="PackedScene" uid="uid://g8li15ckmp3y" path="res://Items/_System/_Defaults/default_world_item.tscn" id="4_k8bs4"]
+[ext_resource type="Resource" uid="uid://ckhywpu00qdet" path="res://Items/Ammo/testammo2.tres" id="4_yrypx"]
+[ext_resource type="Texture2D" uid="uid://d0bw6aikw44cm" path="res://icon.svg" id="6_pxm2i"]
 
 [resource]
 script = ExtResource("2_uxwt2")
+default_icon = ExtResource("6_pxm2i")
 default_world_item_scene = ExtResource("4_k8bs4")
 default_held_item_scene = ExtResource("3_esggx")
 content = Dictionary[StringName, ExtResource("1_wk0xn")]({
+&"item_ammo_test_2": ExtResource("4_yrypx"),
 &"item_test": ExtResource("2_esggx"),
 &"item_testgun": ExtResource("3_jxoet")
 })

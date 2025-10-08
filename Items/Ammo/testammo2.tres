@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AmmoItem" load_steps=2 format=3 uid="uid://ckhywpu00qdet"]
+
+[ext_resource type="Script" uid="uid://cpi14d458ylap" path="res://Items/_Templates/Ammo/ammo_item.gd" id="1_nqwfp"]
+
+[resource]
+script = ExtResource("1_nqwfp")
+family = 0
+damage_modifier = 1.0
+velocity_modifier = 1.0
+max_range = 1000.0
+uid = &"item_ammo_test_2"
+item_name = "Test Ammo 2"
+description = ""
+special = true
+max_stack_size = 0
+metadata/_custom_type_script = "uid://cpi14d458ylap"

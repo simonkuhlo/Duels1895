@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bdk4f5f26rruv"]
+[gd_scene load_steps=21 format=3 uid="uid://bdk4f5f26rruv"]
 
 [ext_resource type="PackedScene" uid="uid://vcms5ou6eky8" path="res://Items/_Templates/Tool/Weapon/weapon_equipped_item.tscn" id="1_1vnc5"]
 [ext_resource type="Script" uid="uid://dppseieus8eof" path="res://System/Statechart/state_chart.gd" id="2_7ojyg"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://eefansunrpt3" path="res://System/Statechart/Transition/state_transition.gd" id="5_os25l"]
 [ext_resource type="Script" uid="uid://blu14f6fk0ttd" path="res://System/Statechart/Transition/Guards/input_guard.gd" id="6_8onvc"]
 [ext_resource type="Script" uid="uid://k4tvfulfdia5" path="res://System/Statechart/Transition/Guards/delay_guard.gd" id="7_os25l"]
+[ext_resource type="Script" uid="uid://d07ftg3xjbl2" path="res://Items/_Templates/Tool/Weapon/Gun/gun_ui.gd" id="11_78soq"]
+[ext_resource type="PackedScene" uid="uid://bxyhi0olljmbn" path="res://Ui/Ingame/RadialMenu/radial_menu.tscn" id="12_ntg07"]
 
 [sub_resource type="Animation" id="Animation_gfiny"]
 resource_name = "Idle"
@@ -157,7 +159,24 @@ script = ExtResource("7_os25l")
 state_to_watch = NodePath("../..")
 delay_seconds = 1.0
 
-[node name="AnimationPlayer" parent="." index="2"]
+[node name="ItemUi" parent="." index="1" node_paths=PackedStringArray("ammo_select_root", "ammo_select")]
+script = ExtResource("11_78soq")
+ammo_select_root = NodePath("CenterContainer")
+ammo_select = NodePath("CenterContainer/AmmoSelectMenu")
+
+[node name="CenterContainer" type="CenterContainer" parent="ItemUi" index="0"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="AmmoSelectMenu" parent="ItemUi/CenterContainer" index="0" instance=ExtResource("12_ntg07")]
+layout_mode = 2
+
+[node name="AnimationPlayer" parent="." index="3"]
 libraries = {
 &"": SubResource("AnimationLibrary_uks15"),
 &"GunItem": SubResource("AnimationLibrary_78soq"),

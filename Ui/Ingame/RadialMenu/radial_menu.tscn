@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cvuv7sgca6q1i" path="res://Ui/Ingame/RadialMenu/radial_menu.gd" id="1_ktpuk"]
 [ext_resource type="Script" uid="uid://b5u28gvjx1gov" path="res://Ui/Ingame/RadialMenu/radial_menu_option.gd" id="2_i6ggd"]
-[ext_resource type="Texture2D" uid="uid://ck0qtjeg75rg5" path="res://icon.svg" id="3_tgbc4"]
+[ext_resource type="Texture2D" uid="uid://d0bw6aikw44cm" path="res://icon.svg" id="3_tgbc4"]
 [ext_resource type="PackedScene" uid="uid://cimijyyveuexq" path="res://Ui/Ingame/RadialMenu/radial_menu_option_visualizer.tscn" id="4_tgbc4"]
 [ext_resource type="PackedScene" uid="uid://64ohm54wsya8" path="res://Ui/Ingame/VirtualCursor/virtual_cursor.tscn" id="5_m1c22"]
 
@@ -40,4 +40,3 @@ cursor = NodePath("VirtualCursor")
 [node name="VirtualCursor" parent="." instance=ExtResource("5_m1c22")]
 layout_mode = 1
 max_radius_visible = false
-cursor_visible = false
