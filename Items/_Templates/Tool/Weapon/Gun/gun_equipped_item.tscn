@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bdk4f5f26rruv"]
+[gd_scene load_steps=22 format=3 uid="uid://bdk4f5f26rruv"]
 
 [ext_resource type="PackedScene" uid="uid://vcms5ou6eky8" path="res://Items/_Templates/Tool/Weapon/weapon_equipped_item.tscn" id="1_1vnc5"]
 [ext_resource type="Script" uid="uid://dppseieus8eof" path="res://System/Statechart/state_chart.gd" id="2_7ojyg"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://b5w1lyqirt5o1" path="res://System/Statechart/input_action_watcher.gd" id="3_os25l"]
 [ext_resource type="Script" uid="uid://cwukbpihf3lvu" path="res://System/Statechart/States/compound_state.gd" id="3_vfad7"]
 [ext_resource type="Script" uid="uid://cwfixmjh6s5l5" path="res://System/Statechart/States/atomic_state.gd" id="4_8onvc"]
+[ext_resource type="Script" uid="uid://d281u1urj87bx" path="res://Items/_Templates/Tool/Weapon/Gun/state_chart_handler.gd" id="5_ipd7q"]
 [ext_resource type="Script" uid="uid://eefansunrpt3" path="res://System/Statechart/Transition/state_transition.gd" id="5_os25l"]
 [ext_resource type="Script" uid="uid://blu14f6fk0ttd" path="res://System/Statechart/Transition/Guards/input_guard.gd" id="6_8onvc"]
 [ext_resource type="Script" uid="uid://k4tvfulfdia5" path="res://System/Statechart/Transition/Guards/delay_guard.gd" id="7_os25l"]
@@ -74,22 +75,25 @@ bullet_scene = ExtResource("3_evmsm")
 [node name="StateChart" type="Node" parent="." index="0"]
 script = ExtResource("2_7ojyg")
 
-[node name="ReloadActionWatcher" type="Node" parent="StateChart" index="0"]
+[node name="StateChartHandler" type="Node" parent="StateChart" index="0"]
+script = ExtResource("5_ipd7q")
+
+[node name="ReloadActionWatcher" type="Node" parent="StateChart" index="1"]
 script = ExtResource("3_os25l")
 action = "gun_reload"
 input_mode = 2
 
-[node name="AimActionWatcher" type="Node" parent="StateChart" index="1"]
+[node name="AimActionWatcher" type="Node" parent="StateChart" index="2"]
 script = ExtResource("3_os25l")
 action = "helditem_aim"
 input_mode = 1
 
-[node name="ShootActionWatcher" type="Node" parent="StateChart" index="2"]
+[node name="ShootActionWatcher" type="Node" parent="StateChart" index="3"]
 script = ExtResource("3_os25l")
 action = "gun_shoot"
 input_mode = 2
 
-[node name="Root" type="Node" parent="StateChart" index="3" node_paths=PackedStringArray("default_substate")]
+[node name="Root" type="Node" parent="StateChart" index="4" node_paths=PackedStringArray("default_substate")]
 script = ExtResource("3_vfad7")
 default_substate = NodePath("Idle")
 

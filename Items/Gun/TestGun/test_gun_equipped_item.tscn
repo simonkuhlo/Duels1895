@@ -1,9 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://bsu4skealuc0t"]
+[gd_scene load_steps=28 format=3 uid="uid://bsu4skealuc0t"]
 
 [ext_resource type="PackedScene" uid="uid://bdk4f5f26rruv" path="res://Items/_Templates/Tool/Weapon/Gun/gun_equipped_item.tscn" id="1_p3rdd"]
 [ext_resource type="PackedScene" uid="uid://d0qhpnij7ow5h" path="res://Assets/Revolver/revolver.fbx" id="2_0vnbi"]
-[ext_resource type="Resource" uid="uid://bagw5dxtn2ain" path="res://Items/Ammo/testammo.tres" id="2_yv20a"]
-[ext_resource type="Script" uid="uid://d4i5esoutf3k0" path="res://System/Statechart/Transition/Guards/delay_guard.gd" id="3_my1jw"]
+[ext_resource type="Script" uid="uid://k4tvfulfdia5" path="res://System/Statechart/Transition/Guards/delay_guard.gd" id="3_my1jw"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7evcr"]
 animation = &"RESET"
@@ -57,7 +56,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("revolver:rotation")
+tracks/0/path = NodePath("Visuals:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -69,7 +68,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("revolver:position")
+tracks/1/path = NodePath("Visuals:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -102,7 +101,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("revolver:position")
+tracks/0/path = NodePath("Visuals:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -117,7 +116,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("revolver:rotation")
+tracks/0/path = NodePath("Visuals:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -132,7 +131,7 @@ length = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("revolver:rotation")
+tracks/0/path = NodePath("Visuals:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -157,9 +156,8 @@ _data = {
 }
 
 [node name="TestGunEquippedItem" instance=ExtResource("1_p3rdd")]
-loaded_ammo = ExtResource("2_yv20a")
 
-[node name="revolver" parent="." index="0" instance=ExtResource("2_0vnbi")]
+[node name="Visuals" parent="." index="0" instance=ExtResource("2_0vnbi")]
 transform = Transform3D(-7.23998e-06, 0, -2, 0, 2, 0, 2, 0, -7.23998e-06, 0, 0, 0)
 
 [node name="DelayGuard" type="Node" parent="StateChart/Root/Shooting/ToIdle" index="0" node_paths=PackedStringArray("state_to_watch")]
@@ -167,13 +165,13 @@ script = ExtResource("3_my1jw")
 state_to_watch = NodePath("../..")
 delay_seconds = 0.4
 
-[node name="ItemUi" parent="." index="2" node_paths=PackedStringArray("ammo_count_label")]
+[node name="ItemUi" parent="." index="3" node_paths=PackedStringArray("ammo_count_label")]
 ammo_count_label = NodePath("VBoxContainer/AmmoCountLabel")
 
-[node name="AnimationTree" parent="." index="3"]
+[node name="AnimationTree" parent="." index="4"]
 tree_root = SubResource("AnimationNodeStateMachine_xkyr2")
 
-[node name="AnimationPlayer" parent="." index="4"]
+[node name="AnimationPlayer" parent="." index="5"]
 libraries = {
 &"": SubResource("AnimationLibrary_uks15"),
 &"GunItem": SubResource("AnimationLibrary_78soq"),
@@ -181,7 +179,7 @@ libraries = {
 &"ToolItem": SubResource("AnimationLibrary_ijx3d")
 }
 
-[connection signal="activated" from="StateChart/Root/Idle" to="." method="_on_idle_activated"]
-[connection signal="activated" from="StateChart/Root/Aiming" to="." method="_on_aiming_activated"]
-[connection signal="activated" from="StateChart/Root/Shooting" to="." method="_on_shooting_activated"]
-[connection signal="activated" from="StateChart/Root/Reloading" to="." method="_on_reloading_activated"]
+[connection signal="activated" from="StateChart/Root/Idle" to="StateChart/StateChartHandler" method="_on_idle_activated"]
+[connection signal="activated" from="StateChart/Root/Aiming" to="StateChart/StateChartHandler" method="_on_aiming_activated"]
+[connection signal="activated" from="StateChart/Root/Shooting" to="StateChart/StateChartHandler" method="_on_shooting_activated"]
+[connection signal="activated" from="StateChart/Root/Reloading" to="StateChart/StateChartHandler" method="_on_reloading_activated"]

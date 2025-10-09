@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cg6fa4lu86wt4"]
+[gd_scene load_steps=5 format=3 uid="uid://cg6fa4lu86wt4"]
 
 [ext_resource type="Script" uid="uid://dvc1tchx6cs1r" path="res://System/Items/Core/Equipped Item/equipped_item.gd" id="1_64sbr"]
+[ext_resource type="Script" uid="uid://b20gnj51xn60l" path="res://System/Items/Core/Equipped Item/item_animation_manager.gd" id="2_0tlgk"]
 [ext_resource type="Script" uid="uid://ifqoyipqnch5" path="res://System/Items/Core/Equipped Item/item_ui.gd" id="2_uks15"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_gfiny"]
@@ -8,6 +9,9 @@
 [node name="EquippedItem" type="Node3D" node_paths=PackedStringArray("animation_tree")]
 script = ExtResource("1_64sbr")
 animation_tree = NodePath("AnimationTree")
+
+[node name="ItemAnimationManager" type="Node" parent="."]
+script = ExtResource("2_0tlgk")
 
 [node name="ItemUi" type="CanvasLayer" parent="." node_paths=PackedStringArray("parent_item")]
 script = ExtResource("2_uks15")
