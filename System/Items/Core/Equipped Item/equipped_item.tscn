@@ -6,9 +6,9 @@
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_gfiny"]
 
-[node name="EquippedItem" type="Node3D" node_paths=PackedStringArray("animation_tree")]
+[node name="EquippedItem" type="Node3D" node_paths=PackedStringArray("amination_manager")]
 script = ExtResource("1_64sbr")
-animation_tree = NodePath("AnimationTree")
+amination_manager = NodePath("ItemAnimationManager")
 
 [node name="ItemAnimationManager" type="Node" parent="."]
 script = ExtResource("2_0tlgk")
