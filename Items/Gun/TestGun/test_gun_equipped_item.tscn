@@ -1,8 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://bsu4skealuc0t"]
+[gd_scene load_steps=30 format=3 uid="uid://bsu4skealuc0t"]
 
 [ext_resource type="PackedScene" uid="uid://bdk4f5f26rruv" path="res://Items/_Templates/Tool/Weapon/Gun/gun_equipped_item.tscn" id="1_p3rdd"]
 [ext_resource type="PackedScene" uid="uid://d0qhpnij7ow5h" path="res://Assets/Revolver/revolver.fbx" id="2_0vnbi"]
-[ext_resource type="Script" uid="uid://k4tvfulfdia5" path="res://System/Statechart/Transition/Guards/delay_guard.gd" id="3_my1jw"]
+[ext_resource type="Script" uid="uid://d4i5esoutf3k0" path="res://System/Statechart/Transition/Guards/delay_guard.gd" id="3_my1jw"]
+[ext_resource type="PackedScene" uid="uid://d1snt8eeuw3w4" path="res://Items/_Templates/Tool/Weapon/Gun/Bullet/bullet_instance.tscn" id="3_yg6gr"]
+[ext_resource type="Script" uid="uid://v63o8vdio8m7" path="res://Items/Gun/TestGun/gun_animation_manager.gd" id="4_yv20a"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7evcr"]
 animation = &"RESET"
@@ -46,7 +48,7 @@ states/TestGun_Reload/position = Vector2(475, -20)
 states/TestGun_Shoot/node = SubResource("AnimationNodeAnimation_yg6gr")
 states/TestGun_Shoot/position = Vector2(456, 244)
 transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_j314w"), "TestGun_Shoot", "RESET", SubResource("AnimationNodeStateMachineTransition_iwltp"), "TestGun_Reload", "RESET", SubResource("AnimationNodeStateMachineTransition_xcr6i"), "TestGun_Idle", "RESET", SubResource("AnimationNodeStateMachineTransition_7evcr"), "RESET", "TestGun_Reload", SubResource("AnimationNodeStateMachineTransition_my1jw"), "RESET", "TestGun_Shoot", SubResource("AnimationNodeStateMachineTransition_yv20a"), "RESET", "TestGun_Idle", SubResource("AnimationNodeStateMachineTransition_yg6gr")]
-graph_offset = Vector2(-6, -95.4445)
+graph_offset = Vector2(-28, -101.42)
 
 [sub_resource type="Animation" id="Animation_gfiny"]
 resource_name = "Idle"
@@ -155,7 +157,9 @@ _data = {
 &"Aim_down_sights": SubResource("Animation_ijx3d")
 }
 
-[node name="TestGunEquippedItem" instance=ExtResource("1_p3rdd")]
+[node name="TestGunEquippedItem" node_paths=PackedStringArray("filtered_gun_animation_manager") instance=ExtResource("1_p3rdd")]
+filtered_gun_animation_manager = NodePath("ItemAnimationManager")
+bullet_scene = ExtResource("3_yg6gr")
 
 [node name="Visuals" parent="." index="0" instance=ExtResource("2_0vnbi")]
 transform = Transform3D(-7.23998e-06, 0, -2, 0, 2, 0, 2, 0, -7.23998e-06, 0, 0, 0)
@@ -164,6 +168,10 @@ transform = Transform3D(-7.23998e-06, 0, -2, 0, 2, 0, 2, 0, -7.23998e-06, 0, 0, 
 script = ExtResource("3_my1jw")
 state_to_watch = NodePath("../..")
 delay_seconds = 0.4
+
+[node name="ItemAnimationManager" parent="." index="2" node_paths=PackedStringArray("animation_tree")]
+script = ExtResource("4_yv20a")
+animation_tree = NodePath("../AnimationTree")
 
 [node name="ItemUi" parent="." index="3" node_paths=PackedStringArray("ammo_count_label")]
 ammo_count_label = NodePath("VBoxContainer/AmmoCountLabel")

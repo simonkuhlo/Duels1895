@@ -18,13 +18,14 @@ var filtered_gun_instance:EquippedGun:
 		filtered_gun_instance = new
 		if filtered_gun_instance:
 			filtered_gun_instance.loaded_ammo_amount_changed.connect(_on_loaded_ammo_amount_changed)
-			_on_loaded_ammo_amount_changed(filtered_gun_instance.loaded_ammo_amount)
+			_on_loaded_ammo_amount_changed()
 
 func _ready() -> void:
 	filtered_gun_instance = parent_item
 
-func _on_loaded_ammo_amount_changed(new_amount:int) -> void:
-	ammo_count_label.text = str(new_amount) + " / " + str(filtered_gun_instance.filtered_gun_item.magazine_size)
+func _on_loaded_ammo_amount_changed() -> void:
+	var new_amount = filtered_gun_instance.loaded_ammo_amount
+	ammo_count_label.text = str(new_amount) + " / " + str(filtered_gun_instance.filtered_gun_ref.magazine_size)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("select_ammo_type"):

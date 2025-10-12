@@ -13,7 +13,7 @@ var holder:ItemHolder3D:
 		if holder:
 			set_multiplayer_authority(holder.get_multiplayer_authority())
 
-@export var amination_manager:ItemAnimationManager
+@export var animation_manager:ItemAnimationManager
 
 func _on_instance_changed(new_instance:ItemInstance) -> void:
 	pass

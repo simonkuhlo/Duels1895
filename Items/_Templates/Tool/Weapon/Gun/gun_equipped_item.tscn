@@ -1,16 +1,15 @@
-[gd_scene load_steps=22 format=3 uid="uid://bdk4f5f26rruv"]
+[gd_scene load_steps=21 format=3 uid="uid://bdk4f5f26rruv"]
 
 [ext_resource type="PackedScene" uid="uid://vcms5ou6eky8" path="res://Items/_Templates/Tool/Weapon/weapon_equipped_item.tscn" id="1_1vnc5"]
-[ext_resource type="Script" uid="uid://dppseieus8eof" path="res://System/Statechart/state_chart.gd" id="2_7ojyg"]
+[ext_resource type="Script" uid="uid://8eiub14v3ar4" path="res://System/Statechart/state_chart.gd" id="2_7ojyg"]
 [ext_resource type="Script" uid="uid://bsdo56gipopi6" path="res://Items/_Templates/Tool/Weapon/Gun/gun_equipped_item.gd" id="2_prq1c"]
-[ext_resource type="PackedScene" uid="uid://d1snt8eeuw3w4" path="res://Items/_Templates/Tool/Weapon/Gun/Bullet/bullet_instance.tscn" id="3_evmsm"]
 [ext_resource type="Script" uid="uid://b5w1lyqirt5o1" path="res://System/Statechart/input_action_watcher.gd" id="3_os25l"]
-[ext_resource type="Script" uid="uid://cwukbpihf3lvu" path="res://System/Statechart/States/compound_state.gd" id="3_vfad7"]
-[ext_resource type="Script" uid="uid://cwfixmjh6s5l5" path="res://System/Statechart/States/atomic_state.gd" id="4_8onvc"]
+[ext_resource type="Script" uid="uid://bmtbv53c168xb" path="res://System/Statechart/States/compound_state.gd" id="3_vfad7"]
+[ext_resource type="Script" uid="uid://cebbknmpf88yh" path="res://System/Statechart/States/atomic_state.gd" id="4_8onvc"]
 [ext_resource type="Script" uid="uid://d281u1urj87bx" path="res://Items/_Templates/Tool/Weapon/Gun/state_chart_handler.gd" id="5_ipd7q"]
-[ext_resource type="Script" uid="uid://eefansunrpt3" path="res://System/Statechart/Transition/state_transition.gd" id="5_os25l"]
-[ext_resource type="Script" uid="uid://blu14f6fk0ttd" path="res://System/Statechart/Transition/Guards/input_guard.gd" id="6_8onvc"]
-[ext_resource type="Script" uid="uid://k4tvfulfdia5" path="res://System/Statechart/Transition/Guards/delay_guard.gd" id="7_os25l"]
+[ext_resource type="Script" uid="uid://dyc30ur4vw88b" path="res://System/Statechart/Transition/state_transition.gd" id="5_os25l"]
+[ext_resource type="Script" uid="uid://cua7uxardneih" path="res://System/Statechart/Transition/Guards/input_guard.gd" id="6_8onvc"]
+[ext_resource type="Script" uid="uid://d4i5esoutf3k0" path="res://System/Statechart/Transition/Guards/delay_guard.gd" id="7_os25l"]
 [ext_resource type="Script" uid="uid://d07ftg3xjbl2" path="res://Items/_Templates/Tool/Weapon/Gun/gun_ui.gd" id="11_78soq"]
 [ext_resource type="PackedScene" uid="uid://bxyhi0olljmbn" path="res://Ui/Ingame/RadialMenu/radial_menu.tscn" id="12_ntg07"]
 
@@ -69,14 +68,14 @@ _data = {
 
 [node name="GunEquippedItem" instance=ExtResource("1_1vnc5")]
 script = ExtResource("2_prq1c")
-loaded_ammo = null
-bullet_scene = ExtResource("3_evmsm")
+bullet_scene = null
 
 [node name="StateChart" type="Node" parent="." index="0"]
 script = ExtResource("2_7ojyg")
 
-[node name="StateChartHandler" type="Node" parent="StateChart" index="0"]
+[node name="StateChartHandler" type="Node" parent="StateChart" index="0" node_paths=PackedStringArray("parent_item")]
 script = ExtResource("5_ipd7q")
+parent_item = NodePath("../..")
 
 [node name="ReloadActionWatcher" type="Node" parent="StateChart" index="1"]
 script = ExtResource("3_os25l")
@@ -163,7 +162,7 @@ script = ExtResource("7_os25l")
 state_to_watch = NodePath("../..")
 delay_seconds = 1.0
 
-[node name="ItemUi" parent="." index="1" node_paths=PackedStringArray("ammo_select_root", "ammo_select")]
+[node name="ItemUi" parent="." index="2" node_paths=PackedStringArray("ammo_select_root", "ammo_select")]
 script = ExtResource("11_78soq")
 ammo_select_root = NodePath("CenterContainer")
 ammo_select = NodePath("CenterContainer/AmmoSelectMenu")
@@ -199,7 +198,7 @@ text = "Item Name"
 layout_mode = 2
 text = "Ammo Count"
 
-[node name="AnimationPlayer" parent="." index="3"]
+[node name="AnimationPlayer" parent="." index="4"]
 libraries = {
 &"": SubResource("AnimationLibrary_uks15"),
 &"GunItem": SubResource("AnimationLibrary_78soq"),

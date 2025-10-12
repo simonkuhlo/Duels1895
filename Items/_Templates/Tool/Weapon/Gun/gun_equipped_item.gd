@@ -5,6 +5,8 @@ signal loaded_ammo_changed()
 signal loaded_ammo_amount_changed()
 
 var filtered_gun_ref:GunItem
+@export var filtered_gun_animation_manager:GunAnimationManager = self.animation_manager
+@export var bullet_scene:PackedScene
 
 
 var set_loaded_ammo:AmmoItem:
@@ -59,3 +61,43 @@ func _get_available_ammo(loaded_type_only:bool = false) -> Array[ItemInstance]:
 		filter.allowed_ammo_families = allowed_ammo_families
 	returned_ammo = holder.parent_entity.ammo_inventory.get_content(filter)
 	return returned_ammo
+
+func shoot(origin:Transform3D) -> void:
+	if loaded_ammo_amount <= 0:
+		return
+	if !loaded_ammo:
+		loaded_ammo_amount = 0
+		return
+	loaded_ammo_amount -= 1
+	var bullet_instance:BulletInstance = bullet_scene.instantiate()
+	var damage_source:ProjectileDamageSource = ProjectileDamageSource.new()
+	damage_source.holder = holder.parent_entity
+	damage_source.peer = multiplayer.get_remote_sender_id()
+	damage_source.weapon = filtered_gun_ref
+	bullet_instance.current_velocity = filtered_gun_ref.base_velocity * loaded_ammo.velocity_modifier
+	bullet_instance.current_damage = filtered_gun_ref.base_damage * loaded_ammo.damage_modifier
+	bullet_instance.damage_source = damage_source
+	bullet_instance.global_transform = origin
+	MapLoader.loaded_map_instance.add_child(bullet_instance, true)
+
+@rpc("authority", "call_remote", "reliable")
+func shoot_rpc(origin:Transform3D) -> void:
+	if multiplayer.is_server():
+		shoot(origin)
+
+func reload() -> void:
+	if !multiplayer.is_server():
+		reload_rpc.rpc_id(1)
+	var inventory_ammo = _get_available_ammo(true)
+	if !inventory_ammo:
+		return
+	var missing_amount = filtered_gun_ref.magazine_size - loaded_ammo_amount
+	var added_amount = min(missing_amount, inventory_ammo[0].amount)
+	loaded_ammo_amount += added_amount
+	inventory_ammo[0].amount -= added_amount
+	filtered_gun_animation_manager.reload()
+
+@rpc("authority", "call_remote", "reliable")
+func reload_rpc() -> void:
+	if multiplayer.is_server():
+		reload()

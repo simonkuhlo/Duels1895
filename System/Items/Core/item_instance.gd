@@ -11,7 +11,7 @@ signal request_sync()
 		item_reference = new
 		reset_properties()
 
-var _properties:Dictionary[StringName, Variant] = {"amount" = 1}
+@export var _properties:Dictionary[StringName, Variant] = {"amount" = 1}
 
 @export var amount:int:
 	set(new):
