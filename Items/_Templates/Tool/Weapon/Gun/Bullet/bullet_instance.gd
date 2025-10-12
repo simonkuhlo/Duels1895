@@ -8,6 +8,8 @@ var ammo_reference:AmmoItem
 var current_damage:float = 10
 var current_velocity:float = 200
 
+var spawn_origin:Vector3
+
 func _physics_process(delta: float) -> void:
 	var pos_now: Vector3 = global_transform.origin
 	var pos_next: Vector3 = calculate_next_position(delta)
