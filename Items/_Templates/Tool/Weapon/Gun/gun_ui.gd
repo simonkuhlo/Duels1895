@@ -38,6 +38,7 @@ func _on_ammo_selected(option:RadialMenuOption) -> void:
 		if option.item_instance.item_reference is AmmoItem:
 			if parent_item is EquippedGun:
 				parent_item.loaded_ammo = option.item_instance.item_reference
+				parent_item.reload()
 
 func show_ammo_select() -> void:
 	var ammo_select_options:Array[RadialMenuOption] = []
