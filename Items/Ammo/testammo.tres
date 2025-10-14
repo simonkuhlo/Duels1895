@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="AmmoItem" load_steps=3 format=3 uid="uid://bagw5dxtn2ain"]
+[gd_resource type="Resource" script_class="AmmoItem" load_steps=4 format=3 uid="uid://bagw5dxtn2ain"]
 
 [ext_resource type="Script" uid="uid://1fv2gvyqcwyn" path="res://Items/_Templates/Ammo/ammo_item.gd" id="1_0q536"]
+[ext_resource type="Texture2D" uid="uid://s5scmgf72thg" path="res://Assets/bullets_b.png" id="1_k28c1"]
 
 [sub_resource type="Curve" id="Curve_0q536"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.251323, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.198356), 0.0, 0.0, 0, 0]
@@ -16,5 +17,6 @@ damage_falloff = SubResource("Curve_0q536")
 uid = &"item_ammo_test_2"
 item_name = "Test Ammo"
 description = ""
+icon = ExtResource("1_k28c1")
 special = true
 max_stack_size = 0
