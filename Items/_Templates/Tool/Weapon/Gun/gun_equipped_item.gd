@@ -69,7 +69,7 @@ func shoot(origin:Transform3D) -> void:
 		loaded_ammo_amount = 0
 		return
 	loaded_ammo_amount -= 1
-	var bullet_instance:BulletInstance = bullet_scene.instantiate()
+	var bullet_instance:ProjectileInstance = bullet_scene.instantiate()
 	var damage_source:ProjectileDamageSource = ProjectileDamageSource.new()
 	damage_source.holder = holder.parent_entity
 	damage_source.peer = multiplayer.get_remote_sender_id()

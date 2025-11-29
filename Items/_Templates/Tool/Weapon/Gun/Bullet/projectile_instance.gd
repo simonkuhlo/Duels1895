@@ -1,5 +1,5 @@
 extends Node3D
-class_name BulletInstance
+class_name ProjectileInstance
 
 @export var damage_display:PackedScene
 

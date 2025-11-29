@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bdk4f5f26rruv" path="res://Items/_Templates/Tool/Weapon/Gun/gun_equipped_item.tscn" id="1_p3rdd"]
 [ext_resource type="PackedScene" uid="uid://d0qhpnij7ow5h" path="res://Assets/Revolver/revolver.fbx" id="2_0vnbi"]
-[ext_resource type="Script" uid="uid://d4i5esoutf3k0" path="res://System/Statechart/Transition/Guards/delay_guard.gd" id="3_my1jw"]
-[ext_resource type="PackedScene" uid="uid://d1snt8eeuw3w4" path="res://Items/_Templates/Tool/Weapon/Gun/Bullet/bullet_instance.tscn" id="3_yg6gr"]
+[ext_resource type="Script" uid="uid://k4tvfulfdia5" path="res://System/Statechart/Transition/Guards/delay_guard.gd" id="3_my1jw"]
+[ext_resource type="PackedScene" uid="uid://d1snt8eeuw3w4" path="res://Items/_Templates/Tool/Weapon/Gun/Bullet/projectile_instance.tscn" id="3_yg6gr"]
 [ext_resource type="Script" uid="uid://v63o8vdio8m7" path="res://Items/Gun/TestGun/gun_animation_manager.gd" id="4_yv20a"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7evcr"]
