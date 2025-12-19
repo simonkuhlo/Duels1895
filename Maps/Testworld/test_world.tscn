@@ -1,24 +1,25 @@
-[gd_scene load_steps=36 format=3 uid="uid://tyy8a7n6vs1t"]
+[gd_scene load_steps=39 format=3 uid="uid://tyy8a7n6vs1t"]
 
 [ext_resource type="PackedScene" uid="uid://ca6610awtca8x" path="res://Ui/Ingame/controlled_entity_ui.tscn" id="1_fyd15"]
 [ext_resource type="Texture2D" uid="uid://bki7lv2ibcdsx" path="res://Assets/Debug Textures/PNG/Dark/texture_07.png" id="1_tcuxq"]
-[ext_resource type="Script" uid="uid://d3h8gxcyw1yr5" path="res://System/Maps/map_instance.gd" id="1_vkd6p"]
+[ext_resource type="Script" uid="uid://d3ugslm6cowby" path="res://System/Maps/map_instance.gd" id="1_vkd6p"]
 [ext_resource type="PackedScene" uid="uid://715oy5d5svy5" path="res://System/Entities/PlayerCharacter/player_character_body.tscn" id="2_2ovxu"]
 [ext_resource type="Texture2D" uid="uid://mcs0qu228yhp" path="res://Assets/Debug Textures/PNG/Orange/texture_01.png" id="2_fyd15"]
-[ext_resource type="Script" uid="uid://8cv1sawj6sru" path="res://Maps/Testworld/game_logic.gd" id="2_s2o1y"]
+[ext_resource type="Script" uid="uid://bidqxs8acpffb" path="res://Maps/Testworld/game_logic.gd" id="2_s2o1y"]
 [ext_resource type="PackedScene" uid="uid://d2a855v6411vx" path="res://Ui/pause_menu.tscn" id="2_wdtph"]
 [ext_resource type="Texture2D" uid="uid://cpdgq4omukce2" path="res://Assets/Debug Textures/Vector/texture_01.svg" id="4_473rr"]
 [ext_resource type="Texture2D" uid="uid://cbblk84fquqkb" path="res://Assets/Debug Textures/PNG/Dark/texture_13.png" id="5_i5nfa"]
 [ext_resource type="Texture2D" uid="uid://yp8dk5alji4n" path="res://Assets/Debug Textures/PNG/Purple/texture_11.png" id="8_i5nfa"]
 [ext_resource type="Texture2D" uid="uid://7ghkovkmvowy" path="res://Assets/Debug Textures/PNG/Purple/texture_02.png" id="9_si7et"]
-[ext_resource type="Script" uid="uid://b2yp6032m0u72" path="res://System/Maps/spectator_camera_director.gd" id="10_vkd6p"]
-[ext_resource type="Script" uid="uid://dajm6l3xgmhpp" path="res://System/Maps/player_spawner.gd" id="12_wdtph"]
-[ext_resource type="Script" uid="uid://cdepghbsfroln" path="res://System/Items/Core/multiplayer_world_item_spawner.gd" id="13_1jgxu"]
+[ext_resource type="Script" uid="uid://4aubljxegbnq" path="res://System/Maps/spectator_camera_director.gd" id="10_vkd6p"]
+[ext_resource type="Script" uid="uid://b4an3soj1lvoy" path="res://System/Maps/player_spawner.gd" id="12_wdtph"]
+[ext_resource type="Script" uid="uid://g8pj4ktbudu1" path="res://System/Items/Core/multiplayer_world_item_spawner.gd" id="13_1jgxu"]
 [ext_resource type="PackedScene" uid="uid://cb1t5f6cdur34" path="res://System/Items/Nodes/world_item_spawner.tscn" id="13_kjpmb"]
-[ext_resource type="Script" uid="uid://dhwvy3d8fdrct" path="res://System/Items/Core/item_instance.gd" id="14_a58uu"]
-[ext_resource type="Resource" uid="uid://d0pfuiioo4pu4" path="res://Items/TestItem/test_item.tres" id="14_x3ct3"]
+[ext_resource type="Script" uid="uid://crq3ojxjwo43d" path="res://System/Items/Core/item_instance.gd" id="14_a58uu"]
+[ext_resource type="Resource" uid="uid://bagw5dxtn2ain" path="res://Items/Ammo/testammo.tres" id="16_txeu6"]
 [ext_resource type="Resource" uid="uid://wp5415ckmxuv" path="res://Items/Gun/TestGun/testgun.tres" id="17_0i1fw"]
-[ext_resource type="Script" uid="uid://c5egtsopygw4i" path="res://System/Hit & Hurtboxes/hurtbox.gd" id="19_txeu6"]
+[ext_resource type="Script" uid="uid://di5xl248g4osb" path="res://System/Hit & Hurtboxes/hurtbox.gd" id="19_txeu6"]
+[ext_resource type="Resource" uid="uid://ckhywpu00qdet" path="res://Items/Ammo/testammo2.tres" id="19_uv4mv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dxppu"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -61,18 +62,6 @@ uv1_triplanar = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sp1l4"]
 albedo_texture = ExtResource("9_si7et")
 
-[sub_resource type="Resource" id="Resource_x3ct3"]
-script = ExtResource("14_a58uu")
-item_reference = ExtResource("14_x3ct3")
-amount = 5
-metadata/_custom_type_script = "uid://si4q0pagftsy"
-
-[sub_resource type="Resource" id="Resource_1jgxu"]
-script = ExtResource("14_a58uu")
-item_reference = ExtResource("17_0i1fw")
-amount = 1
-metadata/_custom_type_script = "uid://si4q0pagftsy"
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_uv4mv"]
 size = Vector3(6, 4, 1)
 
@@ -84,6 +73,30 @@ albedo_color = Color(0.847059, 0.196078, 0.219608, 0.47451)
 material = SubResource("StandardMaterial3D_xxcdt")
 size = Vector3(6, 4, 1)
 
+[sub_resource type="Resource" id="Resource_4t017"]
+script = ExtResource("14_a58uu")
+item_reference = ExtResource("16_txeu6")
+amount = 10
+metadata/_custom_type_script = "uid://dhwvy3d8fdrct"
+
+[sub_resource type="Resource" id="Resource_1jgxu"]
+script = ExtResource("14_a58uu")
+item_reference = ExtResource("17_0i1fw")
+amount = 1
+metadata/_custom_type_script = "uid://si4q0pagftsy"
+
+[sub_resource type="Resource" id="Resource_uv4mv"]
+script = ExtResource("14_a58uu")
+item_reference = ExtResource("16_txeu6")
+amount = 100
+metadata/_custom_type_script = "uid://crq3ojxjwo43d"
+
+[sub_resource type="Resource" id="Resource_x3ct3"]
+script = ExtResource("14_a58uu")
+item_reference = ExtResource("19_uv4mv")
+amount = 5
+metadata/_custom_type_script = "uid://si4q0pagftsy"
+
 [node name="TestWorld" type="Node3D" node_paths=PackedStringArray("game_logic")]
 script = ExtResource("1_vkd6p")
 game_logic = NodePath("GameLogic")
@@ -91,7 +104,7 @@ game_logic = NodePath("GameLogic")
 [node name="GameLogic" type="Node" parent="." node_paths=PackedStringArray("parent_world", "player_spawns")]
 script = ExtResource("2_s2o1y")
 parent_world = NodePath("..")
-player_spawns = [NodePath("../PlayerSpawn")]
+player_spawns = [NodePath("../SpawnLocations/PlayerSpawn")]
 
 [node name="PauseMenu" parent="." node_paths=PackedStringArray("parent_world") instance=ExtResource("2_wdtph")]
 parent_world = NodePath("..")
@@ -106,18 +119,20 @@ environment = SubResource("Environment_1lwx6")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="Structures" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Structures"]
 use_collision = true
 size = Vector3(100, 1, 100)
 material = SubResource("StandardMaterial3D_kt6p6")
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGBox3D"]
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Structures/CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 operation = 2
 polygon = PackedVector2Array(0, 0, -3, 1, 3, 1, 1, 0)
 depth = 5.37
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Structures"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 material_override = SubResource("StandardMaterial3D_cnaw2")
 use_collision = true
@@ -125,29 +140,39 @@ radius = 3.0
 height = 5.0
 sides = 16
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Structures"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 14)
 use_collision = true
 mesh = SubResource("PrismMesh_dxppu")
 material = SubResource("StandardMaterial3D_uu1iw")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Structures"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 0)
 material_override = SubResource("StandardMaterial3D_4tg7h")
 use_collision = true
 material = SubResource("StandardMaterial3D_ud3vi")
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Structures"]
 transform = Transform3D(-0.707106, 0, 0.707106, 0, 1, 0, -0.707106, 0, -0.707106, -3, 0.5, 6)
 material_override = SubResource("StandardMaterial3D_phhhp")
 use_collision = true
 polygon = PackedVector2Array(0, 0, 0, 0, 5, 5, 5, 0)
 depth = 3.0
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="CSGPolygon3D"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Structures/CSGPolygon3D"]
 transform = Transform3D(0.999982, 0, 0, 0, 1, 0, 0, 0, 0.999982, 6.99999, 2.5, -1.5)
 material_override = SubResource("StandardMaterial3D_sp1l4")
 size = Vector3(4, 5, 3)
+
+[node name="Hurtbox" type="Area3D" parent="Structures"]
+transform = Transform3D(0.981896, 0, -0.189421, 0, 1, 0, 0.189421, 0, 0.981896, 12.4669, 3.37485, -6.41501)
+script = ExtResource("19_txeu6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Structures/Hurtbox"]
+shape = SubResource("BoxShape3D_uv4mv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Structures/Hurtbox"]
+mesh = SubResource("BoxMesh_4t017")
 
 [node name="SpectatorCameraDirector" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
@@ -161,11 +186,38 @@ spring_length = 30.0
 transform = Transform3D(1, 0, 0, 0, 1, 1.19209e-07, 0, -1.19209e-07, 1, 0, 0, 0)
 current = true
 
-[node name="PlayerSpawn" type="Marker3D" parent="." node_paths=PackedStringArray("parent_map")]
+[node name="SpawnLocations" type="Node3D" parent="."]
+
+[node name="PlayerSpawn" type="Marker3D" parent="SpawnLocations" node_paths=PackedStringArray("parent_map")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0821, 3.42629, 8.01913)
 script = ExtResource("12_wdtph")
 player_character_scene = ExtResource("2_2ovxu")
-parent_map = NodePath("..")
+parent_map = NodePath("../..")
+
+[node name="WorldItemSpawner2" parent="SpawnLocations" node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.98266, 1.89255, 0)
+parent_map = NodePath("../..")
+resource_to_spawn = SubResource("Resource_4t017")
+
+[node name="WorldItemSpawner" parent="SpawnLocations" node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.067746, 6.1756, 0.81631)
+parent_map = NodePath("../..")
+resource_to_spawn = SubResource("Resource_1jgxu")
+
+[node name="WorldItemSpawner3" parent="SpawnLocations" node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.98266, 1.89255, 12)
+parent_map = NodePath("../..")
+resource_to_spawn = SubResource("Resource_uv4mv")
+
+[node name="WorldItemSpawner4" parent="SpawnLocations" node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.98266, 1.89255, 9.99794)
+parent_map = NodePath("../..")
+resource_to_spawn = SubResource("Resource_x3ct3")
+
+[node name="WorldItemSpawner5" parent="SpawnLocations" node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0677, 1.1756, 6.81631)
+parent_map = NodePath("../..")
+resource_to_spawn = SubResource("Resource_1jgxu")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://715oy5d5svy5")
@@ -174,40 +226,5 @@ spawn_path = NodePath("..")
 [node name="MultiplayerWorldItemSpawner" type="MultiplayerSpawner" parent="."]
 spawn_path = NodePath("..")
 script = ExtResource("13_1jgxu")
-
-[node name="WorldItemSpawner2" parent="." node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.98266, 1.89255, 0)
-parent_map = NodePath("..")
-resource_to_spawn = SubResource("Resource_x3ct3")
-
-[node name="WorldItemSpawner" parent="." node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.067746, 6.1756, 0.81631)
-parent_map = NodePath("..")
-resource_to_spawn = SubResource("Resource_1jgxu")
-
-[node name="WorldItemSpawner3" parent="." node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.98266, 1.89255, 12)
-parent_map = NodePath("..")
-resource_to_spawn = SubResource("Resource_x3ct3")
-
-[node name="WorldItemSpawner4" parent="." node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.98266, 1.89255, 10)
-parent_map = NodePath("..")
-resource_to_spawn = SubResource("Resource_x3ct3")
-
-[node name="WorldItemSpawner5" parent="." node_paths=PackedStringArray("parent_map") instance=ExtResource("13_kjpmb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0677, 1.1756, 6.81631)
-parent_map = NodePath("..")
-resource_to_spawn = SubResource("Resource_1jgxu")
-
-[node name="Hurtbox" type="Area3D" parent="."]
-transform = Transform3D(0.981896, 0, -0.189421, 0, 1, 0, 0.189421, 0, 0.981896, 12.4669, 3.37485, -6.41501)
-script = ExtResource("19_txeu6")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
-shape = SubResource("BoxShape3D_uv4mv")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Hurtbox"]
-mesh = SubResource("BoxMesh_4t017")
 
 [connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]

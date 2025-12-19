@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=3 uid="uid://cbeno2owtveyk"]
+
+[ext_resource type="Script" uid="uid://47xa7mph10i" path="res://Ui/Ingame/RadialMenu/radial_menu_ui.gd" id="1_c1vjf"]
+[ext_resource type="PackedScene" uid="uid://bxyhi0olljmbn" path="res://Ui/Ingame/RadialMenu/radial_menu.tscn" id="2_fhlbh"]
+[ext_resource type="Script" uid="uid://b5u28gvjx1gov" path="res://Ui/Ingame/RadialMenu/radial_menu_option.gd" id="3_f13wv"]
+[ext_resource type="Script" uid="uid://cllhh1xpktbnj" path="res://Ui/Ingame/RadialMenu/radial_menu_item_option.gd" id="4_f13wv"]
+[ext_resource type="Script" uid="uid://crq3ojxjwo43d" path="res://System/Items/Core/item_instance.gd" id="5_gfd2y"]
+[ext_resource type="Resource" uid="uid://bagw5dxtn2ain" path="res://Items/Ammo/testammo.tres" id="7_vf2d2"]
+
+[sub_resource type="Resource" id="Resource_as4rt"]
+script = ExtResource("5_gfd2y")
+item_reference = ExtResource("7_vf2d2")
+amount = 15
+metadata/_custom_type_script = "uid://crq3ojxjwo43d"
+
+[sub_resource type="Resource" id="Resource_cwwuv"]
+script = ExtResource("4_f13wv")
+displayed_text = 0
+item_instance = SubResource("Resource_as4rt")
+text = ""
+metadata/_custom_type_script = "uid://cllhh1xpktbnj"
+
+[sub_resource type="Resource" id="Resource_23xsk"]
+script = ExtResource("5_gfd2y")
+item_reference = ExtResource("7_vf2d2")
+amount = 23
+metadata/_custom_type_script = "uid://crq3ojxjwo43d"
+
+[sub_resource type="Resource" id="Resource_srviu"]
+script = ExtResource("4_f13wv")
+displayed_text = 1
+item_instance = SubResource("Resource_23xsk")
+text = ""
+metadata/_custom_type_script = "uid://cllhh1xpktbnj"
+
+[node name="RadialMenuUiLayer" type="CanvasLayer" node_paths=PackedStringArray("radial_menu", "label")]
+script = ExtResource("1_c1vjf")
+radial_menu = NodePath("RadialMenu")
+label = NodePath("HBoxContainer/Label2")
+
+[node name="RadialMenu" parent="." instance=ExtResource("2_fhlbh")]
+options = Array[ExtResource("3_f13wv")]([SubResource("Resource_cwwuv"), SubResource("Resource_srviu")])
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 1006.0
+offset_top = 25.0
+offset_right = 1081.0
+offset_bottom = 65.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Selected:"
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+layout_mode = 2

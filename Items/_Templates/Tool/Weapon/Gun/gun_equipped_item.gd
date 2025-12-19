@@ -1,63 +1,103 @@
 extends EquippedWeapon
 class_name EquippedGun
 
-var loaded_ammo_amount:int = 1:
-	set(new):
-		loaded_ammo_amount = new
-		print(loaded_ammo_amount)
+signal loaded_ammo_changed()
+signal loaded_ammo_amount_changed()
 
-var loaded_ammo:AmmoItem
-
-var filtered_gun_item:GunItem:
-	set(new):
-		filtered_gun_item = new
-		if !loaded_ammo:
-			loaded_ammo = filtered_gun_item.default_ammo
-
+var filtered_gun_ref:GunItem
+@export var filtered_gun_animation_manager:GunAnimationManager = self.animation_manager
 @export var bullet_scene:PackedScene
 
-func _on_instance_changed(new_instance:ItemInstance) -> void:
-	filtered_gun_item = new_instance.item_reference
 
-func _on_idle_activated() -> void:
-	animation_tree["parameters/playback"].travel("TestGun_Idle")
+var set_loaded_ammo:AmmoItem:
+	set(new):
+		if loaded_ammo:
+			_get_available_ammo(true)[0].amount += loaded_ammo_amount
+			loaded_ammo_amount = 0
+		instance.set_property(filtered_gun_ref.PROPERTY_LOADED_AMMO_TYPE_STR, loaded_ammo.uid)
+	get():
+		return loaded_ammo
 
-func _on_aiming_activated() -> void:
-	pass
+var loaded_ammo:AmmoItem:
+	set(new):
+		loaded_ammo = new
+		loaded_ammo_changed.emit()
 
-func _on_shooting_activated() -> void:
-	animation_tree["parameters/playback"].travel("TestGun_Shoot")
-	if is_multiplayer_authority():
-		_request_shoot(holder.parent_entity.neck.global_transform)
-
-@rpc("authority", "call_local", "reliable")
-func _on_reloading_activated() -> void:
-	if multiplayer.is_server():
-		loaded_ammo_amount = filtered_gun_item.magazine_size
-	animation_tree["parameters/playback"].travel("TestGun_Reload")
-
-@rpc("any_peer", "call_local", "reliable")
-func _request_shoot(origin:Transform3D):
-	if !multiplayer.is_server():
-		if is_multiplayer_authority():
-			_request_shoot.rpc_id(1, origin)
-		return
-	if multiplayer.get_remote_sender_id():
-		if multiplayer.get_remote_sender_id() != get_multiplayer_authority():
+var loaded_ammo_amount:int:
+	set(new):
+		if !instance:
 			return
+		instance.set_property(filtered_gun_ref.PROPERTY_LOADED_AMMO_AMOUNT_STR, new)
+	get():
+		if !instance:
+			return 0
+		return instance.get_property(filtered_gun_ref.PROPERTY_LOADED_AMMO_AMOUNT_STR)
+
+func _before_instance_change() -> void:
+	if instance:
+		instance.property_changed.disconnect(_on_instance_property_changed)
+
+func _on_instance_changed(new_instance:ItemInstance) -> void:
+	new_instance.property_changed.connect(_on_instance_property_changed)
+	filtered_gun_ref = new_instance.item_reference
+
+func _on_instance_property_changed(key:StringName) -> void:
+	match key:
+		filtered_gun_ref.PROPERTY_LOADED_AMMO_TYPE_STR:
+			loaded_ammo = instance.get_property(filtered_gun_ref.PROPERTY_LOADED_AMMO_TYPE_STR)
+		filtered_gun_ref.PROPERTY_LOADED_AMMO_AMOUNT_STR:
+			loaded_ammo_amount_changed.emit()
+
+func _get_available_ammo(loaded_type_only:bool = false) -> Array[ItemInstance]:
+	var returned_ammo:Array[ItemInstance] = []
+	var filter = null
+	if loaded_type_only and loaded_ammo:
+		filter = ItemIdFilter.new()
+		var accepted_items:Array[ItemReference] = [loaded_ammo]
+		filter.accepted_items = accepted_items
+	else:
+		filter = AmmoFilter.new()
+		var allowed_ammo_families:Array[AmmoItem.Family] = [filtered_gun_ref.ammo_family]
+		filter.allowed_ammo_families = allowed_ammo_families
+	returned_ammo = holder.parent_entity.ammo_inventory.get_content(filter)
+	return returned_ammo
+
+func shoot(origin:Transform3D) -> void:
 	if loaded_ammo_amount <= 0:
 		return
 	if !loaded_ammo:
 		loaded_ammo_amount = 0
 		return
 	loaded_ammo_amount -= 1
-	var bullet_instance:BulletInstance = bullet_scene.instantiate()
+	var bullet_instance:ProjectileInstance = bullet_scene.instantiate()
 	var damage_source:ProjectileDamageSource = ProjectileDamageSource.new()
 	damage_source.holder = holder.parent_entity
 	damage_source.peer = multiplayer.get_remote_sender_id()
-	damage_source.weapon = filtered_gun_item
-	bullet_instance.current_velocity = filtered_gun_item.base_velocity * loaded_ammo.velocity_modifier
-	bullet_instance.current_damage = filtered_gun_item.base_damage * loaded_ammo.damage_modifier
+	damage_source.weapon = filtered_gun_ref
+	bullet_instance.current_velocity = filtered_gun_ref.base_velocity * loaded_ammo.velocity_modifier
+	bullet_instance.current_damage = filtered_gun_ref.base_damage * loaded_ammo.damage_modifier
 	bullet_instance.damage_source = damage_source
 	bullet_instance.global_transform = origin
-	MapLoader.loaded_map_instance.add_child(bullet_instance)
+	MapLoader.loaded_map_instance.add_child(bullet_instance, true)
+
+@rpc("authority", "call_remote", "reliable")
+func shoot_rpc(origin:Transform3D) -> void:
+	if multiplayer.is_server():
+		shoot(origin)
+
+func reload() -> void:
+	if !multiplayer.is_server():
+		reload_rpc.rpc_id(1)
+	var inventory_ammo = _get_available_ammo(true)
+	if !inventory_ammo:
+		return
+	var missing_amount = filtered_gun_ref.magazine_size - loaded_ammo_amount
+	var added_amount = min(missing_amount, inventory_ammo[0].amount)
+	loaded_ammo_amount += added_amount
+	inventory_ammo[0].amount -= added_amount
+	filtered_gun_animation_manager.reload()
+
+@rpc("authority", "call_remote", "reliable")
+func reload_rpc() -> void:
+	if multiplayer.is_server():
+		reload()

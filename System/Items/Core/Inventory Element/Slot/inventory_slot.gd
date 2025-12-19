@@ -16,7 +16,7 @@ signal item_switched(new_item:ItemInstance)
 			held_item.properties_changed.connect(_on_held_item_properites_changed)
 		item_switched.emit(held_item)
 
-var _parent_inventory:Inventory
+var _parent_inventory:SlotInventory
 
 func _ready() -> void:
 	super._ready()
@@ -37,6 +37,9 @@ func receive_item(item:ItemInstance) -> ItemInstance:
 	if filter:
 		if !filter.filter(item):
 			return item
+	else:
+		if item.item_reference.special:
+			return item
 	if held_item:
 		if item.item_reference.uid != held_item.item_reference.uid:
 			return item
@@ -47,7 +50,7 @@ func receive_item(item:ItemInstance) -> ItemInstance:
 			item.amount -= added_amount
 			if item.amount <= 0:
 				item = null
-		elif !max_amount:
+		elif !max_amount or max_amount == 0:
 			held_item.amount += item.amount
 			item = null
 		return item

@@ -124,6 +124,7 @@ func _add_transition(transition:StateTransition) -> void:
 ## Add a new transition to this state
 func _remove_transition(transition:StateTransition) -> void:
 	if !Engine.is_editor_hint():
-		transition.disconnect("transition_possible", _on_transition_possible)
+		if transition.transition_possible.is_connected(_on_transition_possible):
+			transition.disconnect("transition_possible", _on_transition_possible)
 	_cached_transitions.erase(transition)
 	update_configuration_warnings()

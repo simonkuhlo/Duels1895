@@ -14,7 +14,7 @@ class_name PlayerCharacterBody3D
 @export var exclude_client_authority:Array[Node]
 
 @export_group("UI hints")
-@export var hotbar_inventory:Inventory
+@export var hotbar_inventory:SlotInventory
 
 func _ready() -> void:
 	super._ready()

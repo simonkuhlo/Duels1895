@@ -34,6 +34,7 @@ func initialize_load_process(map_to_load:MapResource) -> void:
 	loaded_map_instance = null
 	awaited_peers.clear()
 	awaited_peers = Lobby.accepted_peers.duplicate()
+	print("Load process initialized: ", awaited_peers)
 	var awaited_peers_temp:Array[int] = awaited_peers.duplicate()
 	for peer in awaited_peers_temp:
 		load_map_rpc.rpc_id(peer, map_to_load.uid)
@@ -51,6 +52,7 @@ func load_map_response(success:bool) -> void:
 	if !multiplayer.is_server():
 		return
 	var peer:int = multiplayer.get_remote_sender_id()
+	print("Peer finished loading: ", str(peer))
 	awaited_peers.erase(peer)
 	if success:
 		loaded_peers.append(peer)

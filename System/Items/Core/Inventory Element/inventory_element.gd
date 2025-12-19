@@ -6,8 +6,9 @@ signal uid_changed()
 @export var uid:StringName:
 	set(new):
 		uid = new
-		if !multiplayer.is_server():
-			Items.register_element_uid(self, self.uid)
+		if multiplayer:
+			if !multiplayer.is_server():
+				Items.register_element_uid(self, self.uid)
 		uid_changed.emit()
 
 func _ready() -> void:
@@ -17,3 +18,6 @@ func _ready() -> void:
 ##Returns an ItemInstance containing the content this element did was not able to receive
 func receive_item(item:ItemInstance) -> ItemInstance:
 	return item
+
+func get_content(filter:BaseFilter = null) -> Array[ItemInstance]:
+	return []

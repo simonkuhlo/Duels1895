@@ -6,7 +6,7 @@ class_name InventoryVisualizer
 
 var visualizer_mapping:Array[InventorySlotVisualizer] = []
 
-var represented_inventory:Inventory:
+var represented_inventory:SlotInventory:
 	set(new):
 		if represented_inventory:
 			represented_inventory.slots_changed.disconnect(visualize_slots)

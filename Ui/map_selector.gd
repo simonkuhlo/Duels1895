@@ -40,4 +40,4 @@ func _on_start_button_pressed() -> void:
 		return
 	if !selected_map:
 		return
-	MapLoader.load_map(selected_map)
+	MapLoader.initialize_load_process(selected_map)

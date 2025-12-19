@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cop5ohxc0jlqs"]
+
+[ext_resource type="Script" uid="uid://dw3myabamym06" path="res://System/Items/Core/Inventory Element/Inventory/slot_inventory.gd" id="1_fp43g"]
+[ext_resource type="PackedScene" uid="uid://xfuqunnke4vx" path="res://System/Items/Core/Inventory Element/inventory_element.tscn" id="2_lpyxa"]
+[ext_resource type="Script" uid="uid://dedqc1vutccn1" path="res://System/Items/Core/Inventory Element/Inventory/inventory_synchronizer.gd" id="2_og11u"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_nrbf0"]
+properties/0/path = NodePath("..:uid")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+
+[node name="Inventory" type="Node"]
+script = ExtResource("1_fp43g")
+default_slot_scene = ExtResource("2_lpyxa")
+
+[node name="InventorySynchronizer" type="Node" parent="." node_paths=PackedStringArray("synchronized_inventory")]
+script = ExtResource("2_og11u")
+synchronized_inventory = NodePath("..")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="InventorySynchronizer"]
+replication_config = SubResource("SceneReplicationConfig_nrbf0")

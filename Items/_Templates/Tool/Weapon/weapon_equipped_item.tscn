@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://vcms5ou6eky8"]
 
 [ext_resource type="PackedScene" uid="uid://hysvkh26e5xi" path="res://Items/_Templates/Tool/tool_equipped_item.tscn" id="1_4g2k8"]
-[ext_resource type="Script" uid="uid://chxx4n1dq00ny" path="res://Items/_Templates/Tool/Weapon/weapon_equipped_item.gd" id="2_acy33"]
+[ext_resource type="Script" uid="uid://b464batj6flld" path="res://Items/_Templates/Tool/Weapon/weapon_equipped_item.gd" id="2_acy33"]
 
 [node name="WeaponEquippedItem" instance=ExtResource("1_4g2k8")]
 script = ExtResource("2_acy33")

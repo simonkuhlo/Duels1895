@@ -1,5 +1,5 @@
 extends Node3D
-class_name BulletInstance
+class_name ProjectileInstance
 
 @export var damage_display:PackedScene
 
@@ -7,6 +7,8 @@ var damage_source:ProjectileDamageSource
 var ammo_reference:AmmoItem
 var current_damage:float = 10
 var current_velocity:float = 200
+
+var spawn_origin:Vector3
 
 func _physics_process(delta: float) -> void:
 	var pos_now: Vector3 = global_transform.origin

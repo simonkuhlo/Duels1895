@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccj5hjerlgbef"]
+
+[ext_resource type="PackedScene" uid="uid://c5w70hqy75mu8" path="res://System/Items/Core/Inventory Element/Inventory/inventory.tscn" id="1_xa7bl"]
+[ext_resource type="Script" uid="uid://br2tfkwxgios7" path="res://System/Items/Core/Inventory Element/Inventory/ammo_inventory.gd" id="2_xuhl1"]
+
+[node name="AmmoInventory" instance=ExtResource("1_xa7bl")]
+script = ExtResource("2_xuhl1")

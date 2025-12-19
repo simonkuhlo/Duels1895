@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d1snt8eeuw3w4"]
 
-[ext_resource type="Script" uid="uid://b1scoofinoovn" path="res://Items/_Templates/Tool/Weapon/Gun/Bullet/bullet_instance.gd" id="1_5cg1c"]
+[ext_resource type="Script" uid="uid://c4ge7uglh6i2v" path="res://Items/_Templates/Tool/Weapon/Gun/Bullet/projectile_instance.gd" id="1_5cg1c"]
 [ext_resource type="PackedScene" uid="uid://dqw4p1tjfdewr" path="res://Items/_Templates/Tool/Weapon/Gun/Bullet/damage_display.tscn" id="2_vxoel"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_5cg1c"]

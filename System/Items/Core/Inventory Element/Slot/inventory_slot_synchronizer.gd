@@ -50,7 +50,7 @@ var slot_item_instance:ItemInstance:
 		if slot_item_instance:
 			slot_item_instance.properties_changed.connect(_on_slot_item_instance_properties_changed)
 			synchronized_item_uid = slot_item_instance.item_reference.uid
-			synchronized_item_properties = slot_item_instance.properties
+			synchronized_item_properties = slot_item_instance._properties
 		else:
 			synchronized_item_uid = ""
 			synchronized_item_properties = {}
@@ -58,7 +58,7 @@ var slot_item_instance:ItemInstance:
 func _on_slot_item_instance_properties_changed() -> void:
 	if !slot_item_instance:
 		return
-	synchronized_item_properties = slot_item_instance.properties
+	synchronized_item_properties = slot_item_instance._properties
 
 func _on_server_item_switched(new_item:ItemInstance) -> void:
 	if is_multiplayer_authority():

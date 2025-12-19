@@ -5,6 +5,8 @@ extends Node3D
 
 func _ready() -> void:
 	if multiplayer.is_server():
+		var item = resource_to_spawn.duplicate()
+		item.reset_properties()
 		_spawn_item.call_deferred(resource_to_spawn.duplicate())
 
 func _spawn_item(item:ItemInstance) -> void:

@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://bbe4x8ncqvrxj"]
 
-[ext_resource type="Script" uid="uid://c81lqv7aqsj1i" path="res://System/Maps/Loader/multiplayer_map_loader.gd" id="1_6pmpa"]
-[ext_resource type="Script" uid="uid://dh0jiadca171o" path="res://System/Maps/map_resource.gd" id="2_ghr5j"]
+[ext_resource type="Script" uid="uid://br5ikxf51tgrb" path="res://System/Maps/Loader/multiplayer_map_loader.gd" id="1_6pmpa"]
+[ext_resource type="Script" uid="uid://btqlyu0kj54vd" path="res://System/Maps/map_resource.gd" id="2_ghr5j"]
 [ext_resource type="Resource" uid="uid://qlnjnxld20qa" path="res://Maps/Testworld/test_world.tres" id="3_7rp2h"]
-[ext_resource type="Script" uid="uid://d2aih74dme78v" path="res://System/Maps/map_db.gd" id="4_nwsxw"]
+[ext_resource type="Script" uid="uid://drcsvpdqb7iao" path="res://System/Maps/map_db.gd" id="4_nwsxw"]
 
 [sub_resource type="Resource" id="Resource_pgmh6"]
 script = ExtResource("4_nwsxw")

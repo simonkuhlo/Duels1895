@@ -34,7 +34,7 @@ var equipped_scene_instance:EquippedItem:
 		if equipped_scene_instance:
 			equipped_scene_instance.instance = held_item_instance
 			equipped_scene_instance.holder = self
-			add_child(equipped_scene_instance)
+			add_child(equipped_scene_instance, true)
 
 func _on_held_slot_item_switched(new_item:ItemInstance) -> void:
 	held_item_instance = new_item
