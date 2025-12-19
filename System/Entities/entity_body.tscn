@@ -1,28 +1,22 @@
 [gd_scene load_steps=13 format=3 uid="uid://vr1rchrbhnqw"]
 
-[ext_resource type="Script" uid="uid://vqh374v1s861" path="res://System/Entities/entity_body_3d.gd" id="1_qtxv7"]
+[ext_resource type="Script" uid="uid://dcb0v3s2a6avg" path="res://System/Entities/entity_body_3d.gd" id="1_qtxv7"]
 [ext_resource type="Script" uid="uid://ct5u4d6w5ptm5" path="res://System/Entities/Stats/Scripts/entity_stat.gd" id="2_4y1t2"]
 [ext_resource type="PackedScene" uid="uid://bthqp0o7o2bv5" path="res://System/Items/Core/Inventory Element/Inventory Collection/inventory_collection.tscn" id="2_xufau"]
 [ext_resource type="PackedScene" uid="uid://qnadki4kfuia" path="res://System/Entities/Stats/entity_stat_holder.tscn" id="4_xufau"]
-[ext_resource type="PackedScene" uid="uid://fc8wrptdmbc5" path="res://System/Items/Nodes/Item Holder/item_holder.tscn" id="5_23x27"]
+[ext_resource type="PackedScene" uid="uid://fc8wrptdmbc5" path="res://System/Items/Nodes/Item Holder/hand_3d.tscn" id="5_23x27"]
 [ext_resource type="Script" uid="uid://dcnotw7pk5emo" path="res://System/Entities/interaction_ray_cast_3d.gd" id="5_rke0j"]
 
 [sub_resource type="Resource" id="Resource_v6f86"]
 script = ExtResource("2_4y1t2")
-min_value = 0.0
 max_value = 150.0
 standard_value = 150.0
-regen_per_second = 0.0
-regen_delay_seconds = 0.0
 metadata/_custom_type_script = "uid://cdfgqtker1kqk"
 
 [sub_resource type="Resource" id="Resource_xufau"]
 script = ExtResource("2_4y1t2")
-min_value = 0.0
 max_value = 1000.0
 standard_value = 700.0
-regen_per_second = 0.0
-regen_delay_seconds = 0.0
 metadata/_custom_type_script = "uid://cdfgqtker1kqk"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v6f86"]
@@ -47,7 +41,7 @@ fpv_camera = NodePath("Body/Neck/FPVCamera")
 tpv_camera = NodePath("Body/SpringArm3D/TPVCamera")
 neck = NodePath("Body/Neck")
 skin = NodePath("Body/MeshInstance3D")
-item_holder = NodePath("Body/Neck/SpringArm3D/ItemHolder")
+item_holder = NodePath("Body/Neck/SpringArm3D/Hand")
 inventories = NodePath("InventoryCollection")
 
 [node name="InventoryCollection" parent="." instance=ExtResource("2_xufau")]
@@ -79,7 +73,7 @@ shape = SubResource("SphereShape3D_23x27")
 spring_length = 0.8
 margin = 0.1
 
-[node name="ItemHolder" parent="Body/Neck/SpringArm3D" instance=ExtResource("5_23x27")]
+[node name="Hand" parent="Body/Neck/SpringArm3D" instance=ExtResource("5_23x27")]
 
 [node name="FPVCamera" type="Camera3D" parent="Body/Neck"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

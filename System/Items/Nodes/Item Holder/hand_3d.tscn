@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://fc8wrptdmbc5"]
 
-[ext_resource type="Script" uid="uid://dqyv237ihcrft" path="res://System/Items/Nodes/Item Holder/item_holder.gd" id="1_yvb8a"]
-[ext_resource type="Script" uid="uid://6yfwyjsivwoi" path="res://System/Items/Nodes/Item Holder/item_holder_synchronizer.gd" id="2_ytheb"]
+[ext_resource type="Script" uid="uid://bfdxv7lglw7rh" path="res://System/Items/Nodes/Item Holder/hand_3d.gd" id="1_yvb8a"]
+[ext_resource type="Script" uid="uid://cj1rh1xo5g7u5" path="res://System/Items/Nodes/Item Holder/hand_synchronizer.gd" id="2_ytheb"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_yvb8a"]
 properties/0/path = NodePath(".:synchronized_held_slot_uid")

@@ -10,7 +10,7 @@ signal authority_changed(new_authority:int)
 @export var tpv_camera:Camera3D
 @export var neck:Node3D
 @export var skin:MeshInstance3D
-@export var item_holder:ItemHolder3D:
+@export var item_holder:Hand3D:
 	set(new):
 		if item_holder:
 			item_holder.parent_entity = null

@@ -9,14 +9,9 @@ point_count = 3
 
 [resource]
 script = ExtResource("1_0q536")
-family = 0
-damage_modifier = 1.0
-velocity_modifier = 1.0
-max_range = 1000.0
 damage_falloff = SubResource("Curve_0q536")
 uid = &"item_ammo_test_2"
 item_name = "Test Ammo"
-description = ""
 icon = ExtResource("1_k28c1")
 special = true
 max_stack_size = 0

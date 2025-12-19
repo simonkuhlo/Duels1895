@@ -1,6 +1,6 @@
 extends Node
 
-@export var synchronized_holder:ItemHolder3D:
+@export var synchronized_holder:Hand3D:
 	set(new):
 		if synchronized_holder:
 			synchronized_holder.held_slot_changed.disconnect(_on_synchronized_holder_held_slot_changed)

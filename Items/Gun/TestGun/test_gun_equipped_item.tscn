@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bdk4f5f26rruv" path="res://Items/_Templates/Tool/Weapon/Gun/gun_equipped_item.tscn" id="1_p3rdd"]
 [ext_resource type="PackedScene" uid="uid://d0qhpnij7ow5h" path="res://Assets/Revolver/revolver.fbx" id="2_0vnbi"]
-[ext_resource type="Script" uid="uid://k4tvfulfdia5" path="res://System/Statechart/Transition/Guards/delay_guard.gd" id="3_my1jw"]
+[ext_resource type="Script" uid="uid://d4i5esoutf3k0" path="res://System/Statechart/Transition/Guards/delay_guard.gd" id="3_my1jw"]
 [ext_resource type="PackedScene" uid="uid://d1snt8eeuw3w4" path="res://Items/_Templates/Tool/Weapon/Gun/Bullet/projectile_instance.tscn" id="3_yg6gr"]
 [ext_resource type="Script" uid="uid://v63o8vdio8m7" path="res://Items/Gun/TestGun/gun_animation_manager.gd" id="4_yv20a"]
 
@@ -162,7 +162,7 @@ filtered_gun_animation_manager = NodePath("ItemAnimationManager")
 bullet_scene = ExtResource("3_yg6gr")
 
 [node name="Visuals" parent="." index="0" instance=ExtResource("2_0vnbi")]
-transform = Transform3D(-7.23998e-06, 0, -2, 0, 2, 0, 2, 0, -7.23998e-06, 0, 0, 0)
+transform = Transform3D(-7.2399803e-06, 0, -2, 0, 2, 0, 2, 0, -7.2399803e-06, 0, 0, 0)
 
 [node name="DelayGuard" type="Node" parent="StateChart/Root/Shooting/ToIdle" index="0" node_paths=PackedStringArray("state_to_watch")]
 script = ExtResource("3_my1jw")

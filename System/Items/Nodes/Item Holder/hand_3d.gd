@@ -1,5 +1,6 @@
+@icon("res://System/Items/Core/Res/hand_icon.svg")
 extends Node3D
-class_name ItemHolder3D
+class_name Hand3D
 
 signal held_slot_changed(new_slot:InventorySlot)
 

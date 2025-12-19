@@ -14,8 +14,6 @@
 
 [sub_resource type="Resource" id="Resource_qjgax"]
 script = ExtResource("6_jo2fw")
-allowed_ammo_families = Array[int]([])
-accept_special = false
 metadata/_custom_type_script = "uid://c7fpq0bexdg6s"
 
 [sub_resource type="Resource" id="Resource_s6gwo"]
@@ -31,22 +29,16 @@ metadata/_custom_type_script = "uid://crq3ojxjwo43d"
 
 [sub_resource type="Resource" id="Resource_px6uy"]
 script = ExtResource("6_jo2fw")
-allowed_ammo_families = Array[int]([])
-accept_special = false
 metadata/_custom_type_script = "uid://c7fpq0bexdg6s"
 
 [sub_resource type="Resource" id="Resource_emag8"]
 script = ExtResource("5_ofj4c")
-min_value = 0.0
 max_value = 100.0
 standard_value = 100.0
-regen_per_second = 0.0
-regen_delay_seconds = 0.0
 metadata/_custom_type_script = "uid://dbblf8tqoy7rc"
 
 [sub_resource type="Resource" id="Resource_oifuf"]
 script = ExtResource("5_ofj4c")
-min_value = 0.0
 max_value = 100.0
 standard_value = 100.0
 regen_per_second = 10.0
@@ -55,29 +47,20 @@ metadata/_custom_type_script = "uid://dbblf8tqoy7rc"
 
 [sub_resource type="Resource" id="Resource_u2gnr"]
 script = ExtResource("5_ofj4c")
-min_value = 0.0
 max_value = 100.0
 standard_value = 100.0
-regen_per_second = 0.0
-regen_delay_seconds = 0.0
 metadata/_custom_type_script = "uid://dbblf8tqoy7rc"
 
 [sub_resource type="Resource" id="Resource_b7hs3"]
 script = ExtResource("5_ofj4c")
-min_value = 0.0
 max_value = 100.0
 standard_value = 12.0
-regen_per_second = 0.0
-regen_delay_seconds = 0.0
 metadata/_custom_type_script = "uid://dbblf8tqoy7rc"
 
 [sub_resource type="Resource" id="Resource_ofj4c"]
 script = ExtResource("5_ofj4c")
-min_value = 0.0
 max_value = 1000.0
 standard_value = 7.0
-regen_per_second = 0.0
-regen_delay_seconds = 0.0
 metadata/_custom_type_script = "uid://dbblf8tqoy7rc"
 
 [node name="EntityBody" node_paths=PackedStringArray("action_stamina", "movement_stamina", "ads_stamina", "jump_strength", "controller", "exclude_client_authority", "hotbar_inventory", "ammo_inventory") instance=ExtResource("1_b5oby")]

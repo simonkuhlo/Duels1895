@@ -7,7 +7,7 @@ var instance:ItemInstance:
 		instance = new
 		_on_instance_changed(instance)
 
-var holder:ItemHolder3D:
+var holder:Hand3D:
 	set(new):
 		holder = new
 		if holder:
